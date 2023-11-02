@@ -82,6 +82,11 @@ MEDIA_URL = '/img/'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+import pymysql
+
+pymysql.version_info=(1,4,6,'final',0)
+pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
