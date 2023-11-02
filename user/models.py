@@ -17,7 +17,7 @@ class PuestoEmpleado(models.Model):
     p_emp_descripcion = models.CharField(max_length=50, help_text='Nombre del Cargo')
 
     def __str__(self):
-        return p_emp_name
+        return self.p_emp_nombre
     
     class Meta:
         verbose_name_plural = 'Puesto Empleados'
@@ -27,7 +27,7 @@ class Empleado(models.Model):
     p_emp = models.ForeignKey(PuestoEmpleado, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{p_emp} {user}'
+        return f'{self.p_emp} {self.user}'
     
     class Meta:
         verbose_name_plural = 'Empleados'
@@ -36,7 +36,7 @@ class Cliente(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return user
+        return self.user.username
     
     class Meta:
         verbose_name_plural = 'Clientes'

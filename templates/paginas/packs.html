@@ -1,0 +1,108 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Packs {% endblock %}
+{% block content %}
+
+    <!-- Aqui estaría vuestro código -->
+    <div  class="contenedor-titulo">
+        <button class="boton-atras" > &lt; </button> 
+           <h1> Pack Llama Perú </h1> 
+    </div>
+    <hr>
+    <img class="peru" src="{% static 'images/peru.jpg' %}">
+    <div class="contenedor-imagenes">
+        <img class="room" src="{% static 'images/habitacion.jpg' %}">
+        <img class="pool" src="{% static 'images/pool.jpg' %}">	
+    </div>
+    <div class="contenido-texto">
+            <h1>Itinerario de Viaje a Perú de 10 Días</h1>
+        
+            <h2>Día 1: Llegada a Lima</h2>
+            <ul>
+                <li>Llegada a Lima, la capital de Perú.</li>
+                <li>Alojamiento en un hotel en el distrito de Miraflores.</li>
+                <li>Cena en un restaurante local.</li>
+            </ul>
+        
+            <h2>Día 2: Lima</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Visita al Centro Histórico de Lima, incluyendo la Plaza Mayor, la Catedral y el Palacio de Gobierno.</li>
+                <li>Almuerzo en un restaurante local.</li>
+                <li>Visita al Museo Larco por la tarde.</li>
+                <li>Cena en un restaurante de comida peruana.</li>
+            </ul>
+        
+            <h2>Día 3: Paracas y Huacachina</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Salida temprano hacia Paracas.</li>
+                <li>Tour en bote por las Islas Ballestas para ver la fauna marina, incluyendo pingüinos y leones marinos.</li>
+                <li>Almuerzo en Paracas.</li>
+                <li>Continúa hacia Huacachina, un oasis en medio del desierto.</li>
+                <li>Relájate en las dunas de Huacachina o realiza deportes de aventura como sandboarding.</li>
+                <li>Cena en Huacachina.</li>
+            </ul>
+        
+            <h2>Día 4: Nazca</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Viaje a Nazca.</li>
+                <li>Sobrevuelo de las Líneas de Nazca para apreciar los misteriosos geoglifos desde el aire.</li>
+                <li>Almuerzo en Nazca.</li>
+                <li>Regreso a Lima por la tarde.</li>
+            </ul>
+        
+            <h2>Día 5: Cusco</h2>
+            <ul>
+                <li>Desayuno en Lima.</li>
+                <li>Vuelo a Cusco.</li>
+                <li>Llegada a Cusco y traslado al hotel.</li>
+                <li>Tarde libre para aclimatarse a la altitud.</li>
+                <li>Cena en un restaurante cusqueño.</li>
+            </ul>
+        
+            <h2>Día 6: Valle Sagrado</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Excursión al Valle Sagrado de los Incas, que incluye visitas a Pisac y su mercado, así como a Ollantaytambo.</li>
+                <li>Almuerzo buffet en el Valle Sagrado.</li>
+                <li>Regreso a Cusco.</li>
+            </ul>
+        
+            <h2>Día 7: Machu Picchu</h2>
+            <ul>
+                <li>Desayuno temprano en el hotel.</li>
+                <li>Viaje en tren a Aguas Calientes, el pueblo base para Machu Picchu.</li>
+                <li>Visita a la ciudadela de Machu Picchu, una de las maravillas del mundo.</li>
+                <li>Almuerzo en Aguas Calientes.</li>
+                <li>Regreso a Cusco en tren.</li>
+            </ul>
+        
+            <h2>Día 8: Cusco</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Día libre en Cusco para explorar la ciudad por tu cuenta.</li>
+                <li>Opción de visitar museos, iglesias y disfrutar de la gastronomía local.</li>
+                <li>Cena en Cusco.</li>
+            </ul>
+        
+            <h2>Día 9: Puno y el Lago Titicaca</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Viaje en autobús o tren a Puno, a orillas del Lago Titicaca.</li>
+                <li>Llegada a Puno y alojamiento en un hotel.</li>
+                <li>Tarde libre para explorar la ciudad de Puno.</li>
+            </ul>
+        
+            <h2>Día 10: Islas Flotantes de los Uros y Taquile</h2>
+            <ul>
+                <li>Desayuno en el hotel.</li>
+                <li>Excursión en lancha a las Islas Flotantes de los Uros en el Lago Titicaca.</li>
+                <li>Visita a la isla de Taquile, donde disfrutarás de la cultura local y vistas impresionantes.</li>
+                <li>Almuerzo en Taquile.</li>
+                <li>Regreso a Puno y vuelo de regreso a Lima.</li>
+            </ul>				
+        <button class="boton-carrito">Añadir al carrito</button>
+    </div>
+{% endblock %}

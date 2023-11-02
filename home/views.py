@@ -7,3 +7,7 @@ def index(request):
     return render(request, 'paginas/index.html',{
         'packs':packs,
     })
+
+def about(request):
+    return render(request, 'paginas/about.html')
+

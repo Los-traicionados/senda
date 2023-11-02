@@ -1,0 +1,114 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Carrito {% endblock %}
+{% block content %}
+<div class="principal">
+    <div class="detalle_carrito">
+        <div>
+            <svg xmlns="<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            <div>
+              <h2>Carrito de compras</h2>
+            </div>
+                
+        </div>
+        <hr>
+        <div class="detalleProducto">
+            <h4>Detalle del viaje</h4>
+            <div class="pack1">
+                <div class="foto">
+                    <img src="{% static 'images/peru.jpg' %}" alt="peru_foto">
+                </div>
+                <div class="informacion">
+                    <h4>Pack Llama Perú</h4>
+                    <ul>
+                        <li>Boletos de avión</li>
+                        <li>Itinerario 10 días</li>
+                        <li>Actividades </li>
+                        <li>Boletos de avión</li>
+                    </ul>
+                </div>
+                <div class="cantidad">
+                    <h4>1</h4>
+                </div>
+                <div class="precio">
+                    <h4>2,000 EUR</h4>
+                    <div class="svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                      </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="pack1">
+                <div class="foto">
+                    <img src="{% static 'images/peru.jpg' %}" alt="peru_foto">
+                </div>
+                <div class="informacion">
+                    <h4>Pack Llama Perú</h4>
+                    <ul>
+                        <li>Boletos de avión</li>
+                        <li>Itinerario 10 días</li>
+                        <li>Actividades </li>
+                        <li>Boletos de avión</li>
+                    </ul>
+                </div>
+                <div class="cantidad">
+                    <h4>1</h4>
+                </div>
+                <div class="precio">
+                    <h4>2,000 EUR</h4>
+                    <div class="svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                      </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detalleTarjeta">
+        <h4>Detalle de Tarjeta</h4>
+        <p>Tipo de tarjeta</p>
+        <div class="tipo_tarjeta">
+            <img src="{% static 'images/Visa.svg' %}" alt="visa_svg">
+            <img src="{% static 'images/MasterCard.svg' %}" alt="mastercard_svg">
+            <img src="{% static 'images/ApplePay.svg' %}" alt="apple_svg">
+            <img src="{% static 'images/Paypal.svg' %}" alt="paypal_svg">
+        </div>
+        <div class="form_tarjeta">
+            <form class="form" action="" method="post">
+                {% csrf_token %}
+                <div class="name_tarjeta">
+                <label for="POST-name">Nombre y apellidos</label>
+                <input class="box_name" id="POST-name" type="text" name="Nombre" value="Nombre"/>
+                </div>
+
+                <div class="name_tarjeta">
+                <label for="POST-name">Numero de tarjeta</label>
+                <input class="box_name" id="POST-name" type="text" name="name" value="1111 2222 3333 4444"/>
+                </div>
+                
+                <div class="name_tarjeta">
+                <label for="POST-name">Fecha de expiracion</label>
+                <input class="box_name" id="POST-name" type="date" name="name" />
+                </div>
+                
+                <div class="name_tarjeta">
+                <label for="POST-name">CVV</label><br>
+                <input class="box_name" id="POST-name" type="number" name="name" value="123" />
+                </div>
+
+                <div class="totalprecio">
+                    <hr>
+                    <p>Subtotal 			2,000 EUR</p>
+                    <p>Tasas e impuestos  	70,89 EUR</p>
+                    <p><strong>Total</strong> 2,070.89 EUR</p>
+                </div>
+                <input class="CTA_PAGAR" type="submit" value="PAGAR"/>
+              </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

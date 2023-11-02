@@ -1,8 +1,56 @@
 {% extends 'plantilla/base.html' %}
-
+{% load static %}
+{% block title %} Senda {% endblock %}
 {% block content %}
-<h1>Desde el index</h1>
-{% for p in packs %}
-    {{p}}
-{% endfor %}
+<div>
+    <div style="background-image:url({% static 'images/bg_searchbar.jpg' %});" class="hero">
+        <h1 class=herotext id="line1">CON SENDA</h1>
+        <h1 class=herotext id="line2">TU SUEÑO, TU DESTINO</h1>
+        <div class="search-bar">
+            <div class="dropdown">
+                <select class="dropdownbar" id="first_select">
+                    <option value="option1">Continente </option>
+                    <option value="option2">Asia</option>
+                    <option value="option3">Europa</option>
+                    <option value="option2">America</option>
+                    <option value="option3">Africa</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <select class="dropdownbar">
+                    <option value="option1">Todos los países</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <select class="dropdownbar">
+                    <option value="option1">Tus presupuestos</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            </div>
+            <button class="button">Encuentra tus viajes</button>
+        </div>
+    </div>
+    <div class="catagories">
+        <div style="background-image:url({% static 'images/playa.png' %});" class="card">Playa</div>
+        <div style="background-image:url({% static 'images/ciudad.png' %});" class="card">Ciudad</div>
+        <div style="background-image:url({% static 'images/selva.png' %});" class="card">Selva</div>
+        <div style="background-image:url({% static 'images/glamping.png' %});" class="card">Glamping</div>
+        <div style="background-image:url({% static 'images/ski.jpg' %});" class="card">Ski</div>
+        <div style="background-image:url({% static 'images/senderismo.png' %});" class="card">Senderismo
+        </div>
+    </div>
+    <div class="promotion">
+        <div class="slideshow-container">
+            <div style="background-image:url({% static 'images/Berlin.png' %});" class="slide"></div>
+            <div style="background-image:url({% static 'images/paris.png' %});" class="slide"></div>
+            <div style="background-image:url({% static 'images/Amsterdam.png' %});" class="slide"></div>
+            <div style="background-image:url({% static 'images/hotelywarner.jpg' %});" class="slide"></div>
+            <div style="background-image:url({% static 'images/ofertas-circuitos-home.jpg' %});"
+                class="slide"></div>
+        </div>
+    </div>
+</div>
 {% endblock %}
