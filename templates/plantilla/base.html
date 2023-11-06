@@ -40,6 +40,8 @@
 					<a class="button_secondary" href="{% url 'perfil' %}">{{request.user.username}}</a>
 					{% else %}
 					<a class="button_secondary" href="{% url 'login' %}">Mi cuenta</a>
+					<a class="button_secondary" href="{% url 'registro' %}">Registro</a>
+				
 					{% endif %}
 					<div class="cart_icon">
 						<a href="{% url 'cart' %}">

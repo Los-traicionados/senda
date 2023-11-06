@@ -2,8 +2,26 @@
 {% load static %}
 {% block title %} Packs {% endblock %}
 {% block content %}
+<form action="" method="get">
+    <input type="text" name="busqueda" 
+    {% if busqueda %}value="{{busqueda}}"{%endif%} id="">
+    <button typr="submit"> Buscar </button>
+</form>
+{% if busqueda %}
+Para la palabra: {{busqueda}} se encontraron: {{actividades | length }} Resultados 
+{% endif %}
 
-    <!-- Aqui estaría vuestro código -->
+<h5>Total: {{precio_total.act_precio__sum }}</h5>  
+
+<h1>ACTIVIDADES</h1>
+  {% for act in actividades %}
+  <h2>{{act.act_nombre}}</h2>
+  <p>{{act.act_precio}}</p>
+    {% if act.act_imagen %}
+    <img src="{{act.act_imagen.url}}" alt="" width="500px" height="auto">
+    {% endif %}
+  {% endfor %}
+    <!-- Aqui estaría vuestro código
     <div  class="contenedor-titulo">
         <button class="boton-atras" > &lt; </button> 
            <h1> Pack Llama Perú </h1> 
@@ -103,6 +121,6 @@
                 <li>Almuerzo en Taquile.</li>
                 <li>Regreso a Puno y vuelo de regreso a Lima.</li>
             </ul>				
-        <button class="boton-carrito">Añadir al carrito</button>
-    </div>
+        <a class="boton-carrito" href="{% url 'cart' %}">Añadir al carrito</a>
+    </div> -->
 {% endblock %}
