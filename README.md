@@ -11,7 +11,7 @@ Senda es una agencia de viajes que se especializa en crear experiencias únicas 
 ## Instalación
 
 ### Requisitos Previos
--   Tener instalado python en su version 3.
+-   Tener instalado python en su version 3 (3.7 a 3.10).
 -   Tener un administrador de base de datos, en nuestro caso XAMPP
 ### Creacion de la base de datos:
 -   Levantamos los servicios necesarios
