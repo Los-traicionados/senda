@@ -3,5 +3,21 @@
 {% block title %} {{request.user.username }} {% endblock %}
 {% block content %}
 <h1>Hola {{request.user.username }}</h1>
+<h2>Emails enviados</h2>
+<table>
+    <tr>
+      <th>Usuario</th>
+      <th>Email</th>
+      <th>Asunto</th>
+    </tr>
+    {% for c in count_emails %}
+    <tr>
+      <td>{{c.user}}</td>
+      <td>{{c.email}}</td>
+      <td>{{c.asunto}}</td>
+    </tr>
+    {% endfor %}
+  </table>
 <a href="{% url 'logout' %}" class="button_secondary">Salir</a>
+<a href="{% url 'send_email_to_all' %}" class="button_secondary">Enviar correo</a>
 {% endblock %}

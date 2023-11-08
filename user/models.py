@@ -41,3 +41,8 @@ class Cliente(models.Model):
     class Meta:
         verbose_name_plural = 'Clientes'
     
+class CountEmails(models.Model):
+    user=models.CharField(max_length=50)
+    email=models.CharField(max_length=50)
+    asunto=models.CharField(max_length=50)
+    fecha=models.DateTimeField(auto_now=True)

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +10,17 @@
 	<table style="margin: auto; margin-top: 24px; border-spacing: 0px;" width="600">
 		<tr bgcolor="#FFFFFF" border="0">
 			<td style="padding:24px; border-radius: 24px 24px 0 0;">
-				<img style="width: 100px;" src="{% static 'images/mail_logo.png' %}" alt="senda_logo">
+				<img style="width: 100px;" src="https://github.com/Los-traicionados/senda/blob/LT-65/static/images/mail_logo.png?raw=true" alt="senda_logo">
 			</td>
 		</tr>
 		<tr>
 			<td style="background-color: white;">
-				<img src="{% static 'images/mail_flyer_entrada.jpg' %}" alt="flyer_concierto">
+				<img src="https://github.com/Los-traicionados/senda/blob/LT-65/static/images/mail_flyer_entrada.jpg?raw=true" alt="flyer_concierto">
 			</td>
 		</tr>
 		<tr style="background-color: white; box-sizing: border-box;">
 			<td style="padding: 16px 24px 0 24px;">
-				<h1 style="text-align: center; font-size: 24px;">Hola Angel, aqui tienes tu entrada para</h1>
+				<h1 style="text-align: center; font-size: 24px;">Hola, {{user.username}} aqui tienes tu entrada para</h1>
 				<h2 style="text-align: center; font-size: 20px; color: #EB5E37;">
 					Concierto solidario a favor de la Fundación Aladina
 				</h2>
@@ -30,7 +31,7 @@
 		</tr>
 		<tr style="background-color: white;">
 			<td style="text-align: center;">
-				<img src="{% static 'images/mail_entrada_qr.jpg' %}" alt="codigo_qr">
+				<img src="https://github.com/Los-traicionados/senda/blob/LT-65/static/images/mail_entrada_qr.png?raw=true" alt="codigo_qr">
 			</td>
 		</tr>
 		<tr style="background-color: white; box-sizing: border-box;">

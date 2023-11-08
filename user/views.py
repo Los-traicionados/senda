@@ -12,6 +12,12 @@ from .models import *
 import smtplib
 from senda.settings import *
 from email.mime.text import MIMEText
+from django.template import loader
+from django.template import RequestContext
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from senda.asgi import *
+from email.mime.multipart import MIMEMultipart
 
 # Create your views here.
 def login_view(request):
@@ -37,12 +43,10 @@ def logout_view(request):
     return redirect('index')
 
 def perfil(request):
-    return render(request, 'paginas/perfil.html')
+    count_emails=CountEmails.objects.all()
+    return render(request, 'paginas/perfil.html', {'count_emails': count_emails})
 
 def registro(request):
-    print("----")
-    send_email()
-    print("----")
     if request.method =='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -53,7 +57,7 @@ def registro(request):
             user.set_password(password2)
             user.is_activate = True
             user.save()
-            
+            send_email(user.id)
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
@@ -63,8 +67,18 @@ def registro(request):
             
     return render(request, 'paginas/registro.html')
 
-def send_email():
+def send_email_to_all(request):
+    user=User.objects.all()
+    for i in user:
+        if i.email:
+            send_email(i.id)
+            CountEmails.objects.create(user=i.username, email=i.email, asunto="test")
+    return redirect("perfil")
+
+
+def send_email(user_id):
     try:
+        user=User.objects.get(pk=user_id)
         mailServer = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
         mailServer.ehlo()
         mailServer.starttls()
@@ -72,14 +86,15 @@ def send_email():
         mailServer.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
 
         # Construimos el mensaje simple
-        email_to = "elenajiangholaaa@gmail.com"
+        email_to = user.email
         # mensaje = MIMEText("""Este es el mensaje de las narices""")
         mensaje = MIMEMultipart()
         mensaje['From']= EMAIL_HOST_USER
         mensaje['To']= email_to
         mensaje['Subject']="Tienes un correo"
 
-        # render_to_string
+        content = render_to_string('mailing/mail_entrada.html', {'user':user})
+        mensaje.attach(MIMEText(content, 'html'))
 
         # Envio del mensaje
         mailServer.sendmail(EMAIL_HOST_USER,
