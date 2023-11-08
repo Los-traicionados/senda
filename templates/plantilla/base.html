@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'css/login.css' %}">
 	<link rel="stylesheet" href="{% static 'css/nosotros.css' %}">
+	<link rel="stylesheet" href="{% static 'css/productos.css' %}">
 
 	<title>{% block title %}{% endblock %}</title>
 </head>
@@ -26,11 +27,9 @@
 					<a href="{% url 'about' %}">
 						<li>Sobre nosotros</li>
 					</a>
-					<!--
-						<a href="">
-							<li>Elige tu viaje</li>
+						<a href="{% url 'productos' %}">
+							<li>Productos</li>
 						</a>
-					-->
 					<a href="{% url 'packs' %}">
 						<li>Packs</li>
 					</a>
