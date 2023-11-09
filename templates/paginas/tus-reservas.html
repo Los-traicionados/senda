@@ -8,7 +8,11 @@
 	<h4>Tus reservas</h4>
 </div>
 <hr>
-
+{% for reserva in booking_reserva}
+<h2>{{reserva.reserva_nombre}}</h2>
+	{% if act.act_imagen %}
+	<img src="{{act.act_imagen.url}}" alt="" width="500px" height="auto">
+	{% endif %}
 <!-- <div>
 	<a href="{% url 'logout' %}" class="button_logout">Salir</a>
 </div> -->
