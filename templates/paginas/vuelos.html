@@ -1,0 +1,27 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Vuelos {% endblock %}
+{% block content %}
+
+	<div class="seccion_productos">
+		<a href="#" class="link_seccion_product">
+			<div class="titulo_seccion">
+			Vuelos
+			</div>
+		</a>
+        <!--Formulario de vuelos-->
+		{% include 'paginas/formularios/form_vuelos.html' %}
+		<div class="grid_productos">
+            {% for vu in vuelos_filtrado %}
+			<a href="#" class="link_producto">
+					<div class="producto"> 
+					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
+					<h3 class="product_name">{{vu}}<h3> 
+				</div>
+			</a>
+            {% endfor %}
+		</div>
+	</div>
+
+
+{% endblock %}

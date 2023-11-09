@@ -6,7 +6,8 @@ class Hotel(models.Model):
     ho_nombre = models.CharField(max_length=50, verbose_name='Hotel')
     ho_direccion = models.CharField(max_length=255, verbose_name='Dirección')
     ho_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Hotel')
-    ho_imagen =  models.ImageField(upload_to='hotel/', default='')
+    ho_ciudad = models.CharField(max_length=50, null=True, blank=True)
+    ho_imagen =  models.ImageField(upload_to='hotel/', default='', null=True, blank=True)
     
     def __str__(self):
         return self.ho_nombre
@@ -47,7 +48,7 @@ class Pack(models.Model):
     pa_nombre = models.CharField(max_length=50, verbose_name='Nombre del Pack')
     pa_descipcion = models.CharField(max_length=255, verbose_name='Descripción Pack')
     pa_imagen = models.ImageField(upload_to='pack/', default='')
-    
+
     def __str__(self):
         return self.pa_nombre
 

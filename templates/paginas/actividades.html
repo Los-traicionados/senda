@@ -1,0 +1,32 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Actividades {% endblock %}
+{% block content %}
+  <div class="seccion_productos">
+    <a href="{% url 'actividades'%}" class="link_seccion_product">
+        <div class="titulo_seccion">
+        Actividades
+        </div>
+    </a>
+    <form action="" method="get">
+        <input type="text" name="busqueda" 
+        {% if busqueda %}value="{{busqueda}}"{%endif%} id="">
+        <button type="submit"> Buscar </button>
+    </form>
+    {% if busqueda %}
+    <small>
+        Para la palabra: {{busqueda}} se encontraron: {{actividades | length }} Resultados 
+    </small>
+    {% endif %}
+    <div class="grid_productos">
+        {% for act in actividades %}
+        <a href="#" class="link_producto">
+                <div class="producto"> 
+                <img src="{% static 'images/senderismo.png' %}" class="img_product">
+                <h3 class="product_name">{{act}}<h3> 
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

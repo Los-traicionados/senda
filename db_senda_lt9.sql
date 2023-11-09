@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 09, 2023 at 05:17 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-11-2023 a las 18:38:56
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,15 +18,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_senda`
+-- Base de datos: `db_senda`
 --
 
 --
--- Dumping data for table `auth_user`
+-- Volcado de datos para la tabla `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`, `dni`, `direccion`, `fecha_nacimiento`, `telefono`) VALUES
-(1, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', '2023-11-09 13:43:29.486863', 1, 'senda', '', '', 'senda@senda.com', 1, 1, '2023-11-01 14:49:23.270714', '', '', NULL, ''),
+(1, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', '2023-11-09 16:28:47.267492', 1, 'senda', '', '', 'senda@senda.com', 1, 1, '2023-11-01 14:49:23.270714', '', '', NULL, ''),
 (2, '123456', NULL, 0, 'María', '', '', '', 0, 1, '2023-11-01 14:57:30.000000', 'A123456B', 'Ronda', '2023-11-01 14:58:11.000000', '123456789'),
 (3, 'Pedro', NULL, 0, 'Pedro', '', '', '', 0, 1, '2023-11-01 14:59:13.000000', 'A123457B', 'Madrid', '2023-11-01 14:59:46.000000', '123456789'),
 (4, '123456', NULL, 0, 'Celia', '', '', '', 0, 1, '2023-11-01 21:11:09.000000', 'A1234568B', 'Su casa', '2023-11-01 21:12:26.000000', '123456'),
@@ -43,7 +43,7 @@ INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `userna
 (15, 'pbkdf2_sha256$320000$dkNlPujCyaVMWF6urM3GZW$uiMBH4YGfqb/zqxSWxYWHb10XueOaWMxu2TwjRRuI/o=', '2023-11-09 10:37:20.374164', 0, 'victor', '', '', 'v.terroso8@gmail.com', 0, 1, '2023-11-09 10:37:19.713831', '', '', NULL, '');
 
 --
--- Dumping data for table `booking_actividad`
+-- Volcado de datos para la tabla `booking_actividad`
 --
 
 INSERT INTO `booking_actividad` (`id`, `act_nombre`, `act_descripcion`, `act_precio`, `act_imagen`) VALUES
@@ -60,31 +60,31 @@ INSERT INTO `booking_actividad` (`id`, `act_nombre`, `act_descripcion`, `act_pre
 (11, 'Aventura vintage', '...', 10.50, '');
 
 --
--- Dumping data for table `booking_hotel`
+-- Volcado de datos para la tabla `booking_hotel`
 --
 
-INSERT INTO `booking_hotel` (`id`, `ho_nombre`, `ho_direccion`, `ho_precio`, `ho_imagen`) VALUES
-(1, 'Riu', 'Plaza España', 159.00, ''),
-(2, 'Ibis', 'Porai', 68.00, ''),
-(3, 'NH', 'Porai', 134.00, ''),
-(4, 'Príncipe Pio', 'PPio', 107.00, ''),
-(5, 'Petit palace', '...', 116.00, ''),
-(6, 'Woohoo suites', 'Woohoo', 89.00, ''),
-(7, 'Eurostars', '...', 103.00, ''),
-(8, 'Hat', '...', 48.00, ''),
-(9, 'Vértice', '...', 52.00, ''),
-(10, 'Catalonia', 'Gran vía', 162.00, ''),
-(11, 'Santo Domingo', 'Madrid', 108.00, '');
+INSERT INTO `booking_hotel` (`id`, `ho_nombre`, `ho_direccion`, `ho_precio`, `ho_imagen`, `ho_ciudad`) VALUES
+(1, 'Riu', 'Plaza España', 159.00, '', 'Madrid'),
+(2, 'Ibis', 'Porai', 68.00, '', 'Ibiza'),
+(3, 'NH', 'Porai', 134.00, '', 'Valencia'),
+(4, 'Príncipe Pio', 'PPio', 107.00, '', 'Madrid'),
+(5, 'Petit palace', '...', 116.00, '', 'Roma'),
+(6, 'Woohoo suites', 'Woohoo', 89.00, '', 'New York'),
+(7, 'Eurostars', '...', 103.00, '', 'Madrid'),
+(8, 'Hat', '...', 48.00, '', 'Paris'),
+(9, 'Vértice', '...', 52.00, '', 'Paris'),
+(10, 'Catalonia', 'Gran vía', 162.00, '', 'Madrid'),
+(11, 'Santo Domingo', 'Madrid', 108.00, '', 'Madrid');
 
 --
--- Dumping data for table `booking_pack`
+-- Volcado de datos para la tabla `booking_pack`
 --
 
 INSERT INTO `booking_pack` (`id`, `pa_nombre`, `pa_descipcion`, `actividad_id`, `hotel_id`, `vuelo_id`, `pa_imagen`) VALUES
 (1, 'Madrid un finde', 'Estadía Madrid y luego París', 1, 1, 1, '');
 
 --
--- Dumping data for table `booking_reserva`
+-- Volcado de datos para la tabla `booking_reserva`
 --
 
 INSERT INTO `booking_reserva` (`id`, `res_f_inicio`, `res_f_fin`, `res_precio`, `client_id`, `empleado_id`, `pack_id`) VALUES
@@ -97,19 +97,19 @@ INSERT INTO `booking_reserva` (`id`, `res_f_inicio`, `res_f_fin`, `res_precio`, 
 (7, NULL, NULL, 432.00, 9, 4, 1);
 
 --
--- Dumping data for table `booking_vuelo`
+-- Volcado de datos para la tabla `booking_vuelo`
 --
 
 INSERT INTO `booking_vuelo` (`id`, `vu_precio`, `vu_asiento`, `vu_destino`, `vu_origen`, `vu_nombre`) VALUES
-(1, 75.00, 'A5', 'Madrid', 'Barcelona', 'Madrid - Barcelona'),
-(3, 80.00, 'C1', 'Madrid', 'Paris', 'Madrid - Paris'),
-(4, 29.00, 'H1', 'Paris', 'Madrid', 'Paris - Madrid'),
-(5, 58.00, 'J1', 'Madrid', 'Roma', 'Madrid - Roma'),
-(6, 78.00, 'O1', 'Roma', 'Madrid', 'Roma - Madrid'),
-(11, 164.00, '8H', 'Barcelona', 'Madrid', 'Barcelona - Madrid');
+(1, 75.00, 'A5', 'Barcelona', 'Madrid', 'Madrid - Barcelona'),
+(3, 80.00, 'C1', 'Paris', 'Madrid', 'Madrid - Paris'),
+(4, 29.00, 'H1', 'Madrid', 'Paris', 'Paris - Madrid'),
+(5, 58.00, 'J1', 'Roma', 'Madrid', 'Madrid - Roma'),
+(6, 78.00, 'O1', 'Madrid', 'Roma', 'Roma - Madrid'),
+(11, 164.00, '8H', 'Madrid', 'Barcelona', 'Barcelona - Madrid');
 
 --
--- Dumping data for table `user_cliente`
+-- Volcado de datos para la tabla `user_cliente`
 --
 
 INSERT INTO `user_cliente` (`id`, `user_id`) VALUES
@@ -123,7 +123,7 @@ INSERT INTO `user_cliente` (`id`, `user_id`) VALUES
 (9, 12);
 
 --
--- Dumping data for table `user_empleado`
+-- Volcado de datos para la tabla `user_empleado`
 --
 
 INSERT INTO `user_empleado` (`id`, `p_emp_id`, `user_id`) VALUES
@@ -132,7 +132,7 @@ INSERT INTO `user_empleado` (`id`, `p_emp_id`, `user_id`) VALUES
 (4, 3, 5);
 
 --
--- Dumping data for table `user_puestoempleado`
+-- Volcado de datos para la tabla `user_puestoempleado`
 --
 
 INSERT INTO `user_puestoempleado` (`id`, `p_emp_nombre`, `p_emp_descripcion`) VALUES

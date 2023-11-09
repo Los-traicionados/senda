@@ -9,148 +9,75 @@
 
 <div class="main_productos">
 	<div class="seccion_productos">
-		<a href="{% url 'producto_tipo' %}" class="link_seccion_product">
+		<a href="{% url 'hoteles' %}" class="link_seccion_product">
 			<div class="titulo_seccion">
 			Hoteles
 			</div>
 		</a>
 		<div class="grid_productos">
+			{% for ho in hoteles %}
 			<a href="#" class="link_producto">
 					<div class="producto"> 
 					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">Hotel 1<h3> 
+					<h3 class="product_name">{{ho}}<h3> 
 				</div>
 			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">Hotel 2<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">Hotel 3<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">Hotel 4<h3> 
-				</div>
-			</a>
+			{% endfor %}
 		</div>
 	</div>
 
 	<div class="seccion_productos">
-		<a href="#" class="link_seccion_product">
+		<a href="{% url 'vuelos' %}" class="link_seccion_product">
 			<div class="titulo_seccion">
 			Vuelos
 			</div>
 		</a>
 		<div class="grid_productos">
+			{% for vu in vuelos %}
 			<a href="#" class="link_producto">
 					<div class="producto"> 
 					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
-					<h3 class="product_name">Vuelo 1<h3> 
+					<h3 class="product_name">{{vu}}<h3> 
 				</div>
 			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
-					<h3 class="product_name">Vuelo 2<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
-					<h3 class="product_name">Vuelo 3<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
-					<h3 class="product_name">Vuelo 4<h3> 
-				</div>
-			</a>
+			{% endfor %}
 		</div>
 	</div>
 
 	<div class="seccion_productos">
-		<a href="#" class="link_seccion_product">
+		<a href="{% url 'actividades' %}" class="link_seccion_product">
 			<div class="titulo_seccion">
 			Actividades
 			</div>
 		</a>
 		<div class="grid_productos">
+			{% for act in actividades %}
 			<a href="#" class="link_producto">
 					<div class="producto"> 
 					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">Actividad 1<h3> 
+					<h3 class="product_name">{{act}}<h3> 
 				</div>
 			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">Actividad 2<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">Actividad 3<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">Actividad 4<h3> 
-				</div>
-			</a>
+			{% endfor %}
 		</div>
 	</div>
 
 	<div class="seccion_productos">
-		<a href="#" class="link_seccion_product">
+		<a href="{% url 'packs'%}" class="link_seccion_product">
 			<div class="titulo_seccion">
 			Packs completos
 			</div>
 		</a>
 		<div class="grid_productos">
+			{% for pa in packs%}
 			<a href="#" class="link_producto">
 					<div class="producto"> 
 					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
-					<h3 class="product_name">Pack completo 1<h3> 
+					<h3 class="product_name">{{pa}}<h3> 
 				</div>
 			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
-					<h3 class="product_name">Pack completo 2<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
-					<h3 class="product_name">Pack completo 3<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
-					<h3 class="product_name">Pack completo 4<h3> 
-				</div>
-			</a>
+			{% endfor %}
 		</div>
 	</div>
 </div>
-
-	{% for act in actividades %}
-  <h2>{{act.act_nombre}}</h2>
-  <p>{{act.act_precio}}</p>
-    {% if act.act_imagen %}
-    <img src="{{act.act_imagen.url}}" alt="" width="500px" height="auto">
-    {% endif %}
-  {% endfor %}
-
 {% endblock %}
