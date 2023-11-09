@@ -51,3 +51,14 @@ def registro(request):
             messages.add_message(request, messages.ERROR, 'Contraseñas no coinciden')
             
     return render(request, 'paginas/registro.html')
+
+def tus_reservas(request):
+    return render(request, 'paginas/tus-reservas.html')
+
+def tus_favoritos(request):
+    return render(request, 'paginas/tus-favoritos.html')
+
+
+def recomendaciones(request):
+    return render(request, 'paginas/recomendaciones.html')
+
