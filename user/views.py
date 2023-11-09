@@ -43,8 +43,14 @@ def logout_view(request):
     return redirect('index')
 
 def perfil(request):
+    return render(request, 'paginas/perfil.html')
+
+def mailing_view(request):
+    return redirect('mailing')
+
+def mailing_view(request):
     count_emails=CountEmails.objects.all().order_by('-fecha', 'user')
-    return render(request, 'paginas/perfil.html', {'count_emails': count_emails})
+    return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
 
 def registro(request):
     if request.method =='POST':
@@ -66,28 +72,6 @@ def registro(request):
             messages.add_message(request, messages.ERROR, 'Contraseñas no coinciden')
             
     return render(request, 'paginas/registro.html')
-
-""" def send_email_to_all(request):
-    form = DateFilterForm(request.POST or None)
-
-    if request.method == 'POST' and form.is_valid():
-        start_date = form.cleaned_data['start_date']
-        end_date = form.cleaned_data['end_date']
-    
-    # Filtra usuarios por fecha de registro
-        users = User.objects.filter(date_joined__range=(start_date, end_date))
-    
-    # enviar emails a todos registrados 
-    else:
-        user=User.objects.all()
-
-    for i in user:
-        if i.email:
-            send_email(i.id)
-            CountEmails.objects.create(user=i.username, email=i.email, asunto="test")
-    # return redirect("perfil")
-    context = {'form': form}
-    return render(request, 'paginas/perfil.html', context) """
 
 def send_email_to_all(request):
     form = DateFilterForm(request.POST or None)

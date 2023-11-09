@@ -8,5 +8,6 @@ urlpatterns = [
     path('logout', views.logout_view, name='logout'),
     path('perfil', views.perfil, name='perfil'),
     path('registro', views.registro, name='registro'),
-    path('send_email_to_all', views.send_email_to_all, name='send_email_to_all')
+    #path('send_email_to_all', views.send_email_to_all, name='send_email_to_all')
+    path('mailing', views.mailing_view, name='mailing')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
