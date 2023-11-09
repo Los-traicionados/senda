@@ -13,4 +13,58 @@
 	<a href="{% url 'logout' %}" class="button_logout">Salir</a>
 </div> -->
 
+
+<div class="main_productos">
+
+	<div class="seccion_productos">
+		<a href="#" class="link_seccion_product">
+			<div class="titulo_seccion">
+			Actividades
+			</div>
+		</a>
+		<div class="grid_productos">
+			<a href="#" class="link_producto">
+					<div class="producto"> 
+					<img src="{% static 'images/senderismo.png' %}" class="img_product">
+					<h3 class="product_name">Actividad 1<h3> 
+				</div>
+			</a>
+			<a href="#" class="link_producto">
+				<div class="producto"> 
+					<img src="{% static 'images/senderismo.png' %}" class="img_product">
+					<h3 class="product_name">Actividad 4<h3> 
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="seccion_productos">
+		<a href="#" class="link_seccion_product">
+			<div class="titulo_seccion">
+			Packs completos
+			</div>
+		</a>
+		<div class="grid_productos">
+			<a href="#" class="link_producto">
+				<div class="producto"> 
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
+					<h3 class="product_name">Pack completo 2<h3> 
+				</div>
+			</a>
+			<a href="#" class="link_producto">
+				<div class="producto"> 
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
+					<h3 class="product_name">Pack completo 3<h3> 
+				</div>
+			</a>
+			<a href="#" class="link_producto">
+				<div class="producto"> 
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
+					<h3 class="product_name">Pack completo 4<h3> 
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
