@@ -3,5 +3,6 @@
 {% block title %} {{request.user.username }} {% endblock %}
 {% block content %}
 <h1>Hola {{request.user.username }}</h1>
+<a href="{% url 'dashboard' %}" class="button_secondary">Dashboard</a>
 <a href="{% url 'logout' %}" class="button_secondary">Salir</a>
 {% endblock %}
