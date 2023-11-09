@@ -43,7 +43,7 @@ def logout_view(request):
     return redirect('index')
 
 def perfil(request):
-    count_emails=CountEmails.objects.all()
+    count_emails=CountEmails.objects.all().order_by('-fecha', 'user')
     return render(request, 'paginas/perfil.html', {'count_emails': count_emails})
 
 def registro(request):
@@ -67,14 +67,48 @@ def registro(request):
             
     return render(request, 'paginas/registro.html')
 
-def send_email_to_all(request):
-    user=User.objects.all()
+""" def send_email_to_all(request):
+    form = DateFilterForm(request.POST or None)
+
+    if request.method == 'POST' and form.is_valid():
+        start_date = form.cleaned_data['start_date']
+        end_date = form.cleaned_data['end_date']
+    
+    # Filtra usuarios por fecha de registro
+        users = User.objects.filter(date_joined__range=(start_date, end_date))
+    
+    # enviar emails a todos registrados 
+    else:
+        user=User.objects.all()
+
     for i in user:
         if i.email:
             send_email(i.id)
             CountEmails.objects.create(user=i.username, email=i.email, asunto="test")
-    return redirect("perfil")
+    # return redirect("perfil")
+    context = {'form': form}
+    return render(request, 'paginas/perfil.html', context) """
 
+def send_email_to_all(request):
+    form = DateFilterForm(request.POST or None)
+    count_emails = None
+
+    if request.method == 'POST' and form.is_valid():
+        start_date = form.cleaned_data['start_date']
+        end_date = form.cleaned_data['end_date']
+
+        # Filter users by registration date
+        users = User.objects.filter(date_joined__range=(start_date, end_date))
+
+        # Send emails to filtered users
+        for user in users:
+            if user.email:
+                send_email(user.id)
+                CountEmails.objects.create(user=user.username, email=user.email, asunto="test")
+
+        # Retrieve and display count emails
+        count_emails = CountEmails.objects.all()
+    return redirect('perfil')
 
 def send_email(user_id):
     try:
