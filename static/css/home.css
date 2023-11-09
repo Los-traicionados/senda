@@ -1,0 +1,194 @@
+
+
+.category_grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 24px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.category_grid a{
+	text-decoration: none;
+}
+
+.category_card {
+	width: 100%;
+	height: 230px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: #EAECEC;
+	font-family: 'Work Sans', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: xx-large;
+	border-radius: 24px;
+}
+
+
+
+/* Slideshow container */
+.slider_container {
+	width: 100%;
+	position: relative;
+	margin-bottom: 48px;
+}
+
+.slider_slide {
+	width: 100%;
+	height: 448px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: red;
+	border-radius: 24px;
+	padding: 24px;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.prev svg, .next svg {
+	color: white;
+	width: 24px;
+	height: 24px;
+}
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	margin-top: -24px;
+	padding: 14px 15px 12px 16px;
+	transition: 0.6s ease;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+/*SEARCH FILTERS*/
+
+/* Style the tab */
+.tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    grid-gap: 1rem;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    /*background-color: var(--clr_grey_dark);*/
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: var(--clr_grey_dark);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.tablinks.active {
+    background-color: var(--clr_grey_dark);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);  }
+  
+    .tablinks
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-family: 'work sans', sans-serif;
+        font-weight: 500;
+    }
+    
+    .icontabs
+    {
+        margin-right: 4px;
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      font-family: 'work sans', sans-serif;
+      margin-left: 30px;
+    }
+
+    .allcontent
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .radiobutton
+    {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .box
+    {
+        width: 100%;
+        height: 41px;
+        top: 0;
+        left: 0;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+        border: solid 1px var(--clr_grey);
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        box-sizing: border-box;
+        font-family: 'Work Sans', sans-serif;
+    }
+
+.column
+{
+    display: inline-block;
+}
+
+.CTA_BUSCAR
+{
+	background-color: var(--clr_orange);
+    width: 100%;
+	height: 40px;
+	border-radius: 10px;
+	border: none;
+	font-family: 'Work Sans', sans-serif;	
+	color: var(--clr_white);
+	font-size: 16px;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

@@ -26,6 +26,7 @@
 /* Large Desktop */
 @media (min-width: 1200px) {}
 
+/* ----- Inicio CSSs Generales --- No tocar ----- */
 body
 {
 	margin: 0;
@@ -34,21 +35,52 @@ body
 	font-family: 'Work Sans', sans-serif;
 }
 
-.zone_header
-{
+.zone_header {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	height: 100px;
+	height: 116px;
+	margin-bottom: 8px;
 }
 
-.zone_main
+.container_header
 {
+	width: 100%;
+	max-width: var(--container_width);
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+.zone_main {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	min-height: 600px;
 }
+
+.container_main {
+	width: 100%;
+	max-width: var(--container_width);
+	padding: 0 24px;
+	box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+
+	.container_main {
+		padding: 0;
+	}
+	
+	.container_header {
+		padding: 0;
+	}
+
+}
+
+
+/* ----- Inicio CSSs Generales --- No tocar ----- */
+
 
 .contenedor-titulo
 {
@@ -145,21 +177,9 @@ body
 	padding: 40px 0;
 }
 
-.container_header
-{
-	width: 100%;
-	max-width: var(--container_width);
-	padding: 0 20px;
-	display: flex;
-	align-items: center;
-}
 
-.container_main
-{
-	width: 100%;
-	max-width: var(--container_width);
-	padding: 0 20px;
-}
+
+
 
 .container_footer
 {
@@ -287,43 +307,6 @@ body
 	background-color: var(--clr_grey_dark);
 }
 
-.hero
-{
-	width: 100%;
-	text-align: center;
-	height: 417px;
-	background-size: cover;
-	background-position: center;
-	margin-bottom: 50px;
-	display: flex;
-	justify-content: center; /* center vertical */
-	flex-direction: column; /* put one item on another */
-	align-items: center; /* center horizontal */
-}
-
-
-.catagories
-{
-	display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-	gap: 24px;
-	margin-bottom: 50px;
-}
-
-.card
-{
-    width: 100%;
-    height: 230px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    color: #EAECEC;
-	font-family: 'Work Sans', sans-serif;
-	display: flex;
-    align-items: center;
-    justify-content: center;
-	font-size: xx-large;
-}
 
 .slide
 {
@@ -408,11 +391,6 @@ body
 	padding: 10px 16px;
 	border: 0px;
 	height: 37px;
-}
-
-.herotext
-{
-	color: #EAECEC;
 }
 
 #line1{
