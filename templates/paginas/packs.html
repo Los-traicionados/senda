@@ -5,13 +5,19 @@
 <form action="" method="get">
     <input type="text" name="busqueda" 
     {% if busqueda %}value="{{busqueda}}"{%endif%} id="">
-    <button typr="submit"> Buscar </button>
+    <button type="submit"> Buscar </button>
 </form>
 {% if busqueda %}
 Para la palabra: {{busqueda}} se encontraron: {{actividades | length }} Resultados 
 {% endif %}
 
-<h5>Total: {{precio_total.act_precio__sum }}</h5>  
+<h1>VUELOS</h1>
+    {% for vu in vuelos %}
+    <h3>{{vu.vu_nombre}}</h3>
+    <p>{{vu.vu_precio}}</p>
+    {% empty %}
+    <p>No hay vuelos</p>
+    {% endfor %}
 
 <h1>ACTIVIDADES</h1>
   {% for act in actividades %}
