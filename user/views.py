@@ -8,7 +8,6 @@ from django.contrib import messages
 
 # email
 from .models import *
-# from django.core.mail import send_mail
 import smtplib
 from senda.settings import *
 from email.mime.text import MIMEText
@@ -16,7 +15,6 @@ from django.template import loader
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from senda.asgi import *
 from email.mime.multipart import MIMEMultipart
 
 # Create your views here.
@@ -45,13 +43,11 @@ def logout_view(request):
 def perfil(request):
     return render(request, 'paginas/perfil.html')
 
-def mailing_view(request):
-    return redirect('mailing')
 
-def mailing_view(request):
+""" def mailing(request):
     count_emails=CountEmails.objects.all().order_by('-fecha', 'user')
     return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
-
+ """
 def registro(request):
     if request.method =='POST':
         username = request.POST.get('username')
@@ -92,7 +88,8 @@ def send_email_to_all(request):
 
         # Retrieve and display count emails
         count_emails = CountEmails.objects.all()
-    return redirect('perfil')
+    return redirect('mailing')
+    # return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
 
 def send_email(user_id):
     try:
@@ -123,4 +120,8 @@ def send_email(user_id):
     except Exception as e:
         print(e)
 
+def mailing_view(request):
+    count_emails = CountEmails.objects.all()
+    return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
+    #return render(request, 'paginas/mailing.html')
 

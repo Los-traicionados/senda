@@ -6,7 +6,7 @@
 
 <h1>Hola {{request.user.username }}</h1>
 <h2>Emails enviados</h2>
-<form method="post" action="{% url 'mailing' %}">
+<form method="post" action="{% url 'send_email_to_all' %}">
     {% csrf_token %}
     <p>Fecha de registro:</p>
     <label for="id_start_date">desde:</label>
