@@ -2,25 +2,25 @@
 {% load static %}
 {% block title %} {{request.user.username }} {% endblock %}
 {% block content %}
+<link rel="stylesheet" href="perfil.css">
 <div>
 	<h4>Hola {{request.user.username }}</h4>
 	<hr>
 </div>
 <div class="button-container">
-	<div class="button">
-		<div><a class="major_text"> Tus reservas</a></div>
-		<div><a class="minor_text"> cosas cosas cosas reservas</a></div>
-	</div>
-	<div class="button">
-		<div><a class="major_text"> Tus favoritos</a></div>
-		<div><a class="minor_text"> cosas cosas cosas favortios</a></div>
-	</div>
-	<div class="button">
-		<div><a class="major_text"> Recomendaciones</a></div>
-		<div><a class="minor_text"> cosas cosas cosas recomendaciones</a></div>
-	</div>
+	<a class="button" href="{% url 'tus-reservas' %}">
+		<div class="major_text" >Tus reservas</div>
+		<div class="minor_text">Revisa tus reservas actuales y pasadas</div>
+	</a>
+	<a class="button" href="{% url 'tus-favoritos' %}">
+		<div class="major_text" >Tus favoritos</div>
+		<div class="minor_text"> Guarda tus viajes, hoteles y actividades</div>
+	</a>
+	<a class="button" href="{% url 'recomendaciones' %}">
+		<div class="major_text" >Recomendaciones</div>
+		<div class="minor_text">¡Descubre novedades personalizadas!</div>
+	</a>
 </div>
-
 
 <div class="calendar-container"> 
 	<div class="calendar">

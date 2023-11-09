@@ -1,0 +1,16 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="perfil.css">
+<div class="header-container">
+	<a href="{% url 'perfil' %}"><button class="boton-atras" > &lt; </button> </a>
+	<h4>Tus reservas</h4>
+</div>
+<hr>
+
+<!-- <div>
+	<a href="{% url 'logout' %}" class="button_logout">Salir</a>
+</div> -->
+
+{% endblock %}
