@@ -2,20 +2,40 @@
 {% load static %}
 {% block title %} Registro {% endblock %}
 {% block content %}
-<section class="login">
-    <div class="login-container">
-        <h1>Registro</h1>
-        {% for m in messages %}
-        {{m}}
-        {% endfor %}
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="text" placeholder="Usuario" name="username" id="">
-            <input type="password" placeholder="Contraseña" name="password" id="">
-            <input type="password" placeholder="Contraseña" name="password2" id="">
-            <input type="text" placeholder="Email" name="email" id="">
-            <button type="submit" class="button_login">Registrar</button>
-        </form>
-    </div>
-</section>
+<div class="container-registro">
+    <h2>Crear Cuenta</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="campo">
+            <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="input-campo" required>
+        </div>
+
+        <div class="campo">
+            <input type="text" id="apellidos" placeholder="Apellidos" name="apellidos" class="input-campo relleno" required>
+        </div>
+        <!--
+        <div class="campo">
+            <label for="fecha_nacimiento" class="label-placeholder-nacimiento">Fecha de Nacimiento</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="input-campo relleno" required>
+        </div>
+        -->
+        <div class="campo">            
+            <input type="email" id="email" placeholder="Email" name="email" class="input-campo relleno" required>
+        </div>
+
+        <div class="campo">
+            <input type="text" id="usuario" placeholder="Username" name="username" class="input-campo relleno" required>
+        </div>
+
+        <div class="campo">
+            <input type="password" id="contrasena" placeholder="Contraseña" name="password" class="input-campo relleno" required>
+        </div>
+
+        <div class="campo">
+            <input type="password" id="confirmar_contrasena" placeholder="Confirmar Contraseña" name="password2" class="input-campo relleno" required>
+        </div>
+
+        <input type="submit" value="Enviar">
+    </form>
+</div>
 {% endblock %}

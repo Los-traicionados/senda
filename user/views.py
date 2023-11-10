@@ -54,6 +54,8 @@ def registro(request):
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
         email = request.POST.get('email')
+        first_name = request.POST.get('nombre')
+        last_name = request.POST.get('apellidos')
         if password == password2 :
             user = User.objects.create_user(username=username, email=email)
             user.set_password(password2)
