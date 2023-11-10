@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="perfil.css">
 <div>
 	<h4>Hola {{request.user.username }}</h4>
+    <a href="{% url 'dashboard' %}" class="button_secondary">Dashboard</a>
+    <a href="{% url 'logout' %}" class="button_secondary">Salir</a>
 	<hr>
 </div>
 <div class="button-container">
@@ -122,8 +124,4 @@
 	<a href="{% url 'logout' %}" class="button_logout">Salir</a>
 </div>
 {% endblock %}
-
-
-
-
 <!-- hacer calendario con grid -->
