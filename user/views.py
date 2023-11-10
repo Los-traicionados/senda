@@ -14,6 +14,7 @@ def login_view(request):
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
+
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
@@ -38,8 +39,15 @@ def registro(request):
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
         email = request.POST.get('email')
+        nombre = request.POST.get('nombre')
+        apellidos = request.POST.get('apellidos')
         if password == password2 :
-            user = User.objects.create_user(username=username, email=email)
+            user = User.objects.create_user(
+                username=username, 
+                email=email,
+                first_name=nombre,
+                last_name=apellidos,
+            )
             user.set_password(password2)
             user.is_activate = True
             user.save()
