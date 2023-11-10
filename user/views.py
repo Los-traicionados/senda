@@ -124,4 +124,12 @@ def mailing_view(request):
     count_emails = CountEmails.objects.all()
     return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
     #return render(request, 'paginas/mailing.html')
+def tus_reservas(request):
+    return render(request, 'paginas/tus-reservas.html')
+
+def tus_favoritos(request):
+    return render(request, 'paginas/tus-favoritos.html')
+
+def recomendaciones(request):
+    return render(request, 'paginas/recomendaciones.html')
 

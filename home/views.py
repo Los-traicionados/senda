@@ -11,3 +11,11 @@ def index(request):
 def about(request):
     return render(request, 'paginas/about.html')
 
+def productos(request):
+    return render(request, 'paginas/productos.html')
+
+def producto_tipo(request):
+    return render(request, 'paginas/producto_tipo.html')
+
+def dashboard(request):
+    return render(request, 'paginas/dashboard.html')

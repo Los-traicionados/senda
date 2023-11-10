@@ -68,8 +68,8 @@ class Pointer {
 }
 let pointers = [];
 pointers.push(new Pointer(ctx, radius, center = { x : 350, y: 75 }, "Madrid"));
-pointers.push(new Pointer(ctx, radius, center = { x : 250, y: 150 }, "Otro"));
-pointers.push(new Pointer(ctx, radius, center = { x : 450, y: 150 }, "Nuevo"));
+// pointers.push(new Pointer(ctx, radius, center = { x : 250, y: 150 }, "Otro"));
+// pointers.push(new Pointer(ctx, radius, center = { x : 450, y: 150 }, "Nuevo"));
 
 function mousemove(event) {
   pointers.forEach(pointer => {

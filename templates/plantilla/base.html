@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
 	<link rel="stylesheet" href="{% static 'css/login.css' %}">
 	<link rel="stylesheet" href="{% static 'css/nosotros.css' %}">
+	<link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+	<link rel="stylesheet" href="{% static 'css/productos.css' %}">
 	<title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -26,11 +28,9 @@
 					<a href="{% url 'about' %}">
 						<li>Sobre nosotros</li>
 					</a>
-					<!--
-						<a href="">
-							<li>Elige tu viaje</li>
+						<a href="{% url 'productos' %}">
+							<li>Productos</li>
 						</a>
-					-->
 					<a href="{% url 'packs' %}">
 						<li>Packs</li>
 					</a>
@@ -77,7 +77,7 @@
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/map.js' %}"></script>
 	<script src="{% static 'js/textMorphism.js' %}"></script>
-	
+	<script src="{% static 'js/home.js' %}"></script>
 </body>
 
 </html>
