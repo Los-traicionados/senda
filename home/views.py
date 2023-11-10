@@ -16,3 +16,6 @@ def productos(request):
 
 def producto_tipo(request):
     return render(request, 'paginas/producto_tipo.html')
+
+def dashboard(request):
+    return render(request, 'paginas/dashboard.html')
