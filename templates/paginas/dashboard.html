@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- This link won't work in this environment but is required in a live environment -->
+    <style>
+        .chart-container {
+            width: 600px;
+            margin: auto;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div  class="contenedor-titulo">
+		<h1>Dashboard</h1>
+    </div>
+
+<div class="chart-container">
+    <canvas id="salesChart"></canvas>
+</div>
+<script>
+        // JavaScript to access prices without displaying them in the HTML
+    document.addEventListener("DOMContentLoaded", function() {
+        var precios = document.querySelectorAll('.precio');
+        var total = 0;
+
+        precios.forEach(function(precio) {
+            total += parseFloat(precio.dataset.precio);
+        });
+
+        // Access total from Django data
+        var totalFromDjango = parseFloat(document.getElementById('totalPrecio').textContent);
+
+        console.log("Total calculated in JavaScript: ", total);
+        console.log("Total from Django data: ", totalFromDjango);
+    });
+
+    var ctx = document.getElementById('salesChart').getContext('2d');
+    var salesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'Volumen de ventas anual',
+                data: [1, 19, 3, 5, 2, 3, 7, 8, 12, 5, 6, 4], // Replace these data points with your actual data
+                backgroundColor: '#EB5E37',
+                borderRadius: 8,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<!-- Django Template -->
+{% block content %}
+    {% for act in actividades %}
+    <p  class="precio" data-precio="{{ act.act_precio }}"></p>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
