@@ -3,77 +3,123 @@
 {% block title %} Packs {% endblock %}
 {% block content %}
 
-<div  class="contenedor-titulo-producto">
-		<h1>Productos</h1>
-</div>
 
-<div class="main_productos">
-	<div class="seccion_productos">
-		<a href="{% url 'hoteles' %}" class="link_seccion_product">
-			<div class="titulo_seccion">
+
+<div class="main_products">
+	<h1 class="page_title">
+		<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+			<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+		</svg>
+		Productos
+	</h1>
+	{% comment %} <div class="contenedor-titulo-producto">
+		<h1>Productos</h1>
+	</div> {% endcomment %}
+	<div>
+		<a href="{% url 'hoteles' %}" class="grid_section_title_link">
+			<div class="grid_section_title">
 			Hoteles
 			</div>
 		</a>
 		<div class="grid_productos">
 			{% for ho in hoteles %}
-			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">{{ho}}<h3> 
+				{% comment %} 
+				.product_card_button {% endcomment %}
+			<a href="#" class="product_card_link">
+				<div class="product_card"> 
+					<img src="{% static 'images/habitacion.jpg' %}" class="product_card_img">
+						<p class="product_card_title">Hotel {{ho}}</p>
+					<div class="product_card_info">
+						<p class="product_card_price">255,00 €</p>
+						<div class="product_card_button">
+							Más info
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							  </svg>
+							  
+						</div>
+					</div>
 				</div>
 			</a>
 			{% endfor %}
 		</div>
 	</div>
-
-	<div class="seccion_productos">
-		<a href="{% url 'vuelos' %}" class="link_seccion_product">
-			<div class="titulo_seccion">
+	<div>
+		<a href="{% url 'vuelos' %}" class="grid_section_title_link">
+			<div class="grid_section_title">
 			Vuelos
 			</div>
 		</a>
 		<div class="grid_productos">
 			{% for vu in vuelos %}
-			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
-					<h3 class="product_name">{{vu}}<h3> 
+			<a href="#" class="product_card_link">
+				<div class="product_card"> 
+					<img src="{% static 'images/vuelos.jpeg' %}" class="product_card_img">
+						<p class="product_card_title">Vuelo {{vu}}</p>
+					<div class="product_card_info">
+						<p class="product_card_price">255,00 €</p>
+						<div class="product_card_button">
+							Más info
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							  </svg>
+							  
+						</div>
+					</div>
 				</div>
 			</a>
 			{% endfor %}
 		</div>
 	</div>
-
-	<div class="seccion_productos">
-		<a href="{% url 'actividades' %}" class="link_seccion_product">
-			<div class="titulo_seccion">
+	<div>
+		<a href="{% url 'actividades' %}" class="grid_section_title_link">
+			<div class="grid_section_title">
 			Actividades
 			</div>
 		</a>
 		<div class="grid_productos">
 			{% for act in actividades %}
-			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">{{act}}<h3> 
+			<a href="#" class="product_card_link">
+				<div class="product_card"> 
+					<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
+						<p class="product_card_title">{{act}}</p>
+					<div class="product_card_info">
+						<p class="product_card_price">255,00 €</p>
+						<div class="product_card_button">
+							Más info
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							  </svg>
+							  
+						</div>
+					</div>
 				</div>
 			</a>
 			{% endfor %}
 		</div>
 	</div>
-
-	<div class="seccion_productos">
-		<a href="{% url 'packs'%}" class="link_seccion_product">
-			<div class="titulo_seccion">
+	<div>
+		<a href="{% url 'packs'%}" class="grid_section_title_link">
+			<div class="grid_section_title">
 			Packs completos
 			</div>
 		</a>
 		<div class="grid_productos">
 			{% for pa in packs%}
-			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
-					<h3 class="product_name">{{pa}}<h3> 
+			<a href="#" class="product_card_link">
+				<div class="product_card"> 
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="product_card_img">
+						<p class="product_card_title">{{pa}}</p>
+					<div class="product_card_info">
+						<p class="product_card_price">255,00 €</p>
+						<div class="product_card_button">
+							Más info
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							  </svg>
+							  
+						</div>
+					</div>
 				</div>
 			</a>
 			{% endfor %}
