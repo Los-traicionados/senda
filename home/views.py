@@ -58,6 +58,9 @@ def producto_tipo(request):
 def dashboard(request):
     return render(request, 'paginas/dashboard.html')
 
+def products_detail(request):
+	return render(request, 'paginas/products_detail.html')
+
 def redirect_detail_actividades(request, id):
     actividad = get_object_or_404(Actividad, pk=id)
     return render(request, 'paginas/products_detail_actividades.html', {'actividad': actividad})
@@ -67,23 +70,9 @@ def redirect_detail_hoteles(request, id):
     return render(request, 'paginas/products_detail_hoteles.html', {'hotel': hotel})
 
 def redirect_detail_vuelos(request, id):
-    vuelo = get_object_or_404(Vuelo, id)
+    vuelo = get_object_or_404(Vuelo, pk=id)
     return render(request, 'paginas/products_detail_vuelos.html', {'vuelo': vuelo})
 
 def redirect_detail_packs(request, id):
     pack = get_object_or_404(Pack, pk=id)
     return render(request, 'paginas/products_detail_packs.html', {'pack': pack})
-
-# def redirect_detail_all(request, id):
-#     actividad = get_object_or_404(Pack, pk=id)
-#     hotel = get_object_or_404(Vuelo, pk=id)
-# 	vuelo = get_object_or_404(Hotel, pk=id)
-# 	pack = get_object_or_404(Actividad, pk=id)
-    
-
-#     return render(request, 'paginas/products_detail.html', {'actividad': pack})
-
-
-
-
-# capturar vistas distintas para cada opcion

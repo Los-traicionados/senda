@@ -1,6 +1,6 @@
 {% extends 'plantilla/base.html' %}
 {% load static %}
-{% block title %} Detalle hotel {% endblock %}
+{% block title %} Detalle {{hotel.ho_nombre}} {% endblock %}
 {% block content %}
 
 <!-- <h1>probando actividad</h1> -->
@@ -11,11 +11,6 @@
 					<h1>{{ hotel.ho_nombre }}</h1> 
 			</div>
 			<hr>
-			<img class="peru" src="{% static 'images/peru.jpg' %}">
-			<div class="contenedor-imagenes">
-				<img class="room" src="{% static 'images/habitacion.jpg' %}">
-				<img class="pool" src="{% static 'images/pool.jpg' %}">	
-			</div>
 			<div class="contenido-texto">
 					{{hotel.ho_descripcion}}
 			</div>

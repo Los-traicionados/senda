@@ -4,7 +4,7 @@
 {% block content %}
 
 	<div class="seccion_productos">
-		<a href="#" class="link_seccion_product">
+		<a href="{% url 'vuelos' %}" class="link_seccion_product">
 			<div class="titulo_seccion">
 			Vuelos
 			</div>
@@ -13,7 +13,7 @@
 		{% include 'paginas/formularios/form_vuelos.html' %}
 		<div class="grid_productos">
             {% for vu in vuelos_filtrado %}
-			<a href="{% url 'products_detail' vu.id %}" class="link_producto">
+			<a href="{% url 'products_detail_vuelos' vu.id %}" class="link_producto">
 					<div class="producto"> 
 					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
 					<h3 class="product_name">{{vu}}<h3> 

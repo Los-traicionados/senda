@@ -1,9 +1,10 @@
 {% extends 'plantilla/base.html' %}
 {% load static %}
-{% block title %} Detalle vuelo {% endblock %}
+{% block title %} Detalle {{vuelo.vu_nombre}} {% endblock %}
 {% block content %}
 
 <!-- <h1>probando actividad</h1> -->
+<link rel="stylesheet" href="/static/css/productos.css">
 	<main class="zone_main">
 		<div class="container_main">
 			<div  class="contenedor-titulo">
@@ -11,13 +12,10 @@
 					<h1>{{ vuelo.vu_nombre }}</h1> 
 			</div>
 			<hr>
-			<img class="peru" src="{% static 'images/peru.jpg' %}">
-			<div class="contenedor-imagenes">
-				<img class="room" src="{% static 'images/habitacion.jpg' %}">
-				<img class="pool" src="{% static 'images/pool.jpg' %}">	
-			</div>
-			<div class="contenido-texto">
-					{{vuelo.vu_descripcion}}
+			
+			<div class="producto">
+
+			
 			</div>
 			<button class="boton-carrito">Añadir al carrito</button>
 		</div>

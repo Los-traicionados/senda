@@ -20,12 +20,13 @@
     {% endif %}
     <div class="grid_productos">
         {% for act in actividades %}
-        <a href="{% url 'products_detail' act.id %}" class="link_producto">
+        <a href="{% url 'products_detail_actividades' act.id %}" class="link_producto">
                 <div class="producto"> 
                 <img src="{% static 'images/senderismo.png' %}" class="img_product">
                 <h3 class="product_name">{{act}}<h3> 
             </div>
         </a>
+		<div> {{vu_descripcion}} </div>
         {% endfor %}
     </div>
 </div>
