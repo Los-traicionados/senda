@@ -1,6 +1,6 @@
 {% extends 'plantilla/base.html' %}
 {% load static %}
-{% block title %} Packs {% endblock %}
+{% block title %} Productos {% endblock %}
 {% block content %}
 
 <div  class="contenedor-titulo-producto">
@@ -17,9 +17,13 @@
 		<div class="grid_productos">
 			{% for ho in hoteles %}
 			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">{{ho}}<h3> 
+					<div class="producto">
+					{%if ho.ho_imagen%}
+						<img src= "{{ ho.ho_imagen.url }}" class="img_product">
+					{%else%}
+						<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
+					{%endif%}
+					<h3 class="product_name">{{ho.ho_nombre}} ({{ho.ho_ciudad}}) - {{ho.ho_precio}}€/noche</h3> 
 				</div>
 			</a>
 			{% endfor %}
@@ -36,7 +40,11 @@
 			{% for vu in vuelos %}
 			<a href="#" class="link_producto">
 					<div class="producto"> 
-					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
+					{%if vu.vu_imagen%}
+						<img src= "{{ vu.vu_imagen.url }}" class="img_product">
+					{%else%}
+						<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
+					{%endif%}
 					<h3 class="product_name">{{vu}}<h3> 
 				</div>
 			</a>
@@ -53,8 +61,12 @@
 		<div class="grid_productos">
 			{% for act in actividades %}
 			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
+					<div class="producto">
+						{%if act.act_imagen%}
+							<img src= "{{ act.act_imagen.url }}" class="img_product">
+						{%else%}
+							<img src="{% static 'images/senderismo.png' %}" class="img_product">
+						{%endif%}
 					<h3 class="product_name">{{act}}<h3> 
 				</div>
 			</a>
@@ -71,8 +83,12 @@
 		<div class="grid_productos">
 			{% for pa in packs%}
 			<a href="#" class="link_producto">
-					<div class="producto"> 
-					<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
+					<div class="producto">
+					{%if pa.pa_imagen%}
+						<img src= "{{ pa.pa_imagen.url }}" class="img_product">
+					{%else%}
+						<img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
+					{%endif%}
 					<h3 class="product_name">{{pa}}<h3> 
 				</div>
 			</a>

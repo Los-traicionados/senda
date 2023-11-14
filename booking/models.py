@@ -21,6 +21,7 @@ class Vuelo(models.Model):
     vu_destino = models.CharField(max_length=50, verbose_name='Destino', null=True, blank=True)
     vu_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio')
     vu_asiento = models.CharField(max_length=20, verbose_name='Asiento')
+    vu_imagen = models.ImageField(upload_to='vuelo/', default='', null=True, blank=True)
 
 
     def __str__(self):
