@@ -19,7 +19,9 @@
 						<img src="{% static 'images/vuelos.jpeg' %}" class="product_card_img">
 							<p class="product_card_title">Vuelo {{vu}}</p>
 						<div class="product_card_info">
-							<p class="product_card_price">255,00 €</p>
+							<p class="product_card_price">
+								{{vu.vu_precio}} €
+							</p>
 							<div class="product_card_button">
 								Más info
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
