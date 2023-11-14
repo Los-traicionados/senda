@@ -13,7 +13,7 @@
 		{% include 'paginas/formularios/form_vuelos.html' %}
 		<div class="grid_productos">
             {% for vu in vuelos_filtrado %}
-			<a href="#" class="link_producto">
+			<a href="{% url 'products_detail' vu.id %}" class="link_producto">
 					<div class="producto"> 
 					<img src="{% static 'images/vuelos.jpeg' %}" class="img_product">
 					<h3 class="product_name">{{vu}}<h3> 

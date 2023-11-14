@@ -12,7 +12,7 @@
 	{% include 'paginas/formularios/form_hoteles.html' %}
     <div class="grid_productos">
         {% for ho in hoteles_filtrado %}
-        <a href="#" class="link_producto">
+		<a href="{% url 'products_detail' ho.id %}" class="link_producto">
                 <div class="producto"> 
                 <img src="{% static 'images/habitacion.jpg' %}" class="img_product">
                 <h3 class="product_name">{{ho}}<h3> 

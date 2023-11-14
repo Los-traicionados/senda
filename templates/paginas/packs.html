@@ -12,7 +12,7 @@
 	{% include 'paginas/formularios/form_packs.html' %}
     <div class="grid_productos">
         {% for pa in packs %}
-        <a href="{% url 'detail_pack' pa.pk%}" class="link_producto">
+        <a href="{% url 'detail_pack' pa.id%}" class="link_producto">
                 <div class="producto"> 
                 <img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
                 <h3 class="product_name">{{pa}}<h3> 
