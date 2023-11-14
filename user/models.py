@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
-
+from django_quill.fields import QuillField
 
 # Create your models here.
 class User(AbstractUser):
@@ -49,5 +48,14 @@ class CountEmails(models.Model):
     asunto=models.CharField(max_length=50)
     fecha=models.DateTimeField(auto_now=True)
 
+# (modles.Model) this class is a Django model and will be mapped to a database table.
+class WriteNewsletter(models.Model):
+    subject= models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    introduction = QuillField(max_length=2000)
+    subtitle = models.CharField(max_length=100)
+    content = QuillField(max_length=10000)
+    """ def __str__(self):
+        return f"{self.subject} - {self.title} - {self.subtitle}" """
 
-  
+       

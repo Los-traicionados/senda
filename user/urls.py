@@ -16,5 +16,5 @@ urlpatterns = [
     path('customizeEmail', views.customizeEmail_view, name='customizeEmail'),
     path('success', views.success_view, name='success'),
     path('mailing/', views.customizeEmail_view, name='mailing'),
-    #path('test', views.test_template_render, name='test'),
+    path('test', views.test_template_render, name='test'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -224,10 +224,8 @@ def success_view(request):
 
 
 
-""" def test_template_render(request):
-    template_path = 'mailing/cumpleaños.html'  # Replace with your template path
-    user=User.objects.first()
-    context = {'user': user}  # Provide necessary context
-
-    rendered_content = render_to_string(template_path, context)
-    return HttpResponse(rendered_content) """
+def test_template_render(request):
+    writeNewsletter = WriteNewsletter.objects.get(pk=1)
+    return render(request, 'mailing/newsletter.html', {'writeNewsletter': writeNewsletter})
+    
+    

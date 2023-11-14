@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home',
     'user',
     'booking',
+    'django_quill',
 ]
 
 MIDDLEWARE = [

@@ -5,4 +5,4 @@ admin.site.register(User)
 admin.site.register(PuestoEmpleado)
 admin.site.register(Empleado)
 admin.site.register(Cliente)
-
+admin.site.register(WriteNewsletter)
