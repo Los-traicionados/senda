@@ -7,14 +7,14 @@
 
 .page_title {
 	font-size: 40px;
-	color: var(--clr_green);
+	color: var(--clr_orange);
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
-	margin: 0;
-	padding: 24px 0 12px 0; 
+	margin: 16px 0 0 0;
+	padding: 16px 0; 
 	display: flex;
 	flex-direction: row;
-	gap: 24px;
+	gap: 20px;
 
 }
 
@@ -22,20 +22,24 @@
 	width: 32px;
 }
 
+.zone_grid_products {
+	margin-bottom: 24px;
+}
+
 .grid_section_title_link {
 	text-decoration: none;
 }
 
 .grid_section_title {
-	color: hsl(0, 0%, 46%);
+	color: var(--clr_green);
 	font-size: 28px;
-	padding: 16px 0;
-	border-bottom: solid 1px;
-	border-color: #dfdfdf;
+	padding: 16px 0 24px 0;
+	border-bottom: solid 2px;
+	border-color: #f0f0f0;
 	margin: 24px 0;
 }
 
-.grid_productos {
+.grid_products {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	gap: 32px;
