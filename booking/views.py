@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from .carrito import *
 from .views import *
 from .models import *
 from django.db.models import Q
-
+# Import messages
+from django.contrib import messages
 # Importar sum
 from django.db.models import Sum
 # Create your views here.
@@ -101,11 +103,42 @@ def hoteles(request):
     
 def actividades(request):
     actividades = Actividad.objects.all()
-
     busqueda = request.GET.get('busqueda')
     if busqueda:
-        actividades = actividades.filter(act_nombre__icontains = busqueda)
+        actividades = actividades.filter(
+            Q(act_nombre__icontains = busqueda) |
+            Q(act_tipo__tact_nombre__icontains = busqueda)
+        )
     return render(request, 'paginas/actividades.html', {
         'actividades': actividades,
         'busqueda': busqueda, 
     })
+
+# Funciones necesarias para el carrito :)
+
+def add_pack(request, pack_id):
+    pack_carrito = PackCarrito(request)
+    pack = get_object_or_404(Pack, pk = pack_id)
+    pack_carrito.agregar_pack(pack)
+    messages.add_message(request, messages.INFO, 'Se agrego un item al carrito')
+    return redirect('cart')
+
+def del_pack(request, pack_id):
+    pack_carrito = PackCarrito(request)
+    pack = get_object_or_404(Pack, pk = pack_id)
+    pack_carrito.eliminar_pack(pack)
+    messages.add_message(request, messages.INFO, 'Se eliminó un item al carrito')
+    return redirect('cart')
+
+def sub_pack(request, pack_id):
+    pack_carrito = PackCarrito(request)
+    pack = get_object_or_404(Pack, pk = pack_id)
+    pack_carrito.restar_pack(pack)
+    messages.add_message(request, messages.INFO, 'Se quitó un item al carrito')
+    return redirect('cart')
+
+def cle_pack(request):
+    pack_carrito = PackCarrito(request)
+    pack_carrito.limpiar_pack()
+    messages.add_message(request, messages.INFO, 'Se limpió un item al carrito')
+    return redirect('cart')

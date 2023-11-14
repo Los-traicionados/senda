@@ -29,11 +29,22 @@ class Vuelo(models.Model):
     class Meta:
         verbose_name_plural = 'Vuelos'
 
+class TipoActividad(models.Model):
+    tact_nombre = models.CharField(max_length=50, verbose_name='Nombre')
+    tact_imagen = models.ImageField(upload_to='TipoActividad/', default='')
+
+    def __str__(self):
+        return self.tact_nombre
+
+    class Meta:
+        verbose_name_plural = 'Tipo de Actividades'
+
 class Actividad(models.Model):
+    act_tipo = models.ForeignKey(TipoActividad, on_delete=models.CASCADE, null=True, blank=True)
     act_nombre = models.CharField(max_length=50, verbose_name='Nombre de la Actividad', help_text='Andar a Caballo, Caminata guiada...')
     act_descripcion = models.CharField(max_length=255, verbose_name='Descripción de la actividad')
     act_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio actividad')
-    act_imagen = models.ImageField(upload_to='actividad/', default='')
+    act_imagen = models.ImageField(upload_to='actividad/', default='', null=True, blank=True)
 
     def __str__(self):
         return self.act_nombre
@@ -47,7 +58,8 @@ class Pack(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE, null=True, blank=True)
     pa_nombre = models.CharField(max_length=50, verbose_name='Nombre del Pack')
     pa_descipcion = models.CharField(max_length=255, verbose_name='Descripción Pack')
-    pa_imagen = models.ImageField(upload_to='pack/', default='')
+    pa_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Pack', null=True, blank=True)
+    pa_imagen = models.ImageField(upload_to='pack/', default='', null=True, blank=True)
 
     def __str__(self):
         return self.pa_nombre
@@ -57,8 +69,11 @@ class Pack(models.Model):
 
 class Reserva(models.Model):
     client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
-    pack = models.ForeignKey(Pack, on_delete=models.CASCADE)
+    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE, null=True, blank=True)
+    pack = models.ForeignKey(Pack, on_delete=models.CASCADE, null=True, blank=True)
+    actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE, null=True, blank=True)
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, null=True, blank=True)
+    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE, null=True, blank=True)
     res_f_inicio = models.DateTimeField(null=True, blank=True)
     res_f_fin = models.DateTimeField(null=True, blank=True)
     res_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Reserva')

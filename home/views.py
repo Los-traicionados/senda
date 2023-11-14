@@ -7,6 +7,8 @@ def index(request):
     vuelos = Vuelo.objects.all()
     hoteles = Hotel.objects.all()
     actividades = Actividad.objects.all()
+    # Mostrar los tipos de actividades siempre que tengan una actividad
+    tipo_actividades = TipoActividad.objects.filter(actividad__isnull=False).distinct()
     # para controlar ciudades duplicadas
     ciudades = []
     for ho in hoteles:
@@ -31,6 +33,7 @@ def index(request):
         'vuelos':vuelos,
         'hoteles':hoteles,
         'actividades':actividades,
+        'tipo_actividades': tipo_actividades,
         'ciudades':ciudades,
         'origen':origen,
         'destino':destino,
