@@ -672,6 +672,50 @@ input[type="submit"]:hover {
 }
 
 /* Formulario - Select */
+
+.tab {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+	grid-gap: 24px;
+	overflow: hidden;
+	border: none;
+	margin-bottom: 16px;
+}
+
+.tablinks {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Work sans', sans-serif;
+	font-weight: 500;
+}
+
+.tab button {
+	background-color: #f6f6f6;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 20px 24px;
+	transition: 0.3s;
+	border-radius: 16px;
+}
+
+.tab button:hover {
+	background-color: #eaeaea;
+  }
+
+.tab button.tablinks.active {
+	background-color: var(--clr_orange);
+	border-radius: 16px;
+	color: #ffffff;
+}
+
+.tab button.tablinks.active svg{
+	color: #ffffff;
+}
+
 .box {
 	font-family: 'Work Sans', sans-serif;
 	width: 100%;
@@ -684,3 +728,4 @@ input[type="submit"]:hover {
 	box-sizing: border-box;
 	border-radius: 24px;
 }
+
