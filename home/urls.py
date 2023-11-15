@@ -9,4 +9,5 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('productos', views.productos, name='productos'),
     path('producto_tipo', views.producto_tipo, name='producto_tipo'),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

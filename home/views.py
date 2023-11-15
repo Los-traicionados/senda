@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from booking.models import *
+from django.http import JsonResponse
+from django.core import serializers
+from django.http import HttpResponse
+import json
 
 # Create your views here.
 def index(request):
@@ -43,6 +47,7 @@ def about(request):
 def productos(request):
     vuelos = Vuelo.objects.all()
     actividades = Actividad.objects.all()
+    reservas = Reserva.objects.all()
     hoteles = Hotel.objects.all()
     packs = Pack.objects.all()
     return render(request, 'paginas/productos.html',{
@@ -56,4 +61,6 @@ def producto_tipo(request):
     return render(request, 'paginas/producto_tipo.html')
 
 def dashboard(request):
-    return render(request, 'paginas/dashboard.html')
+    data = Reserva.objects.all().values_list(flat=True)
+    json_data = json.dumps(list(data))
+    return render(request, 'paginas/dashboard.html', {'reservas': json_data})
