@@ -11,19 +11,19 @@
 <form method="post" action="{% url 'send_email_to_all' %}" enctype="multipart/form-data">
     {% csrf_token %}
     
-    <!-- Subject Field -->
+    <!--
     <div>
         {{ form.subject.label_tag }}
         {{ form.subject }}
     </div>
 
-    <!-- Content Field -->
+   Content Field
     <div>
         {{ form.content.label_tag }}
         {{ form.content }}
     </div>
     
-    <!-- Template Field -->
+-->
     <div>
         {{ form.template.label_tag }}
         {{ form.template }}

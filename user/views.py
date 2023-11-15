@@ -151,17 +151,19 @@ def send_email_to_all(request):
             start_date = form.cleaned_data['start_date']
             end_date = form.cleaned_data['end_date']
             template_name = form.get_template_filename()  # Obtén el nombre de la plantilla
-            print(template_name)
+
             users = User.objects.filter(date_joined__range=(start_date, end_date))
-            
+
         # Send emails to filtered users
             for user in users:
                 if user.email:
-                    template_path = f'mailing/{template_name}'
+                    
+                    template_path = f'mailing/{template_name}.html'
+                    
                     try:
-                        send_email(user.id, template_path)
+                        send_email(user.id, template_name, template_path)
                         CountEmails.objects.create(user=user.username, email=user.email)
-                        
+                       
                     except Exception as e:
                     # Log the error
                         print(f"An error occurred: {template_path}")
@@ -175,7 +177,7 @@ def send_email_to_all(request):
         return render(request, 'paginas/error_page.html', {'error_message': 'An error occurred while sending emails.'}) 
     
 
-def send_email(user_id, subject, content, template_path):
+def send_email(user_id, template_name, template_path):
     try:
         user=User.objects.get(pk=user_id)
         mailServer = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
@@ -188,8 +190,23 @@ def send_email(user_id, subject, content, template_path):
         mensaje = MIMEMultipart()
         mensaje['From']= EMAIL_HOST_USER
         mensaje['To']= email_to
+        subject = ''
+        email = None 
+        if template_name == 'newsletter':
+            email = WriteNewsletter.objects.get(pk=1)
+            subject = email.subject
+            
+        elif template_name == 'mail_entrada':
+            subject = 'Tienes una nueva entrada'
+        elif template_name == 'ofertas':
+            subject = 'Ofertón'
+        elif template_name == 'reserva_realizada':
+            subject = 'Tienes una nueva reserva'
+        elif template_name == 'cumpleaños':
+            subject = '¡Feliz CUmplesaños!'
+        elif template_name == 'nuevo_registro':
+            subject = '¡Bienvenido a Senda!'
         mensaje['Subject']=subject
-
         rendered_content = render_to_string(template_path, {'user': user})
         mensaje.attach(MIMEText(rendered_content, 'html'))
 
@@ -227,5 +244,10 @@ def success_view(request):
 def test_template_render(request):
     writeNewsletter = WriteNewsletter.objects.get(pk=1)
     return render(request, 'mailing/newsletter.html', {'writeNewsletter': writeNewsletter})
-    
+    """  template_path = 'mailing/newsletter.html'  # Replace with your template path
+    user=User.objects.first()
+    context = {'user': user}  # Provide necessary context
+
+    rendered_content = render_to_string(template_path, context)
+    return HttpResponse(rendered_content) """
     
