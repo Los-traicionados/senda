@@ -4,9 +4,11 @@
 {% block content %}
   <div class="seccion_productos">
     <h1 class="page_title">
-        <svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
+        <button id="btnBack" class="btn_back">
+            <svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+        </button>
         Packs
     </h1>
     <!--Formulario de packs-->
@@ -14,7 +16,7 @@
     <div class="zone_grid_products">
         <div class="grid_products">
             {% for pa in packs %}
-            <a href="{% url 'detail_pack' pa.id%}" class="product_card_link">
+            <a href="{% url 'products_detail_packs' pa.id%}" class="product_card_link">
                 <div class="product_card"> 
                     {%if pa.pa_imagen%}
 					<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">
