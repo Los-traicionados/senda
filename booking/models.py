@@ -49,6 +49,7 @@ class Pack(models.Model):
     pa_nombre = models.CharField(max_length=50, verbose_name='Nombre del Pack')
     pa_descipcion = models.CharField(max_length=255, verbose_name='Descripción Pack')
     pa_imagen = models.ImageField(upload_to='pack/', default='')
+    pa_precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name='Precio pack')
 
     def __str__(self):
         return self.pa_nombre
