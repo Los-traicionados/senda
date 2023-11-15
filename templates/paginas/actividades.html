@@ -13,7 +13,7 @@
 
 	<div class="zone_grid_products">
 		<div class="grid_products">
-			{% for ac in actividades %}
+			{% for ac in actividades_filtrado %}
 			<a href="{% url 'products_detail_actividades' ac.id %}" class="product_card_link">
 				<div class="product_card">
 					{%if ac.act_imagen%}

@@ -12,6 +12,18 @@ def index(request):
     for ho in hoteles:
         if not ho.ho_ciudad in ciudades:
             ciudades.append(ho.ho_ciudad)
+            
+    # para controlar ciudades duplicadas
+    act_ciudades = []
+    for act in actividades:
+        if not act.act_ciudad in act_ciudades:
+            act_ciudades.append(act.act_ciudad)
+            
+    # para controlar ciudades duplicadas en los packs
+    pa_ciudades = []
+    for pa in packs:
+        if not pa.pa_ciudad in pa_ciudades:
+            pa_ciudades.append(pa.pa_ciudad)
 
     # para controlar origen duplicadas
     origen = []
@@ -34,7 +46,8 @@ def index(request):
         'ciudades':ciudades,
         'origen':origen,
         'destino':destino,
-
+        'act_ciudades':act_ciudades,
+        'pa_ciudades':pa_ciudades,
     })
 
 def about(request):

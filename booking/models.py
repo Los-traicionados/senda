@@ -35,6 +35,7 @@ class Actividad(models.Model):
     act_descripcion = models.CharField(max_length=255, verbose_name='Descripción de la actividad')
     act_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio actividad')
     act_imagen = models.ImageField(upload_to='actividad/', default='')
+    act_ciudad = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.act_nombre
@@ -50,7 +51,8 @@ class Pack(models.Model):
     pa_descipcion = models.CharField(max_length=255, verbose_name='Descripción Pack')
     pa_imagen = models.ImageField(upload_to='pack/', default='')
     pa_precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name='Precio pack')
-
+    pa_ciudad = models.CharField(max_length=50, null=True, blank=True)
+    
     def __str__(self):
         return self.pa_nombre
 
