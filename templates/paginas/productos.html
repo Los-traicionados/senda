@@ -110,7 +110,7 @@
 		</a>
 		<div class="grid_products">
 			{% for pa in packs%}
-			<a href="{% url 'detail_pack' pa.id%}" class="product_card_link">
+			<a href="{% url 'products_detail_pack' pa.id%}" class="product_card_link">
 				<div class="product_card">
 					{%if pa.pa_imagen%}
 					<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">

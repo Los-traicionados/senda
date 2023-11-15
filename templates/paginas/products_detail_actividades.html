@@ -12,7 +12,13 @@
 			</div>
 			<hr>
 			<div class="contenido-texto">
-					{{actividad.act_descripcion}}
+				<br><br>
+				<strong>Descripción: </strong>{%lorem%}
+				<br><br>
+				<strong>Precio: </strong>{{actividad.act_precio}} €
+				<br><br>
+				<img src="{{actividad.act_imagen.url}}">
+				<br><br>
 			</div>
 			<button class="boton-carrito">Añadir al carrito</button>
 		</div>
