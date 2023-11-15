@@ -2,7 +2,7 @@ from decimal import Decimal
 
 def total_pack(request):
     total = 0
-    if request.session["pack_carrito"]:
+    if request.session.get("pack_carrito"):
         print(request.session["pack_carrito"])
         for key, value in request.session["pack_carrito"].items():
             total += Decimal(value["acumulado"])

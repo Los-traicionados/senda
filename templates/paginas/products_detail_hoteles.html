@@ -1,0 +1,24 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Detalle {{hotel.ho_nombre}} {% endblock %}
+{% block content %}
+
+<!-- <h1>probando actividad</h1> -->
+	<main class="zone_main">
+		<div class="container_main">
+			<div  class="contenedor-titulo">
+				<button class="boton-atras" > &lt; </button> 
+					<h1> Hotel {{ hotel.ho_nombre }}</h1> 
+			</div>
+			<hr>
+			<div class="contenido-texto">
+					{{hotel.ho_descripcion}}
+			</div>
+			<button class="boton-carrito">Añadir al carrito</button>
+		</div>
+	</main>
+
+{% endblock %}
+
+
+

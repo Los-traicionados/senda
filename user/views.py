@@ -93,7 +93,7 @@ def send_email_to_all(request):
         for user in users:
             if user.email:
                 send_email(user.id)
-                CountEmails.objects.create(user=user.username, email=user.email, asunto="test")
+                # CountEmails.objects.create(user=user.username, email=user.email, asunto="test")
 
         # Retrieve and display count emails
         count_emails = CountEmails.objects.all()

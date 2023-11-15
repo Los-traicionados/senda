@@ -2,31 +2,41 @@
 {% load static %}
 {% block title %} Actividades {% endblock %}
 {% block content %}
-  <div class="seccion_productos">
-    <a href="{% url 'actividades'%}" class="link_seccion_product">
-        <div class="titulo_seccion">
-        Actividades
-        </div>
-    </a>
-    <form action="" method="get">
-        <input type="text" name="busqueda" 
-        {% if busqueda %}value="{{busqueda}}"{%endif%} id="">
-        <button type="submit"> Buscar </button>
-    </form>
-    {% if busqueda %}
-    <small>
-        Para la palabra: {{busqueda}} se encontraron: {{actividades | length }} Resultados 
-    </small>
-    {% endif %}
-    <div class="grid_productos">
-        {% for act in actividades %}
-        <a href="#" class="link_producto">
-                <div class="producto"> 
-                <img src="{% static 'images/senderismo.png' %}" class="img_product">
-                <h3 class="product_name">{{act}}<h3> 
-            </div>
-        </a>
-        {% endfor %}
-    </div>
+<div class="seccion_productos">
+	<h1 class="page_title">
+		<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+		</svg>
+		Actividades
+	</h1>
+	{% include 'paginas/formularios/form_actividades.html' %}
+
+	<div class="zone_grid_products">
+		<div class="grid_products">
+			{% for ac in actividades %}
+			<a href="{% url 'products_detail_actividades' ac.id %}" class="product_card_link">
+				<div class="product_card">
+					{%if ac.act_imagen%}
+						<img src= "{{ ac.act_imagen.url }}" class="product_card_img">
+					{%else%}
+						<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
+					{%endif%}
+						<p class="product_card_title">{{ac}}</p>
+					<div class="product_card_info">
+						<p class="product_card_price">{{ac.act_precio}} €</p>
+						<div class="product_card_button">
+							Más info
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							  </svg>
+							  
+						</div>
+					</div>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+	
 </div>
 {% endblock %}

@@ -2,18 +2,20 @@
 {% load static %}
 {% block title %} Login {% endblock %}
 {% block content %}
-<div class="container-registro">
-    <h2>Bienvenido</h2>
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="campo">
-            <input type="text" id="usuario" placeholder="Usuario" name="username" class="input-campo relleno" required>
-        </div>
-
-        <div class="campo">
-            <input type="password" id="contrasena" placeholder="Contraseña" name="password" class="input-campo relleno" required>
-        </div>
-        <input type="submit" value="Enviar">
-    </form>
+<div class="zona-registro">
+    <div class="container-registro">
+        <h2 class="form_title">Bienvenido</h2>
+        <form class="form_login" action="" method="post">
+            {% csrf_token %}
+            <div class="campo">
+                <input type="text" id="usuario" placeholder="Usuario" name="username" class="input-campo relleno" required>
+            </div>
+    
+            <div class="campo">
+                <input type="password" id="contrasena" placeholder="Contraseña" name="password" class="input-campo relleno" required>
+            </div>
+            <input class="button_secondary" type="submit" value="Enviar">
+        </form>
+    </div>
 </div>
 {% endblock %}
