@@ -64,7 +64,7 @@ class Reserva(models.Model):
     res_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Reserva')
     
     def __str__(self):
-        return f'{self.client} {self.pack}'
+        return f'{self.client} {self.pack} {self.res_precio}'
 
     class Meta:
         verbose_name_plural = 'Reservas'
