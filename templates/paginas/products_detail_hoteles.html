@@ -3,28 +3,40 @@
 {% block title %} Detalle {{hotel.ho_nombre}} {% endblock %}
 {% block content %}
 
-<!-- <h1>probando actividad</h1> -->
 	<main class="zone_main">
 		<div class="container_main">
-			<div  class="contenedor-titulo">
-				<button class="boton-atras" > &lt; </button> 
-					<h1> Hotel {{ hotel.ho_nombre }}</h1> 
+			<div class="dproduct_container">
+				<div class="dproduct_img" style="background-image: url({{hotel.ho_imagen.url}});
+				"></div>
+				<div class="dproduct_info">
+					<h1 class="dproduct_title">
+						<button id="btnBack" class="btn_back">
+							<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+								</svg>
+						</button>
+						Hotel {{ hotel.ho_nombre }}
+					</h1>
+					<div class="dproduct_details">
+						<div class="dproduct_datas_zone">
+							<div class="dproduct_datas">
+								<p class="detail_title">Ciudad</p>
+								<p class="detail_data">{{hotel.ho_ciudad}}</p>
+							</div>
+							<div class="dproduct_datas">
+								<p class="detail_title">Dirección</p>
+								<p class="detail_data">{{hotel.ho_direccion}}</p>
+							</div>
+						</div>
+						<p class="detail_title">Descripción</p>
+						<p class="detail_data">{%lorem%}</p>
+					</div>
+					<div class="dproduct_buy">
+						<p class="dproduct_price">{{hotel.ho_precio}} €/noche </p>
+						<button class="boton-carrito">Añadir al carrito</button>
+					</div>
+				</div>
 			</div>
-			<hr>
-			<div class="contenido-texto">
-				<br><br>
-				<strong>Ciudad: </strong>{{hotel.ho_ciudad}}
-				<br><br>
-				<strong>Dirección: </strong>{{hotel.ho_direccion}}
-				<br><br>
-				<strong>Descripción: </strong>{%lorem%}
-				<br><br>
-				<strong>Precio: </strong>{{hotel.ho_precio}} €/noche
-				<br><br>
-				<img src="{{hotel.ho_imagen.url}}">
-				<br><br>
-			</div>
-			<button class="boton-carrito">Añadir al carrito</button>
 		</div>
 	</main>
 
