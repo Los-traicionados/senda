@@ -52,10 +52,13 @@ class CountEmails(models.Model):
 class WriteNewsletter(models.Model):
     subject= models.CharField(max_length=100)
     title = models.CharField(max_length=100)
-    introduction = QuillField(max_length=2000)
+    introduction = QuillField()
     subtitle = models.CharField(max_length=100)
-    content = QuillField(max_length=10000)
+    content = QuillField()
     """ def __str__(self):
         return f"{self.subject} - {self.title} - {self.subtitle}" """
 
-       
+class WriteOferta(models.Model):
+    content = QuillField()
+    cupon = QuillField(default='¡Usa el código de descuento SPECIAL50 al realizar tu compra para aplicar el 50% de descuento!')
+

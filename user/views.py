@@ -151,16 +151,16 @@ def send_email_to_all(request):
             start_date = form.cleaned_data['start_date']
             end_date = form.cleaned_data['end_date']
             template_name = form.get_template_filename()  # Obtén el nombre de la plantilla
-
+            print(template_name)
             users = User.objects.filter(date_joined__range=(start_date, end_date))
-
+            
         # Send emails to filtered users
             for user in users:
                 if user.email:
                     template_path = f'mailing/{template_name}'
                     try:
-                        send_email(user.id, form.cleaned_data['subject'], form.cleaned_data['content'], template_path)
-                        CountEmails.objects.create(user=user.username, email=user.email, asunto=form.cleaned_data['subject'])
+                        send_email(user.id, template_path)
+                        CountEmails.objects.create(user=user.username, email=user.email)
                         
                     except Exception as e:
                     # Log the error

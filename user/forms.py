@@ -1,10 +1,12 @@
 from django import forms
 
 TEMPLATE_CHOICES = [
-    ('template1', 'mailing_entrada'),
+    ('template1', 'mail_entrada'),
     ('template2', 'cumpleaños'),
     ('template3', 'ofertas'),
     ('template4', 'newsletter'),
+    ('template4', 'nuevo_registro'),
+    ('template4', 'reserva_realizada'),
 ]
 
 def get_template_filename(template_choice):
@@ -27,8 +29,8 @@ def get_template_filename(template_choice):
 class EmailForm(forms.Form):
     start_date = forms.DateField(label='Fecha de inicio', widget=forms.DateInput(attrs={'type': 'date'}))
     end_date = forms.DateField(label='Fecha de fin', widget=forms.DateInput(attrs={'type': 'date'}))
-    subject = forms.CharField(max_length=100)
-    content = forms.CharField(max_length=500)
+    """ subject = forms.CharField(max_length=100)
+    content = forms.CharField(max_length=500) """
     template = forms.ChoiceField(
         choices=TEMPLATE_CHOICES,
         initial='template1',  # You can set the initial template if needed
