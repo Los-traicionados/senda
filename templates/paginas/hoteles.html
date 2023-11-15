@@ -16,8 +16,12 @@
 			{% for ho in hoteles %}
 			<a href="{% url 'products_detail_hoteles' ho.id %}" class="product_card_link">
 				<div class="product_card"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="product_card_img">
-						<p class="product_card_title">Hotel {{ho}}</p>
+					{%if ho.ho_imagen%}
+						<img src= "{{ ho.ho_imagen.url }}" class="product_card_img">
+					{%else%}
+						<img src="{% static 'images/habitacion.jpg' %}" class="product_card_img">
+					{%endif%}
+					<p class="product_card_title">Hotel {{ho}}</p>
 					<div class="product_card_info">
 						<p class="product_card_price">
 							{{ho.ho_precio}} €</p>

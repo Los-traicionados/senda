@@ -18,24 +18,25 @@
 		</a>
 		<div class="grid_products">
 			{% for ho in hoteles %}
-			<a href="#" class="product_card_link">
+			<a href="{% url 'products_detail_hoteles' ho.id %}" class="product_card_link">
 				<div class="product_card">
 					{%if ho.ho_imagen%}
 						<img src= "{{ ho.ho_imagen.url }}" class="product_card_img">
 					{%else%}
 						<img src="{% static 'images/habitacion.jpg' %}" class="product_card_img">
 					{%endif%}
-						<p class="product_card_title">Hotel {{ho}}</p>
+					<p class="product_card_title">Hotel {{ho}}</p>
 					<div class="product_card_info">
 						<p class="product_card_price">{{ho.ho_precio}} €/noche</p>
 						<div class="product_card_button">
 							Más info
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
 							  </svg>
 							  
 						</div>
 					</div>
+				</div>
 			</a>
 			{% endfor %}
 		</div>
@@ -48,16 +49,17 @@
 		</a>
 		<div class="grid_products">
 			{% for vu in vuelos %}
-			<a href="#" class="product_card_link">
+
+			<a href="{% url 'products_detail_vuelos' vu.id %}" class="product_card_link">
 				<div class="product_card">
 					{%if vu.vu_imagen%}
 						<img src= "{{ vu.vu_imagen.url }}" class="product_card_img">
 					{%else%}
 						<img src="{% static 'images/vuelos.jpeg' %}" class="product_card_img">
 					{%endif%}
-						<p class="product_card_title">Vuelo {{vu}}</p>
+					<p class="product_card_title">Vuelo {{vu}}</p>
 					<div class="product_card_info">
-						<p class="product_card_price">255,00 €</p>
+						<p class="product_card_price">{{vu.vu_precio}} €</p>
 						<div class="product_card_button">
 							Más info
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
@@ -77,16 +79,16 @@
 		</a>
 		<div class="grid_products">
 			{% for act in actividades %}
-			<a href="#" class="product_card_link">
+			<a href="{% url 'products_detail_actividades' act.id %}" class="product_card_link">
 				<div class="product_card">
 					{%if act.act_imagen%}
 						<img src= "{{ act.act_imagen.url }}" class="product_card_img">
 					{%else%}
 						<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
-					{%endif%}					
+					{%endif%}
 					<p class="product_card_title">{{act}}</p>
 					<div class="product_card_info">
-						<p class="product_card_price">255,00 €</p>
+						<p class="product_card_price">{{act.act_precio}} €</p>
 						<div class="product_card_button">
 							Más info
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
@@ -94,6 +96,7 @@
 							  </svg>
 							  
 						</div>
+					</div>
 				</div>
 			</a>
 			{% endfor %}
@@ -107,23 +110,24 @@
 		</a>
 		<div class="grid_products">
 			{% for pa in packs%}
-			<a href="#" class="product_card_link">
+			<a href="{% url 'detail_pack' pa.id%}" class="product_card_link">
 				<div class="product_card">
 					{%if pa.pa_imagen%}
-						<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">
+					<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">
 					{%else%}
-						<img src="{% static 'images/hotelywarner.jpg' %}" class="product_card_img">
-					{%endif%} 
-						<p class="product_card_title">{{pa}}</p>
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="product_card_img">
+					{%endif%}
+					<p class="product_card_title">{{pa}}</p>
 					<div class="product_card_info">
-						<p class="product_card_price">255,00 €</p>
+						<p class="product_card_price">{{pa.pa_precio}} €</p>
 						<div class="product_card_button">
 							Más info
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-							  </svg>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							</svg>
 						</div>
 					</div>
+				</div>
 			</a>
 			{% endfor %}
 		</div>

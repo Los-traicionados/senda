@@ -16,10 +16,14 @@
             {% for pa in packs %}
             <a href="{% url 'detail_pack' pa.id%}" class="product_card_link">
                 <div class="product_card"> 
-                    <img src="{% static 'images/hotelywarner.jpg' %}" class="product_card_img">
+                    {%if pa.pa_imagen%}
+					<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">
+					{%else%}
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="product_card_img">
+					{%endif%}
                         <p class="product_card_title">Pack {{pa}}</p>
                     <div class="product_card_info">
-                        <p class="product_card_price">255,00 €</p>
+                        <p class="product_card_price">{{pa.pa_precio}} €</p>
                         <div class="product_card_button">
                             Más info
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">

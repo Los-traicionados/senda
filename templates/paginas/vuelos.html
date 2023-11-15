@@ -16,8 +16,12 @@
 				{% for vu in vuelos %}
 				<a href="{% url 'products_detail_vuelos' vu.id %}" class="product_card_link">
 					<div class="product_card"> 
+						{%if vu.vu_imagen%}
+						<img src= "{{ vu.vu_imagen.url }}" class="product_card_img">
+						{%else%}
 						<img src="{% static 'images/vuelos.jpeg' %}" class="product_card_img">
-							<p class="product_card_title">Vuelo {{vu}}</p>
+						{%endif%}
+						<p class="product_card_title">Vuelo {{vu}}</p>
 						<div class="product_card_info">
 							<p class="product_card_price">
 								{{vu.vu_precio}} €

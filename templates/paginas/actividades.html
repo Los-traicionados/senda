@@ -15,8 +15,12 @@
 		<div class="grid_products">
 			{% for ac in actividades %}
 			<a href="{% url 'products_detail_actividades' ac.id %}" class="product_card_link">
-				<div class="product_card"> 
-					<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
+				<div class="product_card">
+					{%if ac.act_imagen%}
+						<img src= "{{ ac.act_imagen.url }}" class="product_card_img">
+					{%else%}
+						<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
+					{%endif%}
 						<p class="product_card_title">{{ac}}</p>
 					<div class="product_card_info">
 						<p class="product_card_price">{{ac.act_precio}} €</p>
