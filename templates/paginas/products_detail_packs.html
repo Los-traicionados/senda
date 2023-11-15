@@ -14,7 +14,7 @@
 			<div class="contenido-texto">
 					{{pack.pa_descripcion}}
 			</div>
-			<button class="boton-carrito">Añadir al carrito</button>
+			<a href="{% url 'add_pack' pack.id %}" class="boton-carrito">Añadir al carrito</a>
 		</div>
 	</main>
 

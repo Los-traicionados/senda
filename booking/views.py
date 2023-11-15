@@ -114,8 +114,15 @@ def actividades(request):
         'busqueda': busqueda, 
     })
 
-# Funciones necesarias para el carrito :)
 
+# Funcion para simular el pago
+def pagar(request):
+    if request.method == 'POST':
+        messages.add_message(request, messages.INFO, 'Gracias por la compra')
+    return redirect('tus-reservas')
+
+# Funciones necesarias para el carrito :)
+# Funciones para la logica de Pack Carrito
 def add_pack(request, pack_id):
     pack_carrito = PackCarrito(request)
     pack = get_object_or_404(Pack, pk = pack_id)
@@ -140,5 +147,90 @@ def sub_pack(request, pack_id):
 def cle_pack(request):
     pack_carrito = PackCarrito(request)
     pack_carrito.limpiar_pack()
-    messages.add_message(request, messages.INFO, 'Se limpió un item al carrito')
+    messages.add_message(request, messages.INFO, 'Se limpió el carrito')
+    return redirect('cart')
+
+
+# Funciones para la logica de Actividad Carrito
+def add_actividad(request, actividad_id):
+    actividad_carrito = ActividadCarrito(request)
+    actividad = get_object_or_404(Actividad, pk = actividad_id)
+    actividad_carrito.agregar_actividad(actividad)
+    messages.add_message(request, messages.INFO, 'Se agrego un item al carrito')
+    return redirect('cart')
+
+def del_actividad(request, actividad_id):
+    actividad_carrito = ActividadCarrito(request)
+    actividad = get_object_or_404(Actividad, pk = actividad_id)
+    actividad_carrito.eliminar_actividad(actividad)
+    messages.add_message(request, messages.INFO, 'Se eliminó un item al carrito')
+    return redirect('cart')
+
+def sub_actividad(request, actividad_id):
+    actividad_carrito = ActividadCarrito(request)
+    actividad = get_object_or_404(Actividad, pk = actividad_id)
+    actividad_carrito.restar_actividad(actividad)
+    messages.add_message(request, messages.INFO, 'Se quitó un item al carrito')
+    return redirect('cart')
+
+def cle_actividad(request):
+    actividad_carrito = ActividadCarrito(request)
+    actividad_carrito.limpiar_actividad()
+    messages.add_message(request, messages.INFO, 'Se limpió el carrito')
+    return redirect('cart')
+
+# Funciones para la logica de Hotel Carrito
+def add_hotel(request, hotel_id):
+    hotel_carrito = HotelCarrito(request)
+    hotel = get_object_or_404(Hotel, pk = hotel_id)
+    hotel_carrito.agregar_hotel(hotel)
+    messages.add_message(request, messages.INFO, 'Se agrego un item al carrito')
+    return redirect('cart')
+
+def del_hotel(request, hotel_id):
+    hotel_carrito = HotelCarrito(request)
+    hotel = get_object_or_404(Hotel, pk = hotel_id)
+    hotel_carrito.eliminar_hotel(hotel)
+    messages.add_message(request, messages.INFO, 'Se eliminó un item al carrito')
+    return redirect('cart')
+
+def sub_hotel(request, hotel_id):
+    hotel_carrito = HotelCarrito(request)
+    hotel = get_object_or_404(Hotel, pk = hotel_id)
+    hotel_carrito.restar_hotel(hotel)
+    messages.add_message(request, messages.INFO, 'Se quitó un item al carrito')
+    return redirect('cart')
+
+def cle_hotel(request):
+    hotel_carrito = HotelCarrito(request)
+    hotel_carrito.limpiar_hotel()
+    messages.add_message(request, messages.INFO, 'Se limpió el carrito')
+    return redirect('cart')
+
+# Funciones para la logica de Vuelo Carrito
+def add_vuelo(request, vuelo_id):
+    vuelo_carrito = VueloCarrito(request)
+    vuelo = get_object_or_404(Vuelo, pk = vuelo_id)
+    vuelo_carrito.agregar_vuelo(vuelo)
+    messages.add_message(request, messages.INFO, 'Se agrego un item al carrito')
+    return redirect('cart')
+
+def del_vuelo(request, vuelo_id):
+    vuelo_carrito = VueloCarrito(request)
+    vuelo = get_object_or_404(Vuelo, pk = vuelo_id)
+    vuelo_carrito.eliminar_vuelo(vuelo)
+    messages.add_message(request, messages.INFO, 'Se eliminó un item al carrito')
+    return redirect('cart')
+
+def sub_vuelo(request, vuelo_id):
+    vuelo_carrito = VueloCarrito(request)
+    vuelo = get_object_or_404(Vuelo, pk = vuelo_id)
+    vuelo_carrito.restar_vuelo(vuelo)
+    messages.add_message(request, messages.INFO, 'Se quitó un item al carrito')
+    return redirect('cart')
+
+def cle_vuelo(request):
+    vuelo_carrito = VueloCarrito(request)
+    vuelo_carrito.limpiar_vuelo()
+    messages.add_message(request, messages.INFO, 'Se limpió el carrito')
     return redirect('cart')

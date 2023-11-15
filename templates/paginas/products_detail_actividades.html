@@ -14,7 +14,7 @@
 			<div class="contenido-texto">
 					{{actividad.act_descripcion}}
 			</div>
-			<button class="boton-carrito">Añadir al carrito</button>
+			<a href="{% url 'add_actividad' actividad.id %}" class="boton-carrito">Añadir al carrito</a>
 		</div>
 	</main>
 

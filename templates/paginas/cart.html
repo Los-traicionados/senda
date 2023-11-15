@@ -20,10 +20,11 @@
         <hr>
         <div class="detalleProducto">
             <h4>Detalle del viaje</h4>
+            <!--Carrito para Pack-->
             {% for key, value  in request.session.pack_carrito.items %}
             <div class="pack1">
                 <div class="foto">
-                    <img src="{% static 'images/peru.jpg' %}" alt="peru_foto">
+                    <img src="{{ value.imagen }}" alt="peru_foto">
                 </div>
                 <div class="informacion">
                     <h4>{{value.nombre}}</h4>
@@ -49,8 +50,99 @@
                     </a>
                 </div>
             </div>
-            {% empty %}
-            <h4>Aun no hay nada en el carrito</h4>
+            {% endfor %}
+            <!--Carrito para Actividades-->
+            {% for key, value  in request.session.actividad_carrito.items %}
+            <div class="pack1">
+                <div class="foto">
+                    <img src="{{value.imagen}}" alt="peru_foto">
+                </div>
+                <div class="informacion">
+                    <h4>{{value.nombre}}</h4>
+                    <ul>
+                        <li>Actividad</li>
+                    </ul>
+                </div>
+                <div class="cantidad">
+                    <a href="{% url 'add_actividad' key %}" class="button_secondary">+</a>
+                    <span>{{value.cantidad}}</span>
+                    <a href="{% url 'sub_actividad' key %}" class="button_secondary">-</a>
+                </div>
+                <div class="precio">
+                    <span>{{value.acumulado}} EUR</span>
+                    <a href="{% url 'del_actividad' key %}">
+                        <div class="svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            <!--Carrito para Vuelos-->
+            {% for key, value  in request.session.vuelo_carrito.items %}
+            <div class="pack1">
+                <div class="foto">
+                    <img src="{{value.imagen}}" alt="peru_foto">
+                </div>
+                <div class="informacion">
+                    <h4>{{value.nombre}}</h4>
+                    <ul>
+                        <li>Vuelo</li>
+                    </ul>
+                </div>
+                <div class="cantidad">
+                    <a href="{% url 'add_vuelo' key %}" class="button_secondary">+</a>
+                    <span>{{value.cantidad}}</span>
+                    <a href="{% url 'sub_vuelo' key %}" class="button_secondary">-</a>
+                </div>
+                <div class="precio">
+                    <span>{{value.acumulado}} EUR</span>
+                    <a href="{% url 'del_vuelo' key %}">
+                        <div class="svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            <!--Carrito para Hoteles-->
+            {% for key, value  in request.session.hotel_carrito.items %}
+            <div class="pack1">
+                <div class="foto">
+                    <img src="{{value.imagen}}" alt="peru_foto">
+                </div>
+                <div class="informacion">
+                    <h4>{{value.nombre}}</h4>
+                    <ul>
+                        <li>Hotel</li>
+                    </ul>
+                </div>
+                <div class="cantidad">
+                    <a href="{% url 'add_hotel' key %}" class="button_secondary">+</a>
+                    <span>{{value.cantidad}}</span>
+                    <a href="{% url 'sub_hotel' key %}" class="button_secondary">-</a>
+                </div>
+                <div class="precio">
+                    <span>{{value.acumulado}} EUR</span>
+                    <a href="{% url 'del_hotel' key %}">
+                        <div class="svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -64,11 +156,11 @@
             <img src="{% static 'images/Paypal.svg' %}" alt="paypal_svg">
         </div>
         <div class="form_tarjeta">
-            <form class="form" action="" method="post">
+            <form class="form" action="{% url 'pagar' %}" method="post">
                 {% csrf_token %}
                 <div class="name_tarjeta">
                     <label for="POST-name">Nombre y apellidos</label>
-                    <input class="box_name" id="POST-name" type="text" name="Nombre" value="Nombre" />
+                    <input class="box_name" id="POST-name" type="text" name="Nombre" value="{{request.user.first_name}} {{request.user.last_name}}" />
                 </div>
 
                 <div class="name_tarjeta">
@@ -88,9 +180,9 @@
 
                 <div class="totalprecio">
                     <hr>
-                    <p>Subtotal {{total_pack}} EUR</p>
+                    <p>Subtotal {{total_carrito}} EUR</p>
                     <p>Tasas e impuestos 0,00 EUR</p>
-                    <p><strong>Total</strong> {{total_pack}} EUR</p>
+                    <p><strong>Total</strong> {{total_carrito}} EUR</p>
                 </div>
                 <input class="CTA_PAGAR" type="submit" value="PAGAR" />
             </form>

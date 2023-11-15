@@ -10,6 +10,7 @@
 <hr>
 
 <div class="main_productos">
+	<!--
 	<div class="seccion_productos">
 		<a href="{% url 'producto_tipo' %}" class="link_seccion_product">
 			<div class="titulo_seccion">
@@ -47,8 +48,13 @@
 			</a>
 		</div>
 	</div>
-
-	
+	-->
+	<h3>Aqui salen tus reservas :)</h3>
+	{% if messages %}
+	{% for message in messages %}
+	{{message}}
+	{% endfor %}
+	{% endif %}
 </div>
 
 {% for act in actividades %}
