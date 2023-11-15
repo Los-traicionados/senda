@@ -12,10 +12,22 @@
 					<h1>{{ vuelo.vu_nombre }}</h1> 
 			</div>
 			<hr>
-			
-			<div class="producto">
-
-			
+			<div class="contenido-texto">
+				<br><br>
+				<strong>Ciudad origen : </strong>{{vuelo.vu_origen}}
+				<br><br>
+				<strong>Ciudad destino: </strong>{{vuelo.vu_destino}}
+				<br><br>
+				<strong>Descripción: </strong>{%lorem%}
+				<br><br>
+				<strong>Hora salida: </strong> 8:00am
+				<br><br>
+				<strong>Asiento: </strong>{{vuelvo.vu_asiento}}
+				<br><br>
+				<strong>Precio: </strong>{{vuelo.vu_precio}} €
+				<br><br>
+				<img src="{{vuelo.vu_imagen.url}}">
+				<br><br>
 			</div>
 			<button class="boton-carrito">Añadir al carrito</button>
 		</div>
