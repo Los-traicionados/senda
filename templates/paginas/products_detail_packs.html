@@ -18,22 +18,55 @@
 						{{pack.pa_nombre}}
 					</h1>
 					<div class="dproduct_details">
-						<div class="dproduct_datas_zone">
+						<div class="dproduct_datas_title">
+							Información Vuelo
+						</div>
+						<div class="dproduct_datas_zone" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
 							<div class="dproduct_datas">
-								<p class="detail_title">Ciudad</p>
-								<p class="detail_data">{{pack.pa_ciudad}}</p>
-							</div>
-							<div class="dproduct_datas">
-								<p class="detail_title">Hora</p>
+								<p class="detail_title">Hora vuelo</p>
 								<p class="detail_data">8:00 am</p>
 							</div>
 							<div class="dproduct_datas">
-								<p class="detail_title">Vuelo Origen</p>
+								<p class="detail_title">Vuelo origen</p>
 								<p class="detail_data">{{pack.vuelo.vu_origen}}</p>
 							</div>
 							<div class="dproduct_datas">
 								<p class="detail_title">Vuelo Destino</p>
 								<p class="detail_data">{{pack.vuelo.vu_destino}}</p>
+							</div>
+							<div class="dproduct_datas">
+								<p class="detail_title">Precio vuelo</p>
+								<p class="detail_data">{{pack.vuelo.vu_precio}} €</p>
+							</div>
+						</div>
+						<div class="dproduct_datas_title">
+							Información Hotel
+						</div>
+						<div class="dproduct_datas_zone" style="gap:12px">
+							<div class="dproduct_datas">
+								<p class="detail_title">Ciudad</p>
+								<p class="detail_data">{{pack.hotel.ho_ciudad}}</p>
+							</div>
+							<div class="dproduct_datas">
+								<p class="detail_title">Dirección</p>
+								<p class="detail_data">{{pack.hotel.ho_direccion}}</p>
+							</div>
+							<div class="dproduct_datas">
+								<p class="detail_title">Precio Hotel</p>
+								<p class="detail_data">{{pack.hotel.ho_precio}} €</p>
+							</div>
+						</div>
+						<div class="dproduct_datas_title">
+							Información Actividad
+						</div>
+						<div class="dproduct_datas_zone">
+							<div class="dproduct_datas">
+								<p class="detail_title">Ciudad</p>
+								<p class="detail_data">{{pack.actividad.act_ciudad}}</p>
+							</div>
+							<div class="dproduct_datas">
+								<p class="detail_title">Precio Actividad</p>
+								<p class="detail_data">{{pack.actividad.act_precio}} €</p>
 							</div>
 						</div>
 						<p class="detail_title">Descripción</p>
@@ -45,37 +78,6 @@
 					</div>
 				</div>
 			</div>
-
-			{% comment %} <hr>
-			<div class="contenido-texto">
-				<br><br>
-				<strong>Ciudad: </strong>{{pack.pa_ciudad}}
-				<br><br>
-				<strong>Descripción: </strong>{%lorem%}
-				<br><br>
-				<strong>Información vuelo: </strong>
-				<pre><i>Origen: </i>{{pack.vuelo.vu_origen}}</pre>
-				<pre><i>Destino: </i>{{pack.vuelo.vu_destino}}</pre>
-				<pre><i>Hora: </i>8:00am</pre>
-				<pre><i>Precio: </i>{{pack.vuelo.vu_precio}} €</pre>
-				<br><br>
-				<strong>Información hotel: </strong>
-				<pre><i>Ciudad: </i>{{pack.hotel.ho_ciudad}}</pre>
-				<pre><i>Dirección: </i>{{pack.hotel.ho_direccion}}</pre>
-				<pre><i>Descripción: </i>{%lorem%}</pre>
-				<pre><i>Precio: </i>{{pack.hotel.ho_precio}} €/noche</pre>
-				<br><br>
-				<strong>Información actividades: </strong>
-				<pre><i>Ciudad: </i>{{pack.actividad.act_ciudad}}</pre>
-				<pre><i>Descripción: </i>{%lorem%}</pre>
-				<pre><i>Precio: </i>{{pack.actividad.act_precio}} €</pre>
-				<br><br>
-				<strong>Precio total: </strong>{{pack.pa_precio}} €/noche
-				<br><br>
-				<img src="{{pack.pa_imagen.url}}">
-				<br><br>
-			</div>
-			<button class="boton-carrito">Añadir al carrito</button> {% endcomment %}
 		</div>
 	</main>
 

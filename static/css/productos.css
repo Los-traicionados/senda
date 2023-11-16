@@ -136,11 +136,12 @@
 .dproduct_datas_zone {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	margin-bottom: 24px;
+	margin-bottom: 32px;
 }
 
 .dproduct_details {
 	padding: 0 24px;
+	margin-bottom: 24px;
 }
 
 .detail_title {
@@ -185,4 +186,12 @@
 	cursor: pointer;
 	font-size: 20px;
 	font-weight: 400;
+}
+
+.dproduct_datas_title {
+	border-bottom: solid 1px #e4e4e4;
+	padding: 0 0 8px 0;
+	margin-bottom: 16px;
+	color: var(--clr_orange);
+	
 }
