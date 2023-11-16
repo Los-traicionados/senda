@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django import forms
-
+from django_quill.fields import QuillField
 
 # Create your models here.
 class User(AbstractUser):
@@ -49,6 +48,17 @@ class CountEmails(models.Model):
     asunto=models.CharField(max_length=50)
     fecha=models.DateTimeField(auto_now=True)
 
-class DateFilterForm(forms.Form):
-    start_date = forms.DateField(label='Fecha de inicio', widget=forms.DateInput(attrs={'type': 'date'}))
-    end_date = forms.DateField(label='Fecha de fin', widget=forms.DateInput(attrs={'type': 'date'}))
+# (modles.Model) this class is a Django model and will be mapped to a database table.
+class WriteNewsletter(models.Model):
+    subject= models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    introduction = QuillField()
+    subtitle = models.CharField(max_length=100)
+    content = QuillField()
+    """ def __str__(self):
+        return f"{self.subject} - {self.title} - {self.subtitle}" """
+
+class WriteOferta(models.Model):
+    content = QuillField()
+    cupon = QuillField(default='¡Usa el código de descuento SPECIAL50 al realizar tu compra para aplicar el 50% de descuento!')
+

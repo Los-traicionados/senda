@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home',
     'user',
     'booking',
+    'django_quill',
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,6 @@ EMAIL_HOST_PASSWORD = 'ozlaqewfyaogcijh'
 EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
