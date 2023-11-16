@@ -141,7 +141,7 @@ def mailing_view(request):
 
 @login_required
 def tus_reservas(request):
-    reservas = Reserva.objects.filter(client__user = request.user)
+    reservas = Reserva.objects.filter(client__user = request.user).order_by('-id')
     return render(request, 'paginas/tus-reservas.html', {'reservas':reservas})
 
 @login_required

@@ -79,10 +79,9 @@ class Reserva(models.Model):
     vuelo = models.ManyToManyField(Vuelo, blank=True)
     res_f_inicio = models.DateTimeField(null=True, blank=True)
     res_f_fin = models.DateTimeField(null=True, blank=True)
-    res_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Reserva')
+    res_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Reserva', null=True, blank=True)
     
-    def __str__(self):
-        return f'{self.client} {self.pack} {self.res_precio}'
+
 
     class Meta:
         verbose_name_plural = 'Reservas'

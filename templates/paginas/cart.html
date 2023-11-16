@@ -11,31 +11,26 @@
             </svg>
             <div>
                 <h2>Carrito de compras</h2>
-                <a href="{% url 'cle_pack' %}" class="button-secondary">Limpiar</a>
+                Limpiar:
+                {% if request.session.pack_carrito %}
+                <a href="{% url 'cle_pack' %}" class="button_secondary">Packs</a>
+                {% endif %}
+                {% if request.session.actividad_carrito %}
+                <a href="{% url 'cle_actividad' %}" class="button_secondary">Actividades</a>
+                {% endif %}
+                {% if request.session.hotel_carrito %}
+                <a href="{% url 'cle_hotel' %}" class="button_secondary">Hoteles</a>
+                {% endif %}
+                {% if request.session.vuelo_carrito %}
+                <a href="{% url 'cle_vuelo' %}" class="button_secondary">Vuelos</a>
+                {% endif %}
             </div>
         </div>
+        <hr>
         {% for message in messages %}
         {{message}}
         {% endfor %}
-        <hr>
-        <div class="search_form_page">
-            <div class="column">
-                <label for="datetravel"><strong>Fecha de salida</strong></label><br>
-                <input class="box" type="date" name="fecha_ida" id="datetravel"
-                {% if request.session.fecha_ida %}
-                value="{{request.session.fecha_ida}}"
-                {% endif %}
-                ><br>
-            </div>
-            <div class="column">
-                <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
-                <input class="box" type="date" name="fecha_vuelta" id="datetravel"
-                {% if request.session.fecha_vuelta %}
-                value="{{request.session.fecha_vuelta}}"
-                {% endif %}
-                ><br>
-            </div>
-        </div>
+        
         <div class="detalleProducto">
             <!--Carrito para Pack-->
             {% for key, value  in request.session.pack_carrito.items %}
@@ -50,9 +45,9 @@
                     </ul>
                 </div>
                 <div class="cantidad">
-                    <a href="{% url 'add_pack' key %}" class="button_secondary">+</a>
+                    <a href="{% url 'add_pack' key %}" class="button_secondary_cart">+</a>
                     <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_pack' key %}" class="button_secondary">-</a>
+                    <a href="{% url 'sub_pack' key %}" class="button_secondary_cart">-</a>
                 </div>
                 <div class="precio">
                     <span>{{value.acumulado}} EUR</span>
@@ -81,9 +76,9 @@
                     </ul>
                 </div>
                 <div class="cantidad">
-                    <a href="{% url 'add_actividad' key %}" class="button_secondary">+</a>
+                    <a href="{% url 'add_actividad' key %}" class="button_secondary_cart">+</a>
                     <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_actividad' key %}" class="button_secondary">-</a>
+                    <a href="{% url 'sub_actividad' key %}" class="button_secondary_cart">-</a>
                 </div>
                 <div class="precio">
                     <span>{{value.acumulado}} EUR</span>
@@ -112,9 +107,9 @@
                     </ul>
                 </div>
                 <div class="cantidad">
-                    <a href="{% url 'add_vuelo' key %}" class="button_secondary">+</a>
+                    <a href="{% url 'add_vuelo' key %}" class="button_secondary_cart">+</a>
                     <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_vuelo' key %}" class="button_secondary">-</a>
+                    <a href="{% url 'sub_vuelo' key %}" class="button_secondary_cart">-</a>
                 </div>
                 <div class="precio">
                     <span>{{value.acumulado}} EUR</span>
@@ -143,9 +138,9 @@
                     </ul>
                 </div>
                 <div class="cantidad">
-                    <a href="{% url 'add_hotel' key %}" class="button_secondary">+</a>
+                    <a href="{% url 'add_hotel' key %}" class="button_secondary_cart">+</a>
                     <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_hotel' key %}" class="button_secondary">-</a>
+                    <a href="{% url 'sub_hotel' key %}" class="button_secondary_cart">-</a>
                 </div>
                 <div class="precio">
                     <span>{{value.acumulado}} EUR</span>
@@ -175,26 +170,20 @@
         <div class="form_tarjeta">
             <form class="form" action="{% url 'pagar' %}" method="post">
                 {% csrf_token %}
-                <div class="name_tarjeta">
-                    <label for="POST-name">Nombre y apellidos</label>
-                    <input class="box_name" id="POST-name" type="text" name="Nombre" value="{{request.user.first_name}} {{request.user.last_name}}" />
-                </div>
-
-                <div class="name_tarjeta">
-                    <label for="POST-name">Numero de tarjeta</label>
-                    <input class="box_name" id="POST-name" type="text" name="name" value="1111 2222 3333 4444" />
-                </div>
-
-                <div class="name_tarjeta">
-                    <label for="POST-name">Fecha de expiracion</label>
-                    <input class="box_name" id="POST-name" type="date" name="name" />
-                </div>
-
-                <div class="name_tarjeta">
-                    <label for="POST-name">CVV</label><br>
-                    <input class="box_name" id="POST-name" type="number" name="name" value="123" />
-                </div>
-
+                <label for="datetravel"><strong>Fecha de salida</strong></label>
+                <input class="box" type="date" name="fecha_ida" id="datetravel" {% if request.session.fecha_ida %}
+                    value="{{request.session.fecha_ida}}" {% endif %}>
+                <label for="datetravel"><strong>Fecha de regreso</strong></label>
+                <input class="box" type="date" name="fecha_vuelta" id="datetravel" {% if request.session.fecha_vuelta %}
+                    value="{{request.session.fecha_vuelta}}" {% endif %}>
+                <label for="POST-name">Nombre y apellidos</label>
+                <input class="box" id="POST-name" type="text" name="Nombre" value="{{request.user.first_name}} {{request.user.last_name}}" />
+                <label for="POST-name">Numero de tarjeta</label>
+                <input class="box" id="POST-name" type="text" name="name" value="1111 2222 3333 4444" />
+                <label for="POST-name">Fecha de expiracion</label>
+                <input class="box" id="POST-name" type="date" name="name" />
+                <label for="POST-name">CVV</label>
+                <input class="box" id="POST-name" type="number" name="name" value="123" />
                 <div class="totalprecio">
                     <hr>
                     <p>Subtotal {{total_carrito}} EUR</p>

@@ -53,7 +53,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Configuraciones basicas para establecer la duracion de las sessiones 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_COOKIE_AGE = 3600  # Duración en segundos (1 hora)
+SESSION_SAVE_EVERY_REQUEST = True
 
 ROOT_URLCONF = 'senda.urls'
 
@@ -82,7 +85,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'img')
 MEDIA_URL = '/img/'
-
+LOGIN_URL = 'login'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 

@@ -272,6 +272,23 @@ body
 	background-color: var(--clr_orange_dark);
 }
 
+/* Boton pequeño para el carrito */
+.button_secondary_cart
+{
+	color: var(--clr_white);
+	font-size: 8px;
+	background-color: var(--clr_orange);
+	border: 0;
+	padding: 10px 10px;
+	border-radius: 50% !important;
+	text-decoration: none;
+}
+
+.button_secondary_cart:hover
+{
+	background-color: var(--clr_orange_dark);
+}
+
 .button_secondary_icon
 {
 	color: var(--clr_white);
@@ -414,8 +431,7 @@ body
 
 }
 .detalle_carrito
-{
-	
+{	
 	display: inline-block;
 	flex-direction: column;
 	padding-right: 2.5em;
@@ -428,6 +444,7 @@ body
 .detalleProducto
 {
 	background-color: var(--clr_grey_dark);
+	padding-top: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -455,7 +472,8 @@ body
 {
 	height: 8em;
 	width: 10em;
-	border-radius: 10px;
+	border-radius: 20px;
+	padding: 10px 10px 10px 10px;
 }
 
 .precio
@@ -476,7 +494,7 @@ body
 {
 	background-color: #145233;
 	width: 438px;
-	height: 727px;
+	height: 900px;
 	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
@@ -485,6 +503,10 @@ body
 
 }
 
+.detalleTarjeta h4
+{
+	color: var(--clr_white)
+}
 .tipo_tarjeta
 {
 	display: grid;
@@ -797,4 +819,14 @@ input[type="submit"] {
 
 .btn_back:hover{
 	color: var(--clr_green);
+}
+
+
+/* Agregando un background */
+.bg-gris
+{
+	background-color: var(--clr_grey_dark);
+	padding: 20px 20px 20px 20px;
+	border-radius: 20px;
+	margin: 20px 20px;
 }

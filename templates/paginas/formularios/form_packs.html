@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <form class="search_form_page" action="{% url 'packs' %}">
-=======
-<form class="search_form_page" action="{% url 'packs' %}" method="get">
->>>>>>> 57b5b4f97269be8c09ad058801faf172320406e2
     <div class="column">
         <label for="datetravel"><strong>Selecciona ciudad</strong></label><br>
         <select class="box" name="pack">
@@ -18,34 +14,15 @@
         {% endif %}
         ><br>
         <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
-<<<<<<< HEAD
         <input class="box" type="date" id="datetravel" name="fecha_vuelta"
         {% if request.session.fecha_vuelta %}
         value="{{request.session.fecha_vuelta }}"
         {% endif %}
         ><br>
-        
-    </div>
-    <div class="column">
-        <label for="datetravel"><strong>Número de pasajeros</strong></label><br>
-        <input class="box" type="number" id="datetravel" ><br>
-        <label for="datetravel"><strong>Número de noches</strong></label><br>
-        <select class="box">
-            <option value="option1">7 noches</option>
-            <option value="option1">8 noches</option>
-            <option value="option1">9 noches</option>
-            <option value="option1">10 noches</option>
-            <option value="option1">11 noches</option>
-            <option value="option1">12 noches</option>
-            <option value="option1">13 noches</option>
-        </select><br>
-=======
-        <input class="box" type="date" id="datetravel"><br>
     </div>
     <div class="column">
         <label for="datetravel"><strong>Número de personas</strong></label><br>
         <input class="box" min="1" max="20" type="number" id="datetravel" ><br>
->>>>>>> 57b5b4f97269be8c09ad058801faf172320406e2
         <label for="datetravel"><strong>Temática</strong></label><br>
         <select class="box">
             <option value="gastronomia">Gastronomía</option>
