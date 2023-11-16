@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2023 at 09:09 PM
+-- Generation Time: Nov 16, 2023 at 12:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -26,21 +26,16 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`, `dni`, `direccion`, `fecha_nacimiento`, `telefono`) VALUES
-(1, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', '2023-11-09 18:22:43.228651', 1, 'senda', '', '', 'senda@senda.com', 1, 1, '2023-11-01 14:49:23.270714', '', '', NULL, ''),
-(2, '123456', NULL, 0, 'María', '', '', '', 0, 1, '2023-11-01 14:57:30.000000', 'A123456B', 'Ronda', '2023-11-01 14:58:11.000000', '123456789'),
-(3, 'Pedro', NULL, 0, 'Pedro', '', '', '', 0, 1, '2023-11-01 14:59:13.000000', 'A123457B', 'Madrid', '2023-11-01 14:59:46.000000', '123456789'),
-(4, '123456', NULL, 0, 'Celia', '', '', '', 0, 1, '2023-11-01 21:11:09.000000', 'A1234568B', 'Su casa', '2023-11-01 21:12:26.000000', '123456'),
-(5, '123456', NULL, 0, 'Valeria', '', '', '', 0, 1, '2023-11-01 21:12:28.000000', 'A1234569B', 'Casa', '2023-11-01 21:13:02.000000', '123546'),
-(6, '123456', NULL, 0, 'Alexander', '', '', '', 0, 1, '2023-11-01 21:13:03.000000', 'A1234570B', 'Casa', '2023-11-01 21:13:20.000000', '123456'),
-(7, '123456', NULL, 0, 'Álvaro', '', '', '', 0, 1, '2023-11-01 21:13:33.000000', 'A1234571B', 'Casa', '2023-11-01 21:13:49.000000', '123456'),
-(8, '123456', NULL, 0, 'Alonso', '', '', '', 0, 1, '2023-11-01 21:13:57.000000', 'A1234572B', 'Trabajo', '2023-11-01 21:14:20.000000', '123456'),
-(9, '123456', NULL, 0, 'Mario', '', '', '', 0, 1, '2023-11-01 21:14:32.000000', 'A1234572B', 'Madrid', '2023-11-01 21:14:59.000000', '123456'),
-(10, '123456', NULL, 0, 'Pablo', '', '', '', 0, 1, '2023-11-01 21:15:12.000000', 'A1234573B', 'Madrid', '2023-11-01 21:15:32.000000', '123456'),
-(11, '123456', NULL, 0, 'Nora', '', '', '', 0, 1, '2023-11-01 21:15:34.000000', 'A1234573B', 'Madrid', '2023-11-01 21:15:51.000000', '123456'),
-(12, '123456', NULL, 0, 'Olga', '', '', '', 0, 1, '2023-11-01 21:16:07.000000', 'A1234574B', 'Valencia', '2023-11-01 21:16:21.000000', '123456'),
-(13, 'pbkdf2_sha256$320000$k7u3pYpu1ITg0GllXxmHT2$Qg6EaSTJhYpixq5fyabSUX7cfy4sPISekJ6vTsPUo7w=', '2023-11-08 16:54:20.992503', 0, 'vterroso', '', '', 'v.terroso8@gmail.com', 0, 1, '2023-11-07 16:14:36.036487', '', '', NULL, ''),
-(14, 'pbkdf2_sha256$320000$oH1NVQ5ridYbKZSFox2tll$xs7epC6wv14I4v+215wBncoFLaMA3GY/M02UB9HGYcE=', '2023-11-08 16:56:23.745176', 0, 'terroso', '', '', 'v.terroso8@gmail.com', 0, 1, '2023-11-08 16:56:23.090176', '', '', NULL, ''),
-(15, 'pbkdf2_sha256$320000$dkNlPujCyaVMWF6urM3GZW$uiMBH4YGfqb/zqxSWxYWHb10XueOaWMxu2TwjRRuI/o=', '2023-11-09 10:37:20.374164', 0, 'victor', '', '', 'v.terroso8@gmail.com', 0, 1, '2023-11-09 10:37:19.713831', '', '', NULL, '');
+(1, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', '2023-11-16 11:21:06.177763', 1, 'senda', '', '', 'senda@senda.com', 1, 1, '2023-11-01 14:49:23.270714', '', '', NULL, ''),
+(13, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', '2023-11-16 11:26:22.064875', 0, 'Victor', 'Victor', 'Terroso Prieto', 'v.terroso87@gmail.com', 0, 1, '2023-11-07 16:14:36.000000', '44444444T', 'C/Laberinto del amor, 1', '1987-12-01 00:00:00.000000', '666164018'),
+(16, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Angel', 'Angel', 'Polo', 'angelpolotorres@gmail.com', 0, 1, '2023-11-16 10:20:01.000000', '11111111Y', 'No sé', '1999-10-11 00:00:00.000000', '123456'),
+(17, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Marina', 'Marina', 'Rubio', 'marina.rubio.alonso@gmail.com', 0, 1, '2023-11-16 10:49:58.000000', '22222222M', 'C/Madrid, 1', '1999-10-11 00:00:00.000000', '444444444'),
+(18, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Leonardo', 'Leonardo', 'Narvaez', 'leonxrdo.n@gmail.com', 0, 1, '2023-11-16 10:51:18.000000', '33333333L', 'C/Madrid, 1', '1990-10-01 00:00:00.000000', '555555555'),
+(19, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', '2023-11-16 11:25:14.311057', 0, 'Vradis', 'Vradis', 'Florez', 'vradis.florez@gmail.com', 0, 1, '2023-11-16 10:52:44.000000', '44444444V', 'C/Madrid, 1', '1992-10-11 00:00:00.000000', '555555555'),
+(20, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Paula', 'Paula', 'del Pino', 'paula.p.ramirez@gmail.com', 0, 1, '2023-11-16 10:53:45.000000', '99999999p', 'C/Madrid, 1', '1990-01-01 00:00:00.000000', '888888888'),
+(21, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Shuai', 'Shuai', 'Wang', 'wang.shuai@netbuilt.eu', 0, 1, '2000-11-16 10:54:48.000000', '65555555P', 'C/Madrid, 1', '1990-10-11 00:00:00.000000', '123456789'),
+(22, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Pedro', 'Pedro', 'Martinez', 'pedromar@student.42madrid.com', 0, 1, '2023-11-16 10:56:21.000000', '56478521P', 'C/Madrid, 1', '1987-04-01 00:00:00.000000', '582469874'),
+(23, 'pbkdf2_sha256$320000$gMuNzGdcrd4NxMJX104dEA$TKJXnqOizBEfSj0otJG7eQ9wsTHlZsh1JZmaafQ+9o8=', NULL, 0, 'Jorge', 'Jorge', 'Vasquez', 'jvasquez@student.42madrid.com', 0, 1, '2023-11-16 10:57:42.000000', '58963214J', 'C/Madrid, 1', '1990-08-01 00:00:00.000000', '357159864');
 
 --
 -- Dumping data for table `booking_actividad`
@@ -85,19 +80,6 @@ INSERT INTO `booking_pack` (`id`, `pa_nombre`, `pa_descipcion`, `actividad_id`, 
 (4, 'La Dolce Vita en Roma', 'Sumérgete en la esencia de la Ciudad Eterna con nuestro pack de viaje a Roma, una experiencia completa que combina la riqueza histórica con la exquisita gastronomía italiana.', 3, 2, 5, 'pack/tiber-river-4529605_640.jpg', 293.00, 'Roma');
 
 --
--- Dumping data for table `booking_reserva`
---
-
-INSERT INTO `booking_reserva` (`id`, `res_f_inicio`, `res_f_fin`, `res_precio`, `client_id`, `empleado_id`, `pack_id`) VALUES
-(1, NULL, NULL, 5.00, 2, 2, 1),
-(2, NULL, NULL, 6.00, 7, 2, 1),
-(3, NULL, NULL, 7.00, 8, 2, 1),
-(4, NULL, NULL, 32.00, 8, 3, 1),
-(5, NULL, NULL, 61.00, 5, 2, 1),
-(6, NULL, NULL, 12.00, 4, 2, 1),
-(7, NULL, NULL, 432.00, 9, 4, 1);
-
---
 -- Dumping data for table `booking_vuelo`
 --
 
@@ -114,23 +96,15 @@ INSERT INTO `booking_vuelo` (`id`, `vu_precio`, `vu_asiento`, `vu_destino`, `vu_
 --
 
 INSERT INTO `user_cliente` (`id`, `user_id`) VALUES
-(2, 3),
-(3, 4),
-(4, 6),
-(5, 7),
-(6, 9),
-(7, 10),
-(8, 11),
-(9, 12);
-
---
--- Dumping data for table `user_empleado`
---
-
-INSERT INTO `user_empleado` (`id`, `p_emp_id`, `user_id`) VALUES
-(2, 2, 2),
-(3, 2, 3),
-(4, 3, 5);
+(10, 13),
+(11, 16),
+(12, 17),
+(13, 18),
+(14, 19),
+(15, 20),
+(16, 21),
+(17, 22),
+(18, 23);
 
 --
 -- Dumping data for table `user_puestoempleado`
