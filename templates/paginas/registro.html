@@ -2,8 +2,9 @@
 {% load static %}
 {% block title %} Registro {% endblock %}
 {% block content %}
+<div class="zona-registro">
 <div class="container-registro">
-    <h2>Crear Cuenta</h2>
+    <h2 class="form_title">Crear Cuenta</h2>
     <form action="" method="post">
         {% csrf_token %}
         <div class="campo">
@@ -37,7 +38,8 @@
             <input type="password" id="confirmar_contrasena" placeholder="Confirmar Contraseña" name="password2" class="input-campo relleno" required>
         </div>
 
-        <input type="submit" value="Enviar">
+        <input class="button_secondary" type="submit" value="Enviar">
     </form>
+</div>
 </div>
 {% endblock %}

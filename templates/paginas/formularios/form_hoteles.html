@@ -1,4 +1,4 @@
-<form class="allcontent" action="{% url 'hoteles' %}" method="get">
+<form class="search_form_page" action="{% url 'hoteles' %}" method="get">
     <div class="column">
         <input type="radio" id="ida" name="button" value="ida">
         <label for="soloida">Un alojamiento</label>
@@ -7,13 +7,13 @@
         <br>
         <label for="datetravel"><strong>Destino</strong></label><br>
         <select class="box" name="ciudad">
-            <option value="" selected disabled>País o ciudad</option>
+            <option value="" selected disabled>Ciudad</option>
             {% for c in ciudades %}
             <option value="{{c}}">{{c}}</option>
             {% endfor %}
         </select><br>
         <label for="datetravel"><strong>Seleccionar huéspedes</strong></label><br>
-        <input class="box" type="number" id="datetravel" ><br>
+        <input class="box" min="1" max="20" type="number" id="datetravel" ><br>
     </div>
     <div class="column">
         <label for="datetravel"><strong>Check in</strong></label><br>

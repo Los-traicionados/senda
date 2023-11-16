@@ -21,6 +21,7 @@ class Vuelo(models.Model):
     vu_destino = models.CharField(max_length=50, verbose_name='Destino', null=True, blank=True)
     vu_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio')
     vu_asiento = models.CharField(max_length=20, verbose_name='Asiento')
+    vu_imagen = models.ImageField(upload_to='vuelo/', default='', null=True, blank=True)
 
 
     def __str__(self):
@@ -34,6 +35,7 @@ class Actividad(models.Model):
     act_descripcion = models.CharField(max_length=255, verbose_name='Descripción de la actividad')
     act_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio actividad')
     act_imagen = models.ImageField(upload_to='actividad/', default='')
+    act_ciudad = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.act_nombre
@@ -48,7 +50,9 @@ class Pack(models.Model):
     pa_nombre = models.CharField(max_length=50, verbose_name='Nombre del Pack')
     pa_descipcion = models.CharField(max_length=255, verbose_name='Descripción Pack')
     pa_imagen = models.ImageField(upload_to='pack/', default='')
-
+    pa_precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name='Precio pack')
+    pa_ciudad = models.CharField(max_length=50, null=True, blank=True)
+    
     def __str__(self):
         return self.pa_nombre
 
@@ -64,7 +68,7 @@ class Reserva(models.Model):
     res_precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio Reserva')
     
     def __str__(self):
-        return f'{self.client} {self.pack}'
+        return f'{self.client} {self.pack} {self.res_precio}'
 
     class Meta:
         verbose_name_plural = 'Reservas'
