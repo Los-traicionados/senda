@@ -76,3 +76,7 @@ def redirect_detail_vuelos(request, id):
 def redirect_detail_packs(request, id):
     pack = get_object_or_404(Pack, pk=id)
     return render(request, 'paginas/products_detail_packs.html', {'pack': pack})
+
+def get_related_vuelo(request, id):
+    vuelo = get_object_or_404(Pack, pk=id)
+    return render(request, 'paginas/products_detail_packs.html', {'vuelo': vuelo})

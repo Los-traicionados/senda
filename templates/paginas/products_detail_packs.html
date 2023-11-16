@@ -17,16 +17,27 @@
 				<br><br>
 				<strong>Descripción: </strong>{%lorem%}
 				<br><br>
-				<strong>Información vuelo: </strong>{{pack.vuelo_id.nombre}}
+				<strong>Información vuelo: </strong>{{packs_all.related_vuelo.vu_nombre}} ----
+				<br><br>
+				<strong>Información hotel: </strong>
+				<br><br>
+				<strong>Información actividades: </strong> ----
 				<br><br>
 				<strong>Precio: </strong>{{pack.pa_precio}} €/noche
 				<br><br>
 				<img src="{{pack.pa_imagen.url}}">
 				<br><br>
 			</div>
+			<h1>
+				**{{pack.vuelo_id.vu_nombre}}**
+				--{{pack.vuelo_id.vu_nombre}}
+			</h1>
 			<button class="boton-carrito">Añadir al carrito</button>
 		</div>
 	</main>
+
+
+
 
 {% endblock %}
 
