@@ -104,4 +104,5 @@ def actividades(request):
         'actividades_filtrado': actividades_filtrado,
         'actividad': actividad,
         'act_ciudades': act_ciudades,
+        'busqueda': busqueda, 
     })
