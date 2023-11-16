@@ -88,60 +88,6 @@ def tus_favoritos(request):
 def recomendaciones(request):
     return render(request, 'paginas/recomendaciones.html')
 
-
-""" def send_email_to_all(request):
-    form= DateFilterForm(request.POST or None)
-    count_emails = None
-
-    if request.method == 'POST' and form.is_valid():
-        start_date = form.cleaned_data['start_date']
-        end_date = form.cleaned_data['end_date']
-
-        # Filter users by registration date
-        users = User.objects.filter(date_joined__range=(start_date, end_date))
-
-        # Send emails to filtered users
-        for user in users:
-            if user.email:
-                send_email(user.id)
-                CountEmails.objects.create(user=user.username, email=user.email, asunto="test")
-
-        # Retrieve and display count emails
-        count_emails = CountEmails.objects.all()
-    return redirect('mailing')
-    # return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
-
-def send_email(user_id):
-    try:
-        user=User.objects.get(pk=user_id)
-        mailServer = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
-        mailServer.ehlo()
-        mailServer.starttls()
-        mailServer.ehlo()
-        mailServer.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
-        form=CustomizeEmail.objects.all()
-        # Construimos el mensaje simple
-        email_to = user.email
-        # mensaje = MIMEText("""""")
-        mensaje = MIMEMultipart()
-        mensaje['From']= EMAIL_HOST_USER
-        mensaje['To']= email_to
-        #mensaje['Subject']="Tienes un correo"
-        mensaje['Subject']=form.subject
-        #content = render_to_string('mailing/mail_entrada.html', {'user':user})
-        content= render_to_string(form.content, {'user':user})
-        mensaje.attach(MIMEText(content, 'html'))
-
-        # Envio del mensaje
-        mailServer.sendmail(EMAIL_HOST_USER,
-                email_to,
-                mensaje.as_string())
-        print("correo enviado correctamente")
-
-    except Exception as e:
-        print(e)
- """
-
 def send_email_to_all(request):
     count_emails = None
 
@@ -190,32 +136,46 @@ def send_email(user_id, template_name, template_path):
         mensaje = MIMEMultipart()
         mensaje['From']= EMAIL_HOST_USER
         mensaje['To']= email_to
+
         subject = ''
-        email = None 
+       
+        writeNewsletter=None
+        writeOferta=None
         if template_name == 'newsletter':
-            email = WriteNewsletter.objects.get(pk=1)
-            subject = email.subject
+            writeNewsletter = WriteNewsletter.objects.get(pk=1)
+            subject = writeNewsletter.subject
             
         elif template_name == 'mail_entrada':
             subject = 'Tienes una nueva entrada'
         elif template_name == 'ofertas':
             subject = 'Ofertón'
+            writeOferta = WriteOferta.objects.get(pk=1)
         elif template_name == 'reserva_realizada':
             subject = 'Tienes una nueva reserva'
         elif template_name == 'cumpleaños':
-            subject = '¡Feliz CUmplesaños!'
+            subject = '¡Feliz Cumpleaños!'
         elif template_name == 'nuevo_registro':
             subject = '¡Bienvenido a Senda!'
-        mensaje['Subject']=subject
-        rendered_content = render_to_string(template_path, {'user': user})
+
+        mensaje['Subject'] = subject
+
+        context = {
+            'user': user,
+            'writeOferta': writeOferta,
+            'writeNewsletter': writeNewsletter,
+           
+        }
+
+        # Renderizar la plantilla con el contexto
+        rendered_content = render_to_string(template_path, context)
+
+        # Adjuntar el contenido al mensaje
         mensaje.attach(MIMEText(rendered_content, 'html'))
 
-        # Envio del mensaje
-        mailServer.sendmail(EMAIL_HOST_USER,
-                email_to,
-                mensaje.as_string())
+        # Envío del mensaje
+        mailServer.sendmail(EMAIL_HOST_USER, email_to, mensaje.as_string())
 
-        print("correo enviado correctamente")
+        print("Correo enviado correctamente")
 
     except Exception as e:
         print("An error occurred2:", e)
@@ -244,10 +204,4 @@ def success_view(request):
 def test_template_render(request):
     writeNewsletter = WriteNewsletter.objects.get(pk=1)
     return render(request, 'mailing/newsletter.html', {'writeNewsletter': writeNewsletter})
-    """  template_path = 'mailing/newsletter.html'  # Replace with your template path
-    user=User.objects.first()
-    context = {'user': user}  # Provide necessary context
-
-    rendered_content = render_to_string(template_path, context)
-    return HttpResponse(rendered_content) """
     

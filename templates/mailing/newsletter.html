@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{writeNewsletter.title}}:</title>
+    <title>{{writeNewsletter.subject}}:</title>
    
 </head>
 <body bgcolor="#f4f4f4" style="font-family: sans-serif; color: rgb(50, 50, 50);">
@@ -18,7 +18,7 @@
         <tr style="background-color: white; box-sizing: border-box;">
             <td style="padding: 16px 24px 0 24px;">
                 <h1 style="text-align: center; font-size: 24px;">¡Newsletter Semanal de Senda!</h1>
-                <p style="margin-top: 24px; text-align: justify; font-size: 18px; line-height: 24px;"> {{ writeNewsletter.introduction.html|safe }}</p>
+                <p style="margin-top: 24px; text-align: justify; font-size: 18px; line-height: 24px;"> {{writeNewsletter.introduction.html|safe }}</p>
                 <p style="margin-top: 24px; text-align: justify; font-size: 18px; line-height: 24px;">
                     <strong>{{writeNewsletter.subtitle}}:</strong><br>
                     <p>{{writeNewsletter.content.html|safe}}</p>
