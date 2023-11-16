@@ -13,7 +13,7 @@
 		{% include 'paginas/formularios/form_vuelos.html' %}
 		<div class="zone_grid_products">
 			<div class="grid_products">
-				{% for vu in vuelos %}
+				{% for vu in vuelos_filtrado %}
 				<a href="{% url 'products_detail_vuelos' vu.id %}" class="product_card_link">
 					<div class="product_card"> 
 						{%if vu.vu_imagen%}

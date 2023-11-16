@@ -21,11 +21,13 @@ def packs(request):
     vuelta = request.GET.get('vuelta')
 
     #guardar variables temporales fecha ida y vuelta
-    fecha_ida = request.GET.get('fecha_ida')
-    fecha_vuelta = request.GET.get('fecha_vuelta')
-    request.session['fecha_ida'] = fecha_ida
-    request.session['fecha_vuelta'] = fecha_vuelta
-    
+    if not request.session.get('fecha_ida') and not request.session.get('fecha_vuelta'):
+        fecha_ida = request.GET.get('fecha_ida')
+        fecha_vuelta = request.GET.get('fecha_vuelta')
+        request.session['fecha_ida'] = fecha_ida
+        request.session['fecha_vuelta'] = fecha_vuelta
+        request.session.save()
+
     precio_total = Actividad.objects.aggregate(Sum('act_precio'))
     if busqueda:
         packs = packs.filter(pa_nombre__icontains=busqueda)
@@ -58,6 +60,13 @@ def vuelos(request):
     vuelos_filtrado = vuelos
     ida = request.GET.get('ida')
     vuelta = request.GET.get('vuelta')
+    #guardar variables temporales fecha ida y vuelta
+    if not request.session.get('fecha_ida') and not request.session.get('fecha_vuelta'):
+        fecha_ida = request.GET.get('fecha_ida')
+        fecha_vuelta = request.GET.get('fecha_vuelta')
+        request.session['fecha_ida'] = fecha_ida
+        request.session['fecha_vuelta'] = fecha_vuelta
+        request.session.save()
     # para controlar origen duplicadas
     origen = []
     for vu in vuelos:
@@ -85,6 +94,13 @@ def vuelos(request):
 def hoteles(request):
     hoteles = Hotel.objects.all()
     hoteles_filtrado = hoteles
+    #guardar variables temporales fecha ida y vuelta
+    if not request.session.get('fecha_ida') and not request.session.get('fecha_vuelta'):
+        fecha_ida = request.GET.get('fecha_ida')
+        fecha_vuelta = request.GET.get('fecha_vuelta')
+        request.session['fecha_ida'] = fecha_ida
+        request.session['fecha_vuelta'] = fecha_vuelta
+        request.session.save()
     # para controlar ciudades duplicadas
     ciudades = []
     for ho in hoteles:
@@ -104,6 +120,13 @@ def hoteles(request):
 def actividades(request):
     actividades = Actividad.objects.all()
     busqueda = request.GET.get('busqueda')
+    #guardar variables temporales fecha ida y vuelta
+    if not request.session.get('fecha_ida') and not request.session.get('fecha_vuelta'):
+        fecha_ida = request.GET.get('fecha_ida')
+        fecha_vuelta = request.GET.get('fecha_vuelta')
+        request.session['fecha_ida'] = fecha_ida
+        request.session['fecha_vuelta'] = fecha_vuelta
+        request.session.save()
     if busqueda:
         actividades = actividades.filter(
             Q(act_nombre__icontains = busqueda) |
@@ -118,6 +141,50 @@ def actividades(request):
 # Funcion para simular el pago
 def pagar(request):
     if request.method == 'POST':
+        #guardar variables temporales fecha ida y vuelta
+        if not request.session.get('fecha_ida') and not request.session.get('fecha_vuelta'):
+            fecha_ida = request.GET.get('fecha_ida')
+            fecha_vuelta = request.GET.get('fecha_vuelta')
+            request.session['fecha_ida'] = fecha_ida
+            request.session['fecha_vuelta'] = fecha_vuelta
+            request.session.save()
+        # Obtener los datos de las variables de sesión
+        pack_carrito = request.session.get('pack_carrito', {})
+        actividad_carrito = request.session.get('actividad_carrito', {})
+        hotel_carrito = request.session.get('hotel_carrito', {})
+        vuelo_carrito = request.session.get('vuelo_carrito', {})
+
+        client = get_object_or_404(Cliente, user=user)
+        packs = request.session.get('pack_carrito')
+        reserva = Reserva()
+        total = 0
+        # Iterar sobre los datos del carrito de packs y asignarlos a la relación many-to-many
+        for pack_id, pack_data in pack_carrito.items():
+            pack_obj = get_object_or_404(Pack, pk=int(pack_id))
+            total += pack_obj.pa_precio
+            reserva.pack.add(pack_obj)
+
+        # Iterar sobre los datos del carrito de actividades y asignarlos a la relación many-to-many
+        for actividad_id, actividad_data in actividad_carrito.items():
+            actividad_obj = get_object_or_404(Actividad, pk=int(actividad_id))
+            total += actividad_obj.act_precio
+            reserva.actividad.add(actividad_obj)
+
+        # Iterar sobre los datos del carrito de hoteles y asignarlos a la relación many-to-many
+        for hotel_id, hotel_data in hotel_carrito.items():
+            hotel_obj = get_object_or_404(Hotel, pk=int(hotel_id))
+            total += hotel_obj.ho_precio
+            reserva.hotel.add(hotel_obj)
+
+        # Iterar sobre los datos del carrito de vuelos y asignarlos a la relación many-to-many
+        for vuelo_id, vuelo_data in vuelo_carrito.items():
+            vuelo_obj = get_object_or_404(Vuelo, pk=int(vuelo_id))
+            total += vuelo_obj.vu_precio
+            reserva.vuelo.add(vuelo_obj)
+        
+        reserva.res_f_inicio = request.session.get('fecha_ida')
+        reserva.res_f_fin = request.session.get('fecha_vuelta')
+        reserva.res_precio = total
         messages.add_message(request, messages.INFO, 'Gracias por la compra')
     return redirect('tus-reservas')
 

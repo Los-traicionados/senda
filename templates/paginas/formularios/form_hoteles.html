@@ -16,10 +16,18 @@
         <input class="box" type="number" id="datetravel" ><br>
     </div>
     <div class="column">
-        <label for="datetravel"><strong>Check in</strong></label><br>
-        <input class="box" type="date" id="datetravel"><br>
-        <label for="datetravel"><strong>Check out</strong></label><br>
-        <input class="box" type="date" id="datetravel"><br>
+        <label for="datetravel"><strong>Fecha de salida</strong></label><br>
+        <input class="box" type="date" id="datetravel" name="fecha_ida"
+        {% if request.session.fecha_ida %}
+        value="{{request.session.fecha_ida }}"
+        {% endif %}
+        ><br>
+        <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
+        <input class="box" type="date" id="datetravel" name="fecha_vuelta"
+        {% if request.session.fecha_vuelta %}
+        value="{{request.session.fecha_vuelta }}"
+        {% endif %}
+        ><br>
         <input class="CTA_BUSCAR" type="submit" value="Buscar"/>
     </div>
 </form>

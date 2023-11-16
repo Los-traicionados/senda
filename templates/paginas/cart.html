@@ -18,8 +18,25 @@
         {{message}}
         {% endfor %}
         <hr>
+        <div class="search_form_page">
+            <div class="column">
+                <label for="datetravel"><strong>Fecha de salida</strong></label><br>
+                <input class="box" type="date" name="fecha_ida" id="datetravel"
+                {% if request.session.fecha_ida %}
+                value="{{request.session.fecha_ida}}"
+                {% endif %}
+                ><br>
+            </div>
+            <div class="column">
+                <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
+                <input class="box" type="date" name="fecha_vuelta" id="datetravel"
+                {% if request.session.fecha_vuelta %}
+                value="{{request.session.fecha_vuelta}}"
+                {% endif %}
+                ><br>
+            </div>
+        </div>
         <div class="detalleProducto">
-            <h4>Detalle del viaje</h4>
             <!--Carrito para Pack-->
             {% for key, value  in request.session.pack_carrito.items %}
             <div class="pack1">
@@ -184,7 +201,9 @@
                     <p>Tasas e impuestos 0,00 EUR</p>
                     <p><strong>Total</strong> {{total_carrito}} EUR</p>
                 </div>
+                {% if request.session.pack_carrito or request.session.actividad_carrito or request.session.hotel_carrito or request.session.vuelo_carrito %}
                 <input class="CTA_PAGAR" type="submit" value="PAGAR" />
+                {% endif %}
             </form>
         </div>
     </div>

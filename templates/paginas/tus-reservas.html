@@ -10,6 +10,39 @@
 <hr>
 
 <div class="main_productos">
+{% for reserva in reservas %}
+  <h2>Reserva</h2>
+  <p>Fecha de inicio: {{ reserva.res_f_inicio }}</p>
+  <p>Fecha de fin: {{ reserva.res_f_fin }}</p>
+
+  <h3>Packs:</h3>
+  <ul>
+    {% for pack in reserva.pack.all %}
+      <li>{{ pack.pa_nombre }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Actividades:</h3>
+  <ul>
+    {% for actividad in reserva.actividad.all %}
+      <li>{{ actividad.act_nombre }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Hoteles:</h3>
+  <ul>
+    {% for hotel in reserva.hotel.all %}
+      <li>{{ hotel.ho_nombre }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Vuelos:</h3>
+  <ul>
+    {% for vuelo in reserva.vuelo.all %}
+      <li>{{ vuelo.vu_nombre }}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
 	<!--
 	<div class="seccion_productos">
 		<a href="{% url 'producto_tipo' %}" class="link_seccion_product">
