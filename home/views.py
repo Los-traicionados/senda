@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from booking.models import *
 from django.http import JsonResponse
 from django.core import serializers
@@ -64,3 +64,22 @@ def dashboard(request):
     data = Reserva.objects.all().values_list(flat=True)
     json_data = json.dumps(list(data))
     return render(request, 'paginas/dashboard.html', {'reservas': json_data})
+
+def products_detail(request):
+	return render(request, 'paginas/products_detail.html')
+
+def redirect_detail_actividades(request, id):
+    actividad = get_object_or_404(Actividad, pk=id)
+    return render(request, 'paginas/products_detail_actividades.html', {'actividad': actividad})
+
+def redirect_detail_hoteles(request, id):
+    hotel = get_object_or_404(Hotel, pk=id)
+    return render(request, 'paginas/products_detail_hoteles.html', {'hotel': hotel})
+
+def redirect_detail_vuelos(request, id):
+    vuelo = get_object_or_404(Vuelo, pk=id)
+    return render(request, 'paginas/products_detail_vuelos.html', {'vuelo': vuelo})
+
+def redirect_detail_packs(request, id):
+    pack = get_object_or_404(Pack, pk=id)
+    return render(request, 'paginas/products_detail_packs.html', {'pack': pack})

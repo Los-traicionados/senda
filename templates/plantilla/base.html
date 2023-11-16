@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{% static 'css/perfil.css' %}">
 	<link rel="stylesheet" href="{% static 'css/productos.css' %}">
 	<title>{% block title %}{% endblock %}</title>
+	
 </head>
 
 <body>
@@ -25,29 +26,39 @@
 			<nav class="main_nav">
 				<ul>
 					<a href="{% url 'about' %}">
-						<li>Sobre nosotros</li>
+						<li>Nosotros</li>
 					</a>
-					<a href="{% url 'productos' %}">
-						<li>Productos</li>
+					<a href="{% url 'vuelos' %}">
+						<li>Vuelos</li>
+					</a>
+					<a href="{% url 'hoteles' %}">
+						<li>Hoteles</li>
+					</a>
+					<a href="{% url 'actividades' %}">
+						<li>Actividades</li>
+					</a>
+					<a href="{% url 'packs' %}">
+						<li>Paquetes</li>
 					</a>
 				</ul>
 				<div class="zona_login">
 					{% if request.user.is_authenticated %}
-					<a class="button_secondary" href="{% url 'perfil' %}">{{request.user.username}}</a>
+					<a class="button_primary" href="{% url 'perfil' %}">{{request.user.username}}</a>
 					{% else %}
-					<a class="button_secondary" href="{% url 'login' %}">Mi cuenta</a>
-					<a class="button_secondary" href="{% url 'registro' %}">Registro</a>
-				
+					<a class="button_grey" href="{% url 'registro' %}">Registro</a>
+					<a class="button_secondary" href="{% url 'login' %}">Mi cuenta</a>			
 					{% endif %}
+					<a class="button_secondary_icon" href="{% url 'cart' %}">
 					<div class="cart_icon">
-						<a href="{% url 'cart' %}">
+						
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
 								stroke="currentColor" class="w-6 h-6">
 								<path stroke-linecap="round" stroke-linejoin="round"
 									d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
 							</svg>
-						</a>
+						
 					</div>
+				</a>
 				</div>
 			</nav>
 
@@ -79,6 +90,7 @@
 	<script src="{% static 'js/textMorphism.js' %}"></script>
 	<script src="{% static 'js/register.js' %}"></script>
 	<script src="{% static 'js/home.js' %}"></script>
+	<script src="{% static 'js/back.js' %}"></script>
 </body>
 
 </html>
