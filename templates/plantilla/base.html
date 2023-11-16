@@ -7,10 +7,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+	<link rel="stylesheet" href="{% static 'css/home.css' %}">
 	<link rel="stylesheet" href="{% static 'css/nosotros.css' %}">
-
+	<link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+	<link rel="stylesheet" href="{% static 'css/productos.css' %}">
 	<title>{% block title %}{% endblock %}</title>
+	
 </head>
 
 <body>
@@ -24,34 +26,39 @@
 			<nav class="main_nav">
 				<ul>
 					<a href="{% url 'about' %}">
-						<li>Sobre nosotros</li>
+						<li>Nosotros</li>
 					</a>
-					<!--
-						<a href="">
-							<li>Elige tu viaje</li>
-						</a>
-					-->
+					<a href="{% url 'vuelos' %}">
+						<li>Vuelos</li>
+					</a>
+					<a href="{% url 'hoteles' %}">
+						<li>Hoteles</li>
+					</a>
+					<a href="{% url 'actividades' %}">
+						<li>Actividades</li>
+					</a>
 					<a href="{% url 'packs' %}">
-						<li>Packs</li>
+						<li>Paquetes</li>
 					</a>
 				</ul>
 				<div class="zona_login">
 					{% if request.user.is_authenticated %}
-					<a class="button_secondary" href="{% url 'perfil' %}">{{request.user.username}}</a>
+					<a class="button_primary" href="{% url 'perfil' %}" style="text-transform: capitalize;">{{request.user.username}}</a>
 					{% else %}
-					<a class="button_secondary" href="{% url 'login' %}">Mi cuenta</a>
-					<a class="button_secondary" href="{% url 'registro' %}">Registro</a>
-				
+					<a class="button_grey" href="{% url 'registro' %}">Registro</a>
+					<a class="button_secondary" href="{% url 'login' %}">Mi cuenta</a>			
 					{% endif %}
+					<a class="button_secondary_icon" href="{% url 'cart' %}">
 					<div class="cart_icon">
-						<a href="{% url 'cart' %}">
+						
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
 								stroke="currentColor" class="w-6 h-6">
 								<path stroke-linecap="round" stroke-linejoin="round"
 									d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
 							</svg>
-						</a>
+						
 					</div>
+				</a>
 				</div>
 			</nav>
 
@@ -64,7 +71,6 @@
 		</div>
 	</main>
 	<footer class="zone_footer">
-		<div class="container_footer">
 			<div class="footer_info">
 				<div class="logo_footer">
 					<a href="{% url 'index' %}">
@@ -72,12 +78,85 @@
 					</a>
 				</div>
 			</div>
+			<div class="container_footer">
+				<div class="logo_footer">
+					<h3>Productos</h3>
+					<a href="{% url 'vuelos' %}" class="footer_card_link">
+						<h5>Vuelos</h5>
+					</a>
+					<a href="{% url 'hoteles' %}" class="footer_card_link">
+						<h5>Hoteles</h5>
+					</a>
+					<a href="{% url 'actividades' %}" class="footer_card_link">
+						<h5>Actividades</h5>
+					</a>
+					<a href="{% url 'packs' %}" class="footer_card_link">
+						<h5>Paquete</h5>
+					</a>
+				</div>
+				<div class="logo_footer">
+					<h3>Sobre Nosotros</h3>
+					<a href="{% url 'about' %}" class="footer_card_link">
+						<h5>Quiénes somos</h5>
+					</a>
+					<a href="{% url 'about' %}" class="footer_card_link">
+						<h5>Empleo</h5>
+					</a>
+					<a href="{% url 'about' %}" class="footer_card_link">
+						<h5>Móvil</h5>
+					</a>
+					<a href="{% url 'about' %}" class="footer_card_link">
+						<h5>Blog</h5>
+					</a>
+				</div>
+				<div class="logo_footer">
+					<h3>Información</h3>
+					<a href="https://www.boe.es/legislacion/documentos/ConstitucionCASTELLANO.pdf" class="footer_card_link">
+						<h5 >Aviso Legal y Términos</h5>
+					</a>
+					<a href="https://img.freepik.com/vector-premium/ilustracion-dibujos-animados-vector-dibujos-animados-crujiente-galleta-chocolateclipart-dibujos-animados_11393-357.jpg?w=2000" class="footer_card_link">
+						<h5>Política de Cookies</h5>
+					</a>
+				</div>
+				<div class="logo_footer">
+					<h3>!Síguenos!</h3>
+					<div class="footer_social_logo">
+						<div>
+							<a href="https://www.instagram.com/" class="footer_card_link">
+								<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 50 50" style="fill:#FFFFFF;">
+   									<path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"></path>
+								</svg>
+							</a>
+						</div>
+						<div>
+							<a href="https://www.facebook.com/" class="footer_card_link">
+								<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 50 50" style="fill:#FFFFFF;">
+    								<path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"></path>
+								</svg>
+							</a>
+						</div>
+						<div>
+							<a href="https://www.twitter.com/" class="footer_card_link">
+								<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 50 50" style="fill:#FFFFFF;">
+									<path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/map.js' %}"></script>
+	<script src="{% static 'js/salesChart.js' %}"></script>
+	<script src="{% static 'js/continentsChart.js' %}"></script>
+	<script src="{% static 'js/reservationsChart.js' %}"></script>
+	<script src="{% static 'js/employeeChart.js' %}"></script>
 	<script src="{% static 'js/textMorphism.js' %}"></script>
-
+	<script src="{% static 'js/register.js' %}"></script>
+	<script src="{% static 'js/home.js' %}"></script>
+	<script src="{% static 'js/back.js' %}"></script>
 </body>
 
 </html>

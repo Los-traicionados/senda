@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django import forms
+
 
 # Create your models here.
 class User(AbstractUser):
@@ -40,4 +42,13 @@ class Cliente(models.Model):
     
     class Meta:
         verbose_name_plural = 'Clientes'
-    
+
+class CountEmails(models.Model):
+    user=models.CharField(max_length=50)
+    email=models.CharField(max_length=50)
+    asunto=models.CharField(max_length=50)
+    fecha=models.DateTimeField(auto_now=True)
+
+class DateFilterForm(forms.Form):
+    start_date = forms.DateField(label='Fecha de inicio', widget=forms.DateInput(attrs={'type': 'date'}))
+    end_date = forms.DateField(label='Fecha de fin', widget=forms.DateInput(attrs={'type': 'date'}))

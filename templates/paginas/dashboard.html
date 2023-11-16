@@ -1,0 +1,47 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const COLOR = {
+            ORANGE: '#EB5E37',
+            GREYM: '#798680',
+            RED: '#AD1313',
+            GREYT: '#3C4440',
+            GREEN: '#27774E',
+        }
+    </script>
+    <style>
+        .chart-container {
+            width: 40%;
+            margin: auto;
+            align-content: center;
+        }
+    </style>
+    <link rel="stylesheet" href="..\..\static\css\style.css">
+    <table style="width: 100%">
+        <th class="contenedor-titulo"><h1 id="titulo">Dashboard</h1></th>
+        <tr style="width: 100%">
+            <td class="chart-container"><canvas id="salesChart"></canvas></td>
+            <td class="chart-container"><div style="width: 75%"><canvas id="continents"></canvas></div></td>
+        </tr>
+        <tr style="width: 100%">
+            <td class="chart-container"><canvas id="employeeChart"></canvas></td>
+            <td class="chart-container"><canvas id="reservations"></canvas></td>
+        </tr>
+    </table>
+<script src="./js/salesChart.js"></script>
+<script src="./js/continentsChart.js"></script>
+<script src="./js/reservationsChart.js"></script>
+<script src="./js/employeeChart.js"></script>
+<!-- Django Template -->
+    {% for res in reservas %}
+        <h2>{{res.pack}}</h2>
+        <p>{{res.res_precio}}</p>
+    {% endfor %}
+</html>
+{% endblock %}

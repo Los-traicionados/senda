@@ -3,44 +3,99 @@
 {% block title %} Senda {% endblock %}
 {% block content %}
 <div>
-    <div style="background-image:url({% static 'images/bg_searchbar.jpg' %});" class="hero">
-        <h1 class=herotext id="line1">CON SENDA</h1>
-        <h1 class=herotext id="line2">TU SUEÑO, TU DESTINO</h1>
-        <div class="search-bar">
-            <div class="dropdown">
-                <select class="dropdownbar" id="first_select">
-                    <option value="option1">Continente </option>
-                    <option value="option2">Asia</option>
-                    <option value="option3">Europa</option>
-                    <option value="option2">America</option>
-                    <option value="option3">Africa</option>
-                </select>
-            </div>
-            <div class="dropdown">
-                <select class="dropdownbar">
-                    <option value="option1">Todos los países</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-            </div>
-            <div class="dropdown">
-                <select class="dropdownbar">
-                    <option value="option1">Tus presupuestos</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-            </div>
-            <button class="button">Encuentra tus viajes</button>
-        </div>
-    </div>
-    <div class="catagories">
-        <div style="background-image:url({% static 'images/playa.png' %});" class="card">Playa</div>
-        <div style="background-image:url({% static 'images/ciudad.png' %});" class="card">Ciudad</div>
-        <div style="background-image:url({% static 'images/selva.png' %});" class="card">Selva</div>
-        <div style="background-image:url({% static 'images/glamping.png' %});" class="card">Glamping</div>
-        <div style="background-image:url({% static 'images/ski.jpg' %});" class="card">Ski</div>
-        <div style="background-image:url({% static 'images/senderismo.png' %});" class="card">Senderismo
-        </div>
+	<div class="slider_container">
+		<div style="background-image:url({% static 'images/bg_searchbar.jpg' %});" class="slider_slide fade"></div>
+		<a href="/registro">
+		<div style="background-image:url({% static 'images/flyer_concierto.jpg' %});" class="slider_slide fade"></div>
+	</a>
+		<a class="prev" onclick="plusSlides(-1)">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+			</svg>
+		</a>
+		<a class="next" onclick="plusSlides(1)">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+			</svg>
+		</a>
+	</div>
+
+	<div class="filter_container">
+
+		<div class="tab">
+			<button class="tablinks active" onclick="openCity(event, 'Transportes')">
+				<svg class="icontabs" viewBox="0 0 24 24" fill="currentColor"  xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+					<g clip-path="url(#clip0_6_9084)">
+					<path d="M22 16V14L13.5 9V3.5C13.5 2.67 12.83 2 12 2C11.17 2 10.5 2.67 10.5 3.5V9L2 14V16L10.5 13.5V19L8 20.5V22L12 21L16 22V20.5L13.5 19V13.5L22 16Z" fill="currentColor"/>
+					</g>
+					<defs>
+					<clipPath id="clip0_6_9084">
+					<rect width="24" height="24" fill="currentColor"/>
+					</clipPath>
+					</defs>
+					</svg>
+					Vuelos
+			</button>
+			<button class="tablinks" onclick="openCity(event, 'Alojamiento')">
+				<svg class="icontabs" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0_17_4774)">
+					<path d="M22 12C22 10.9 21.1 10 20 10V7C20 5.9 19.1 5 18 5H6C4.9 5 4 5.9 4 7V10C2.9 10 2 10.9 2 12V17H3.33L4 19H5L5.67 17H18.34L19 19H20L20.67 17H22V12ZM18 10H13V7H18V10ZM6 7H11V10H6V7ZM4 12H20V15H4V12Z" fill="currentColor"/>
+					</g>
+					<defs>
+					<clipPath id="clip0_17_4774">
+					<rect width="24" height="24" fill="white"/>
+					</clipPath>
+					</defs>
+					</svg>
+					Hoteles
+			</button>
+			<button class="tablinks" onclick="openCity(event, 'Actividades')">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:15px; margin-right:4px;">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+				</svg>
+				
+					Actividades
+			</button>
+			<button class="tablinks" onclick="openCity(event, 'Paquetes')">
+				<svg class="icontabs" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0_17_4769)">
+					<path d="M9.5 18H8V9H9.5V18ZM12.75 18H11.25V9H12.75V18ZM16 18H14.5V9H16V18ZM17 6H15V3C15 2.45 14.55 2 14 2H10C9.45 2 9 2.45 9 3V6H7C5.9 6 5 6.9 5 8V19C5 20.1 5.9 21 7 21C7 21.55 7.45 22 8 22C8.55 22 9 21.55 9 21H15C15 21.55 15.45 22 16 22C16.55 22 17 21.55 17 21C18.1 21 19 20.1 19 19V8C19 6.9 18.1 6 17 6ZM10.5 3.5H13.5V6H10.5V3.5ZM17 19H7V8H17V19Z" fill="currentColor"/>
+					</g>
+					<defs>
+					<clipPath id="clip0_17_4769">
+					<rect width="24" height="24" fill="white"/>
+					</clipPath>
+					</defs>
+					</svg>
+					Paquetes
+			</button>
+		</div>
+
+		<div id="Transportes" class="tabcontent" style="display: block;">
+			<!--Formulario de vuelos-->
+			{% include 'paginas/formularios/form_vuelos.html' %}	
+		</div>
+		
+		<div id="Alojamiento" class="tabcontent">
+			<!--Formulario de hoteles-->
+			{% include 'paginas/formularios/form_hoteles.html' %}
+		</div>
+
+		<div id="Actividades" class="tabcontent">
+			<!--Formulario de hoteles-->
+			{% include 'paginas/formularios/form_actividades.html' %}
+		</div>
+
+		<div id="Paquetes" class="tabcontent">
+			<!--Formulario de packs-->
+			{% include 'paginas/formularios/form_packs.html' %}
+		</div>
+	</div>
+
+	<div class="category_grid">
+		{% for tipo_act in tipo_actividades %}
+		<a href="{% url 'actividades' %}?busqueda={{tipo_act}}"><div style="background-image:url({{tipo_act.tact_imagen.url}});" class="category_card">{{tipo_act}}</div></a>
+		{% endfor %}
     </div>
     <div class="promotion">
         <div class="slideshow-container">
@@ -52,5 +107,34 @@
                 class="slide"></div>
         </div>
     </div>
+
+	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		showSlides(slideIndex += n);
+		}
+		
+		function currentSlide(n) {
+		showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		let i;
+		let slides = document.getElementsByClassName("slider_slide");
+		if (n > slides.length) {slideIndex = 1}
+		if (n < 1) {slideIndex = slides.length}
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		}
+		slides[slideIndex-1].style.display = "block";
+		}
+
+		function autoChangeSlide() {
+			plusSlides(1);
+		}
+		setInterval(autoChangeSlide, 4000);
+	</script>
 </div>
 {% endblock %}

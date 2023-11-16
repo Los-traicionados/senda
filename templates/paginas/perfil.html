@@ -2,6 +2,219 @@
 {% load static %}
 {% block title %} {{request.user.username }} {% endblock %}
 {% block content %}
-<h1>Hola {{request.user.username }}</h1>
-<a href="{% url 'logout' %}" class="button_secondary">Salir</a>
+
+<link rel="stylesheet" href="perfil.css">
+<div class="intra_welcome">
+	{% if user.is_superuser %}
+	<h1 class="intra_welcome_title" style="text-transform: capitalize;">Hola big boss 😎</h1>
+	{% else %}
+	<h1 class="intra_welcome_title" style="text-transform: capitalize;">Hola {{request.user.username }}</h1>
+
+	{% endif %}
+	<div>
+		{% if user.is_superuser %}
+		<a href="{% url 'mailing' %}" class="button_secondary" style="margin-right:8px;">Campañas emailing</a>
+		{% endif %}
+		<a href="{% url 'logout' %}" class="button_secondary">Salir</a>
+	</div>
+</div>
+	{% if user.is_superuser %}
+		<div class="intra_superuser">
+			
+			{% comment %} <a href="{% url 'dashboard' %}" class="button_secondary">Dashboard</a> {% endcomment %}
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script>
+			const COLOR = {
+				ORANGE: '#EB5E37',
+				GREYM: '#798680',
+				RED: '#AD1313',
+				GREYT: '#3C4440',
+				GREEN: '#27774E',
+			}
+		</script>
+		<style>
+			.chart-container {
+				width: 40%;
+				margin: auto;
+				align-content: center;
+			}
+		</style>
+		<div class="intra_dashboard" style="margin-top:48px">
+			<table style="width: 100%">
+				<tr style="width: 100%">
+					<td class="chart-container"><canvas id="salesChart"></canvas></td>
+					<td class="chart-container"><div style="width: 75%"><canvas id="continents"></canvas></div></td>
+				</tr>
+				<tr style="width: 100%">
+					<td class="chart-container"><canvas id="employeeChart"></canvas></td>
+					<td class="chart-container"><canvas id="reservations"></canvas></td>
+				</tr>
+			</table>
+		</div>
+		<script src="./js/salesChart.js"></script>
+		<script src="./js/continentsChart.js"></script>
+		<script src="./js/reservationsChart.js"></script>
+		<script src="./js/employeeChart.js"></script>
+	{% else %}
+		<div class="intra_user">
+			<div class="intra_links_container">
+				<a class="intra_link" href="{% url 'tus-reservas' %}">
+					<div class="intra_link_title" >Tus reservas</div>
+					<div class="intra_link_description">Revisa tus reservas actuales y pasadas</div>
+				</a>
+				<a class="intra_link" href="{% url 'tus-favoritos' %}">
+					<div class="intra_link_title" >Tus favoritos</div>
+					<div class="intra_link_description"> Guarda tus viajes, hoteles y actividades</div>
+				</a>
+				<a class="intra_link" href="{% url 'recomendaciones' %}">
+					<div class="intra_link_title" >Recomendaciones</div>
+					<div class="intra_link_description">¡Descubre novedades personalizadas!</div>
+				</a>
+			</div>
+			<div class="calendar-container"> 
+				<div class="calendar">
+					<div class="month-indicator">
+						<time datetime="2024-02"> Marzo 2024</time>
+					</div>
+					<div class="day-of-week">
+						<div>Lun</div>
+						<div>Mar</div>
+						<div>Mie</div>
+						<div>Jue</div>
+						<div>Vie</div>
+						<div>Sab</div>
+						<div>Dom</div>
+					</div>
+					<div class="date-grid">
+						<button><time datetime="2024-02-01">1</time></button>
+						<button><time datetime="2024-02-02">2</time></button>
+						<button><time datetime="2024-02-03">3</time></button>
+						<button><time datetime="2024-02-04">4</time></button>
+						<button><time datetime="2024-02-05">5</time></button>
+						<button><time datetime="2024-02-06">6</time></button>
+						<button><time datetime="2024-02-07">7</time></button>
+						<button><time datetime="2024-02-08">8</time></button>
+						<button><time datetime="2024-02-09">9</time></button>
+						<button><time datetime="2024-02-10">10</time></button>
+						<button><time datetime="2024-02-11">11</time></button>
+						<button><time datetime="2024-02-12">12</time></button>
+						<button><time datetime="2024-02-13">13</time></button>
+						<button><time datetime="2024-02-14">14</time></button>
+						<button><time datetime="2024-02-15">15</time></button>
+						<button><time datetime="2024-02-16">16</time></button>
+						<button><time datetime="2024-02-17">17</time></button>
+						<button><time datetime="2024-02-18">18</time></button>
+						<button><time datetime="2024-02-19">19</time></button>
+						<button><time datetime="2024-02-20">20</time></button>
+						<button><time datetime="2024-02-21">21</time></button>
+						<button><time datetime="2024-02-22">22</time></button>
+						<button><time datetime="2024-02-23">23</time></button>
+						<button><time datetime="2024-02-24">24</time></button>
+						<button><time datetime="2024-02-25">25</time></button>
+						<button><time datetime="2024-02-26">26</time></button>
+						<button><time datetime="2024-02-27">27</time></button>
+						<button><time datetime="2024-02-28">28</time></button>
+						<button><time datetime="2024-02-29">29</time></button>
+						<button><time datetime="2024-02-30">30</time></button>
+						<button><time datetime="2024-02-30">31</time></button>
+					</div>
+				</div>
+				<div class="calendar">
+					<div class="month-indicator">
+						<time datetime="2024-02">Abril 2024</time>
+					</div>
+					<div class="day-of-week">
+						<div>Lun</div>
+						<div>Mar</div>
+						<div>Mie</div>
+						<div>Jue</div>
+						<div>Vie</div>
+						<div>Sab</div>
+						<div>Dom</div>
+					</div>
+					<div class="date-grid">
+						<button><time datetime="2024-02-01">1</time></button>
+						<button><time datetime="2024-02-02">2</time></button>
+						<button><time datetime="2024-02-03">3</time></button>
+						<button><time datetime="2024-02-04">4</time></button>
+						<button><time datetime="2024-02-05">5</time></button>
+						<button><time datetime="2024-02-06">6</time></button>
+						<button><time datetime="2024-02-07">7</time></button>
+						<button><time datetime="2024-02-08">8</time></button>
+						<button><time datetime="2024-02-09">9</time></button>
+						<button><time datetime="2024-02-10">10</time></button>
+						<button><time datetime="2024-02-11">11</time></button>
+						<button><time datetime="2024-02-12">12</time></button>
+						<button><time datetime="2024-02-13">13</time></button>
+						<button><time datetime="2024-02-14">14</time></button>
+						<button><time datetime="2024-02-15">15</time></button>
+						<button><time datetime="2024-02-16">16</time></button>
+						<button><time datetime="2024-02-17">17</time></button>
+						<button><time datetime="2024-02-18">18</time></button>
+						<button><time datetime="2024-02-19">19</time></button>
+						<button><time datetime="2024-02-20">20</time></button>
+						<button><time datetime="2024-02-21">21</time></button>
+						<button><time datetime="2024-02-22">22</time></button>
+						<button><time datetime="2024-02-23">23</time></button>
+						<button><time datetime="2024-02-24">24</time></button>
+						<button><time datetime="2024-02-25">25</time></button>
+						<button><time datetime="2024-02-26">26</time></button>
+						<button><time datetime="2024-02-27">27</time></button>
+						<button><time datetime="2024-02-28">28</time></button>
+						<button><time datetime="2024-02-29">29</time></button>
+						<button><time datetime="2024-02-30">30</time></button>
+					</div>
+				</div>
+				<div class="calendar">
+					<div class="month-indicator">
+						<time datetime="2024-02">Mayo 2024</time>
+					</div>
+					<div class="day-of-week">
+						<div>Lun</div>
+						<div>Mar</div>
+						<div>Mie</div>
+						<div>Jue</div>
+						<div>Vie</div>
+						<div>Sab</div>
+						<div>Dom</div>
+					</div>
+					<div class="date-grid">
+						<button><time datetime="2024-02-01">1</time></button>
+						<button><time datetime="2024-02-02">2</time></button>
+						<button><time datetime="2024-02-03">3</time></button>
+						<button><time datetime="2024-02-04">4</time></button>
+						<button><time datetime="2024-02-05">5</time></button>
+						<button><time datetime="2024-02-06">6</time></button>
+						<button><time datetime="2024-02-07">7</time></button>
+						<button><time datetime="2024-02-08">8</time></button>
+						<button><time datetime="2024-02-09">9</time></button>
+						<button><time datetime="2024-02-10">10</time></button>
+						<button><time datetime="2024-02-11">11</time></button>
+						<button><time datetime="2024-02-12">12</time></button>
+						<button><time datetime="2024-02-13">13</time></button>
+						<button><time datetime="2024-02-14">14</time></button>
+						<button><time datetime="2024-02-15">15</time></button>
+						<button><time datetime="2024-02-16">16</time></button>
+						<button><time datetime="2024-02-17">17</time></button>
+						<button><time datetime="2024-02-18">18</time></button>
+						<button><time datetime="2024-02-19">19</time></button>
+						<button><time datetime="2024-02-20">20</time></button>
+						<button><time datetime="2024-02-21">21</time></button>
+						<button><time datetime="2024-02-22">22</time></button>
+						<button><time datetime="2024-02-23">23</time></button>
+						<button><time datetime="2024-02-24">24</time></button>
+						<button><time datetime="2024-02-25">25</time></button>
+						<button><time datetime="2024-02-26">26</time></button>
+						<button><time datetime="2024-02-27">27</time></button>
+						<button><time datetime="2024-02-28">28</time></button>
+						<button><time datetime="2024-02-29">29</time></button>
+						<button><time datetime="2024-02-30">30</time></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	
 {% endblock %}
+<!-- hacer calendario con grid -->

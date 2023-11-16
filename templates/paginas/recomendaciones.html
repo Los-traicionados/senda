@@ -1,0 +1,42 @@
+{% extends 'plantilla/base.html' %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="perfil.css">
+<h1 class="page_title">
+	<button id="btnBack" class="btn_back">
+		<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+			</svg>
+	</button>
+	Tus recomendaciones
+</h1>
+<div class="main_productos">
+	<div class="zone_grid_products">
+		<a href="#" class="grid_section_title_link">
+			<div class="grid_section_title">
+				Actividades
+			</div>
+		</a>
+		<div class="grid_products">
+			<a href="#" class="product_card_link">
+				<div class="product_card">
+
+						<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
+					<p class="product_card_title">Hotel Principe Pio</p>
+					<div class="product_card_info">
+						<p class="product_card_price">145,00 €/ Noche</p>
+						<div class="product_card_button">
+							Más info
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							  </svg>
+							  
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

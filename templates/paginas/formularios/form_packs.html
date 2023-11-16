@@ -1,0 +1,38 @@
+<form class="search_form_page" action="{% url 'packs' %}">
+    <div class="column">
+        <label for="datetravel"><strong>Selecciona ciudad</strong></label><br>
+        <select class="box" name="pack">
+            <option value="" selected disabled>Ciudad</option>
+            {% for pa in pa_ciudades %}
+            <option value="{{pa}}">{{pa}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="datetravel"><strong>Fecha de salida</strong></label><br>
+        <input class="box" type="date" id="datetravel" name="fecha_ida"
+        {% if request.session.fecha_ida %}
+        value="{{request.session.fecha_ida }}"
+        {% endif %}
+        ><br>
+        <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
+        <input class="box" type="date" id="datetravel" name="fecha_vuelta"
+        {% if request.session.fecha_vuelta %}
+        value="{{request.session.fecha_vuelta }}"
+        {% endif %}
+        ><br>
+    </div>
+    <div class="column">
+        <label for="datetravel"><strong>Número de personas</strong></label><br>
+        <input class="box" min="1" max="20" type="number" id="datetravel" ><br>
+        <label for="datetravel"><strong>Temática</strong></label><br>
+        <select class="box">
+            <option value="gastronomia">Gastronomía</option>
+            <option value="playa">Playa</option>
+            <option value="ciudad">Ciudad</option>
+            <option value="selva">Selva</option>
+            <option value="glamping">Glamping</option>
+            <option value="senderismo">Senderismo</option>
+        </select>
+        <br>
+        <input class="CTA_BUSCAR" type="submit" value="Buscar"/>
+    </div>
+</form>

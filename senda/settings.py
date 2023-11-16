@@ -53,6 +53,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Configuraciones basicas para establecer la duracion de las sessiones 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_COOKIE_AGE = 3600  # Duración en segundos (1 hora)
+SESSION_SAVE_EVERY_REQUEST = True
+
 ROOT_URLCONF = 'senda.urls'
 
 TEMPLATES = [
@@ -66,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'booking.context_processor.total_carrito',
             ],
         },
     },
@@ -77,9 +83,9 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/img/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'img')
 MEDIA_URL = '/img/'
-
+LOGIN_URL = 'login'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -140,3 +146,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST_USER = 'infosenda42@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'ozlaqewfyaogcijh' 
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
