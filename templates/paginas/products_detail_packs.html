@@ -17,21 +17,28 @@
 				<br><br>
 				<strong>Descripción: </strong>{%lorem%}
 				<br><br>
-				<strong>Información vuelo: </strong>{{packs_all.related_vuelo.vu_nombre}} ----
+				<strong>Información vuelo: </strong>
+				<pre><i>Origen: </i>{{pack.vuelo.vu_origen}}</pre>
+				<pre><i>Destino: </i>{{pack.vuelo.vu_destino}}</pre>
+				<pre><i>Hora: </i>8:00am</pre>
+				<pre><i>Precio: </i>{{pack.vuelo.vu_precio}} €</pre>
 				<br><br>
 				<strong>Información hotel: </strong>
+				<pre><i>Ciudad: </i>{{pack.hotel.ho_ciudad}}</pre>
+				<pre><i>Dirección: </i>{{pack.hotel.ho_direccion}}</pre>
+				<pre><i>Descripción: </i>{%lorem%}</pre>
+				<pre><i>Precio: </i>{{pack.hotel.ho_precio}} €/noche</pre>
 				<br><br>
-				<strong>Información actividades: </strong> ----
+				<strong>Información actividades: </strong>
+				<pre><i>Ciudad: </i>{{pack.actividad.act_ciudad}}</pre>
+				<pre><i>Descripción: </i>{%lorem%}</pre>
+				<pre><i>Precio: </i>{{pack.actividad.act_precio}} €</pre>
 				<br><br>
-				<strong>Precio: </strong>{{pack.pa_precio}} €/noche
+				<strong>Precio total: </strong>{{pack.pa_precio}} €/noche
 				<br><br>
 				<img src="{{pack.pa_imagen.url}}">
 				<br><br>
 			</div>
-			<h1>
-				**{{pack.vuelo_id.vu_nombre}}**
-				--{{pack.vuelo_id.vu_nombre}}
-			</h1>
 			<button class="boton-carrito">Añadir al carrito</button>
 		</div>
 	</main>
