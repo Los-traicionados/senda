@@ -90,8 +90,6 @@ def vuelos(request):
 def actividades(request):
     actividades = Actividad.objects.all()
     actividades_filtrado = actividades
-    
-    # para controlar ciudades duplicadas
     act_ciudades = []
     for act in actividades:
         if not act.act_ciudad in act_ciudades:
@@ -99,6 +97,9 @@ def actividades(request):
     actividad = request.GET.get('actividad')
     if actividad:
         actividades_filtrado = actividades.filter(act_ciudad__icontains = actividad)
+    busqueda = request.GET.get('busqueda')
+    if busqueda:
+        actividades = actividades.filter(act_nombre__icontains = busqueda)
     return render(request, 'paginas/actividades.html', {
         'actividades': actividades,
         'actividades_filtrado': actividades_filtrado,
