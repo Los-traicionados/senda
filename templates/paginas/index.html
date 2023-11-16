@@ -93,13 +93,9 @@
 	</div>
 
 	<div class="category_grid">
-		<a href="/packs?busqueda=playa"><div style="background-image:url({% static 'images/playa.png' %});" class="category_card">Playa</div></a>
-		<a href="/packs?busqueda=ciudad"><div style="background-image:url({% static 'images/ciudad.png' %});" class="category_card">Ciudad</div></a>
-		<a href="/packs?busqueda=selva"><div style="background-image:url({% static 'images/selva.png' %});" class="category_card">Selva</div></a>
-		<a href="/packs?busqueda=glamping"> <div style="background-image:url({% static 'images/glamping.png' %});" class="category_card">Glamping</div></a>
-		<a href="/packs?busqueda=ski"><div style="background-image:url({% static 'images/ski.jpg' %});" class="category_card">Ski</div></a>
-		<a href="/packs?busqueda=senderismo"><div style="background-image:url({% static 'images/senderismo.png' %});" class="category_card">Senderismo
-        </div></a>
+		{% for tipo_act in tipo_actividades %}
+		<a href="{% url 'actividades' %}?busqueda={{tipo_act}}"><div style="background-image:url({{tipo_act.tact_imagen.url}});" class="category_card">{{tipo_act}}</div></a>
+		{% endfor %}
     </div>
     <div class="promotion">
         <div class="slideshow-container">

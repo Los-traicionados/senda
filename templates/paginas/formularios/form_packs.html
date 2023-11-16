@@ -1,4 +1,4 @@
-<form class="search_form_page" action="{% url 'packs' %}" method="get">
+<form class="search_form_page" action="{% url 'packs' %}">
     <div class="column">
         <label for="datetravel"><strong>Selecciona ciudad</strong></label><br>
         <select class="box" name="pack">
@@ -8,9 +8,17 @@
             {% endfor %}
         </select><br>
         <label for="datetravel"><strong>Fecha de salida</strong></label><br>
-        <input class="box" type="date" id="datetravel"><br>
+        <input class="box" type="date" id="datetravel" name="fecha_ida"
+        {% if request.session.fecha_ida %}
+        value="{{request.session.fecha_ida }}"
+        {% endif %}
+        ><br>
         <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
-        <input class="box" type="date" id="datetravel"><br>
+        <input class="box" type="date" id="datetravel" name="fecha_vuelta"
+        {% if request.session.fecha_vuelta %}
+        value="{{request.session.fecha_vuelta }}"
+        {% endif %}
+        ><br>
     </div>
     <div class="column">
         <label for="datetravel"><strong>Número de personas</strong></label><br>

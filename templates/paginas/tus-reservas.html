@@ -11,32 +11,69 @@
 	</button>
 	Tus reservas
 </h1>
+{% for message in messages %}
+{{message}}
+{% endfor %}
 <div class="main_productos">
 	<div class="zone_grid_products">
-		<a href="#" class="grid_section_title_link">
-			<div class="grid_section_title">
-				Hoteles
-			</div>
-		</a>
-		<div class="grid_products">
-			<a href="#" class="product_card_link">
-				<div class="product_card">
-
-						<img src="{% static 'images/senderismo.png' %}" class="product_card_img">
-					<p class="product_card_title">Hotel Principe Pio</p>
-					<div class="product_card_info">
-						<p class="product_card_price">145,00 €/ Noche</p>
-						<div class="product_card_button">
-							Más info
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-							  </svg>
-							  
+		{% for reserva in reservas %}
+		<div class="bg-gris">
+			<h1>Reserva: {{reserva.pk}}</h1>
+			<p>Precio: {{reserva.res_precio}} €</p>
+			<p>Desde: {{reserva.res_f_inicio}}</p>
+			<p>Hasta : {{reserva.res_f_fin}}</p>
+			<div class="grid_products">
+					<!--Info de packs-->
+					{% for pack in reserva.pack.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{pack.pa_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Paquete</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{pack.pa_nombre}}</p>
+							</div>
 						</div>
-					</div>
-				</div>
-			</a>
+					</a>
+					{% endfor %}
+					<!--Info de hoteles-->
+					{% for hotel in reserva.hotel.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{hotel.ho_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Hotel</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{hotel}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+					<!--Info de vuelos-->
+					{% for vuelo in reserva.vuelo.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{vuelo.vu_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Vuelo</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{vuelo}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+					<!--Info de actividades-->
+					{% for actividad in reserva.actividad.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{actividad.act_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Actividad</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{actividad}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+			</div>
 		</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

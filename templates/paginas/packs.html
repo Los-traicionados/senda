@@ -13,12 +13,12 @@
     </h1>
     <!--Formulario de packs-->
 	{% include 'paginas/formularios/form_packs.html' %}
+
     <div class="zone_grid_products">
         <div class="grid_products">
+
             {% for pa in packs_filtrado %}
             <a href="{% url 'products_detail_packs' pa.id%}" class="product_card_link">
-            {% comment %} {% for pa in packs_filtrado %}
-            <a href="{% url 'detail_pack' pa.id%}" class="product_card_link"> {% endcomment %}
                 <div class="product_card"> 
                     {%if pa.pa_imagen%}
 					<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">

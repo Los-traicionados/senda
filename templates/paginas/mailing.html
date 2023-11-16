@@ -14,9 +14,10 @@
 
     <label for="id_end_date">hasta:</label>
     <input type="date" name="end_date" id="id_end_date" required>
-
+   
     <button type="submit" class="button_secondary">Enviar Email</button>
 </form>
+
 <table id="table_id" class="table">
     <thead>
         <tr>
@@ -27,19 +28,10 @@
         </tr>
     </thead>
     <tbody>
-        {% for c in count_emails %}
-        <tr>
-          <td>{{c.user}}</td>
-          <td>{{c.email}}</td>
-          <td>{{c.asunto}}</td>
-          <td>{{c.fecha}}</td>
-        </tr>
-        {% endfor %}
     </tbody>
 </table>
 
 <a href="{% url 'logout' %}" class="button_secondary">Salir</a>
 <!-- a href="{% url 'mailing' %}" class="button_secondary">Enviar correo</a> -->
-
 
 {% endblock %}

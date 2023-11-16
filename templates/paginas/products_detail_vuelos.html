@@ -37,7 +37,7 @@
 					</div>
 					<div class="dproduct_buy">
 						<p class="dproduct_price">{{vuelo.vu_precio}} €</p>
-						<button class="boton-carrito">Añadir al carrito</button>
+						<a href="{% url 'add_vuelo' vuelo.id %}" class="boton-carrito">Añadir al carrito</a>
 					</div>
 				</div>
 			</div>
