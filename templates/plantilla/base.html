@@ -43,7 +43,7 @@
 				</ul>
 				<div class="zona_login">
 					{% if request.user.is_authenticated %}
-					<a class="button_primary" href="{% url 'perfil' %}">{{request.user.username}}</a>
+					<a class="button_primary" href="{% url 'perfil' %}" style="text-transform: capitalize;">{{request.user.username}}</a>
 					{% else %}
 					<a class="button_grey" href="{% url 'registro' %}">Registro</a>
 					<a class="button_secondary" href="{% url 'login' %}">Mi cuenta</a>			
