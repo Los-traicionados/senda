@@ -14,4 +14,5 @@ urlpatterns = [
 	path('products_detail_hoteles/<int:id>', views.redirect_detail_hoteles, name='products_detail_hoteles'),
 	path('products_detail_vuelos/<int:id>', views.redirect_detail_vuelos, name='products_detail_vuelos'),
 	path('products_detail_packs/<int:id>', views.redirect_detail_packs, name='products_detail_packs'),
+	# path('products_detail_packs/<int:id>', views.products_detail_packs, name='products_detail_packs'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
