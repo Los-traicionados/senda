@@ -1,23 +1,15 @@
+<<<<<<< HEAD
 <form class="search_form_page" action="{% url 'packs' %}">
+=======
+<form class="search_form_page" action="{% url 'packs' %}" method="get">
+>>>>>>> 57b5b4f97269be8c09ad058801faf172320406e2
     <div class="column">
-        <label for="datetravel"><strong>Seleeciona un país</strong></label><br>
-        <select class="box">
-            <option value="option1">Perú</option>
-            <option value="option1">Estados Unidos</option>
-            <option value="option2">Canadá</option>
-            <option value="option3">México</option>
-            <option value="option4">Argentina</option>
-            <option value="option5">Brasil</option>
-            <option value="option6">España</option>
-            <option value="option7">Reino Unido</option>
-            <option value="option8">Francia</option>
-            <option value="option9">Alemania</option>
-            <option value="option10">Italia</option>
-            <option value="option11">China</option>
-            <option value="option12">Japón</option>
-            <option value="option13">Australia</option>
-            <option value="option14">Sudáfrica</option>
-            <option value="option15">India</option>
+        <label for="datetravel"><strong>Selecciona ciudad</strong></label><br>
+        <select class="box" name="pack">
+            <option value="" selected disabled>Ciudad</option>
+            {% for pa in pa_ciudades %}
+            <option value="{{pa}}">{{pa}}</option>
+            {% endfor %}
         </select><br>
         <label for="datetravel"><strong>Fecha de salida</strong></label><br>
         <input class="box" type="date" id="datetravel" name="fecha_ida"
@@ -26,6 +18,7 @@
         {% endif %}
         ><br>
         <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
+<<<<<<< HEAD
         <input class="box" type="date" id="datetravel" name="fecha_vuelta"
         {% if request.session.fecha_vuelta %}
         value="{{request.session.fecha_vuelta }}"
@@ -46,9 +39,23 @@
             <option value="option1">12 noches</option>
             <option value="option1">13 noches</option>
         </select><br>
+=======
+        <input class="box" type="date" id="datetravel"><br>
+    </div>
+    <div class="column">
+        <label for="datetravel"><strong>Número de personas</strong></label><br>
+        <input class="box" min="1" max="20" type="number" id="datetravel" ><br>
+>>>>>>> 57b5b4f97269be8c09ad058801faf172320406e2
         <label for="datetravel"><strong>Temática</strong></label><br>
-        <input class="box" type="text" id="datetravel" value="Perú"><br>
-
+        <select class="box">
+            <option value="gastronomia">Gastronomía</option>
+            <option value="playa">Playa</option>
+            <option value="ciudad">Ciudad</option>
+            <option value="selva">Selva</option>
+            <option value="glamping">Glamping</option>
+            <option value="senderismo">Senderismo</option>
+        </select>
+        <br>
         <input class="CTA_BUSCAR" type="submit" value="Buscar"/>
     </div>
 </form>

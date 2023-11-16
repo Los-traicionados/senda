@@ -5,9 +5,11 @@
 
 	<div class="seccion_productos">
 		<h1 class="page_title">
-			<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-			<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-			</svg>
+			<button id="btnBack" class="btn_back">
+				<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+					</svg>
+			</button>
 			Vuelos
 		</h1>
 		{% include 'paginas/formularios/form_vuelos.html' %}
@@ -17,9 +19,9 @@
 				<a href="{% url 'products_detail_vuelos' vu.id %}" class="product_card_link">
 					<div class="product_card"> 
 						{%if vu.vu_imagen%}
-						<img src= "{{ vu.vu_imagen.url }}" class="product_card_img">
+							<img src= "{{ vu.vu_imagen.url }}" class="product_card_img">
 						{%else%}
-						<img src="{% static 'images/vuelos.jpeg' %}" class="product_card_img">
+							<img src="{% static 'images/vuelos.jpeg' %}" class="product_card_img">
 						{%endif%}
 						<p class="product_card_title">Vuelo {{vu}}</p>
 						<div class="product_card_info">
@@ -30,8 +32,7 @@
 								Más info
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-								  </svg>
-								  
+								</svg>
 							</div>
 						</div>
 					</div>

@@ -3,18 +3,39 @@
 {% block title %} Detalle {{actividad.act_nombre}} {% endblock %}
 {% block content %}
 
-<!-- <h1>probando actividad</h1> -->
 	<main class="zone_main">
 		<div class="container_main">
-			<div  class="contenedor-titulo">
-				<button class="boton-atras" > &lt; </button> 
-					<h1>{{ actividad.act_nombre }}</h1> 
+			<div class="dproduct_container">
+				<div class="dproduct_img" style="background-image: url({{actividad.act_imagen.url}});"></div>
+				<div class="dproduct_info">
+					<h1 class="dproduct_title">
+						<button id="btnBack" class="btn_back">
+							<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+								</svg>
+						</button>
+						{{actividad.act_nombre}}
+					</h1>
+					<div class="dproduct_details">
+						<div class="dproduct_datas_zone">
+							<div class="dproduct_datas">
+								<p class="detail_title">Ciudad</p>
+								<p class="detail_data">Madrid</p>
+							</div>
+							<div class="dproduct_datas">
+								<p class="detail_title">Dirección</p>
+								<p class="detail_data">C/ Genérica, 37</p>
+							</div>
+						</div>
+						<p class="detail_title">Descripción</p>
+						<p class="detail_data">{%lorem%}</p>
+					</div>
+					<div class="dproduct_buy">
+						<p class="dproduct_price">{{actividad.act_precio}} €</p>
+						<a href="{% url 'add_actividad' actividad.id %}" class="boton-carrito">Añadir al carrito</a>
+					</div>
+				</div>
 			</div>
-			<hr>
-			<div class="contenido-texto">
-					{{actividad.act_descripcion}}
-			</div>
-			<a href="{% url 'add_actividad' actividad.id %}" class="boton-carrito">Añadir al carrito</a>
 		</div>
 	</main>
 

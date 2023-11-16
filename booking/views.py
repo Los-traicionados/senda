@@ -9,6 +9,24 @@ from django.contrib import messages
 from django.db.models import Sum
 # Create your views here.
 
+def hoteles(request):
+    hoteles = Hotel.objects.all()
+    hoteles_filtrado = hoteles
+    # para controlar ciudades duplicadas
+    ciudades = []
+    for ho in hoteles:
+        if not ho.ho_ciudad in ciudades:
+            ciudades.append(ho.ho_ciudad)
+
+    ciudad = request.GET.get('ciudad')
+    if ciudad:
+        hoteles_filtrado = hoteles.filter(ho_ciudad__icontains = ciudad)
+    return render(request, 'paginas/hoteles.html', {
+        'hoteles': hoteles,
+        'hoteles_filtrado': hoteles_filtrado,
+        'ciudad': ciudad,
+        'ciudades': ciudades,
+    })
 
 def packs(request):
     packs = Pack.objects.all()
@@ -39,11 +57,9 @@ def packs(request):
         
     return render(request, 'paginas/packs.html',{
         'packs': packs,
-        'actividades': actividades,
-        'hoteles': hoteles,
-        'vuelos':vuelos,
-        'busqueda': busqueda,
-        'precio_total': precio_total
+        'packs_filtrado': packs_filtrado,
+        'pack': pack,
+        'pa_ciudades': pa_ciudades,
     })
 
 def detail_pack(request, id):
@@ -67,6 +83,7 @@ def vuelos(request):
         request.session['fecha_ida'] = fecha_ida
         request.session['fecha_vuelta'] = fecha_vuelta
         request.session.save()
+
     # para controlar origen duplicadas
     origen = []
     for vu in vuelos:
@@ -91,6 +108,7 @@ def vuelos(request):
         'destino':destino,
     })
 
+
 def hoteles(request):
     hoteles = Hotel.objects.all()
     hoteles_filtrado = hoteles
@@ -107,18 +125,16 @@ def hoteles(request):
         if not ho.ho_ciudad in ciudades:
             ciudades.append(ho.ho_ciudad)
 
-    ciudad = request.GET.get('ciudad')
-    if ciudad:
-        hoteles_filtrado = hoteles.filter(ho_ciudad__icontains = ciudad)
-    return render(request, 'paginas/hoteles.html', {
-        'hoteles': hoteles,
-        'hoteles_filtrado': hoteles_filtrado,
-        'ciudad': ciudad,
-        'ciudades': ciudades,
-    })
-    
 def actividades(request):
     actividades = Actividad.objects.all()
+    actividades_filtrado = actividades
+    act_ciudades = []
+    for act in actividades:
+        if not act.act_ciudad in act_ciudades:
+            act_ciudades.append(act.act_ciudad)
+    actividad = request.GET.get('actividad')
+    if actividad:
+        actividades_filtrado = actividades.filter(act_ciudad__icontains = actividad)
     busqueda = request.GET.get('busqueda')
     #guardar variables temporales fecha ida y vuelta
     if not request.session.get('fecha_ida') and not request.session.get('fecha_vuelta'):
@@ -134,6 +150,9 @@ def actividades(request):
         )
     return render(request, 'paginas/actividades.html', {
         'actividades': actividades,
+        'actividades_filtrado': actividades_filtrado,
+        'actividad': actividad,
+        'act_ciudades': act_ciudades,
         'busqueda': busqueda, 
     })
 
