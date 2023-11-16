@@ -16,6 +16,7 @@ from django.template import RequestContext
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from email.mime.multipart import MIMEMultipart
+from .forms import *
 
 # Create your views here.
 def login_view(request):
@@ -78,61 +79,6 @@ def registro(request):
             
     return render(request, 'paginas/registro.html')
 
-def send_email_to_all(request):
-    form = DateFilterForm(request.POST or None)
-    count_emails = None
-
-    if request.method == 'POST' and form.is_valid():
-        start_date = form.cleaned_data['start_date']
-        end_date = form.cleaned_data['end_date']
-
-        # Filter users by registration date
-        users = User.objects.filter(date_joined__range=(start_date, end_date))
-
-        # Send emails to filtered users
-        for user in users:
-            if user.email:
-                send_email(user.id)
-                CountEmails.objects.create(user=user.username, email=user.email, asunto="test")
-
-        # Retrieve and display count emails
-        count_emails = CountEmails.objects.all()
-    return redirect('mailing')
-    # return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
-
-def send_email(user_id):
-    try:
-        user=User.objects.get(pk=user_id)
-        mailServer = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
-        mailServer.ehlo()
-        mailServer.starttls()
-        mailServer.ehlo()
-        mailServer.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
-
-        # Construimos el mensaje simple
-        email_to = user.email
-        # mensaje = MIMEText("""Este es el mensaje de las narices""")
-        mensaje = MIMEMultipart()
-        mensaje['From']= EMAIL_HOST_USER
-        mensaje['To']= email_to
-        mensaje['Subject']="Tienes un correo"
-
-        content = render_to_string('mailing/mail_entrada.html', {'user':user})
-        mensaje.attach(MIMEText(content, 'html'))
-
-        # Envio del mensaje
-        mailServer.sendmail(EMAIL_HOST_USER,
-                email_to,
-                mensaje.as_string())
-        print("correo enviado correctamente")
-
-    except Exception as e:
-        print(e)
-
-def mailing_view(request):
-    count_emails = CountEmails.objects.all()
-    return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
-    #return render(request, 'paginas/mailing.html')
 def tus_reservas(request):
     return render(request, 'paginas/tus-reservas.html')
 
@@ -142,3 +88,120 @@ def tus_favoritos(request):
 def recomendaciones(request):
     return render(request, 'paginas/recomendaciones.html')
 
+def send_email_to_all(request):
+    count_emails = None
+
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            start_date = form.cleaned_data['start_date']
+            end_date = form.cleaned_data['end_date']
+            template_name = form.get_template_filename()  # Obtén el nombre de la plantilla
+
+            users = User.objects.filter(date_joined__range=(start_date, end_date))
+
+        # Send emails to filtered users
+            for user in users:
+                if user.email:
+                    
+                    template_path = f'mailing/{template_name}.html'
+                    
+                    try:
+                        send_email(user.id, template_name, template_path)
+                        CountEmails.objects.create(user=user.username, email=user.email)
+                       
+                    except Exception as e:
+                    # Log the error
+                        print(f"An error occurred: {template_path}")
+                    # Redirect to an error page or back to the form with an error message
+                        return render(request, 'paginas/error_page.html', {'error_message': 'An error occurred while sending emails.'})
+
+        # Retrieve and display count emails
+        count_emails = CountEmails.objects.all()
+        return render(request, 'paginas/mailing.html', {'count_emails': count_emails, 'form': form})
+    else:
+        return render(request, 'paginas/error_page.html', {'error_message': 'An error occurred while sending emails.'}) 
+    
+
+def send_email(user_id, template_name, template_path):
+    try:
+        user=User.objects.get(pk=user_id)
+        mailServer = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
+        mailServer.ehlo()
+        mailServer.starttls()
+        mailServer.ehlo()
+        mailServer.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
+        
+        email_to = user.email
+        mensaje = MIMEMultipart()
+        mensaje['From']= EMAIL_HOST_USER
+        mensaje['To']= email_to
+
+        subject = ''
+       
+        writeNewsletter=None
+        writeOferta=None
+        if template_name == 'newsletter':
+            writeNewsletter = WriteNewsletter.objects.get(pk=1)
+            subject = writeNewsletter.subject
+            
+        elif template_name == 'mail_entrada':
+            subject = 'Tienes una nueva entrada'
+        elif template_name == 'ofertas':
+            subject = 'Ofertón'
+            writeOferta = WriteOferta.objects.get(pk=1)
+        elif template_name == 'reserva_realizada':
+            subject = 'Tienes una nueva reserva'
+        elif template_name == 'cumpleaños':
+            subject = '¡Feliz Cumpleaños!'
+        elif template_name == 'nuevo_registro':
+            subject = '¡Bienvenido a Senda!'
+
+        mensaje['Subject'] = subject
+
+        context = {
+            'user': user,
+            'writeOferta': writeOferta,
+            'writeNewsletter': writeNewsletter,
+           
+        }
+
+        # Renderizar la plantilla con el contexto
+        rendered_content = render_to_string(template_path, context)
+
+        # Adjuntar el contenido al mensaje
+        mensaje.attach(MIMEText(rendered_content, 'html'))
+
+        # Envío del mensaje
+        mailServer.sendmail(EMAIL_HOST_USER, email_to, mensaje.as_string())
+
+        print("Correo enviado correctamente")
+
+    except Exception as e:
+        print("An error occurred2:", e)
+
+def mailing_view(request):
+    count_emails = CountEmails.objects.all()
+    return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
+    #return render(request, 'paginas/mailing.html')
+
+
+def customizeEmail_view(request):
+    if request.method == 'POST':
+        form = EmailForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # Redirect to a success page
+    else:
+        form = EmailForm()
+    return render(request, 'paginas/mailing.html', {'form': form})
+
+def success_view(request):
+    return render(request, 'paginas/success.html')
+
+
+
+def test_template_render(request):
+    writeNewsletter = WriteNewsletter.objects.get(pk=1)
+    return render(request, 'mailing/newsletter.html', {'writeNewsletter': writeNewsletter})
+    
