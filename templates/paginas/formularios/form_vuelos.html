@@ -1,4 +1,4 @@
-<form class="allcontent" action="{% url 'vuelos' %}" method='get'>
+<form class="search_form_page" action="{% url 'vuelos' %}" method='get'>
     <div class="column">
         <input type="radio" id="ida" name="button" value="ida">
         <label for="soloida">Solo ida</label>
@@ -13,10 +13,18 @@
             {% endfor %}
             </select>
         <br>
-        <label for="fecha_ida"><strong>Fecha de salida</strong></label><br>
-        <input class="box" type="date" name ="fecha_ida" id="fecha_ida"><br>
-        <label for="fecha_vuelta"><strong>Fecha de regreso</strong></label><br>
-        <input class="box" type="date" name ="fecha_vuelta" id="fecha_vuelta"><br>
+        <label for="datetravel"><strong>Fecha de salida</strong></label><br>
+        <input class="box" type="date" id="datetravel" name="fecha_ida"
+        {% if request.session.fecha_ida %}
+        value="{{request.session.fecha_ida }}"
+        {% endif %}
+        ><br>
+        <label for="datetravel"><strong>Fecha de regreso</strong></label><br>
+        <input class="box" type="date" id="datetravel" name="fecha_vuelta"
+        {% if request.session.fecha_vuelta %}
+        value="{{request.session.fecha_vuelta }}"
+        {% endif %}
+        ><br>
     </div>
     <div class="column">
         <br>
@@ -32,7 +40,7 @@
         </form>
         <br>
         <label for="datetravel"><strong>Número de pasajeros</strong></label><br>
-        <input class="box" type="number" id="datetravel" ><br>
+        <input class="box" min="1" max="20" type="number" id="datetravel" ><br>
         
         <br>
 

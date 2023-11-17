@@ -3,60 +3,77 @@
 {% block title %} Login {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="perfil.css">
-<div class="header-container">
-	<a href="{% url 'perfil' %}"><button class="boton-atras" > &lt; </button> </a>
-	<h4>Tus reservas</h4>
-</div>
-<hr>
-
-<div class="main_productos">
-	<div class="seccion_productos">
-		<a href="{% url 'producto_tipo' %}" class="link_seccion_product">
-			<div class="titulo_seccion">
-			Hoteles
-			</div>
-		</a>
-		<div class="grid_productos">
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/habitacion.jpg' %}" class="img_product">
-					<h3 class="product_name">Hotel 1<h3> 
-				</div>
-			</a>
-		</div>
-	</div>
-
-	<div class="seccion_productos">
-		<a href="#" class="link_seccion_product">
-			<div class="titulo_seccion">
-			Actividades
-			</div>
-		</a>
-		<div class="grid_productos">
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">Actividad 2<h3> 
-				</div>
-			</a>
-			<a href="#" class="link_producto">
-				<div class="producto"> 
-					<img src="{% static 'images/senderismo.png' %}" class="img_product">
-					<h3 class="product_name">Actividad 4<h3> 
-				</div>
-			</a>
-		</div>
-	</div>
-
-	
-</div>
-
-{% for act in actividades %}
-<h2>{{act.act_nombre}}</h2>
-<p>{{act.act_precio}}</p>
-{% if act.act_imagen %}
-<img src="{{act.act_imagen.url}}" alt="" width="500px" height="auto">
-{% endif %}
+<h1 class="page_title">
+	<button id="btnBack" class="btn_back">
+		<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+			</svg>
+	</button>
+	Tus reservas
+</h1>
+{% for message in messages %}
+{{message}}
 {% endfor %}
-
+<div class="main_productos">
+	<div class="zone_grid_products">
+		{% for reserva in reservas %}
+		<div class="bg-gris">
+			<h1>Reserva: {{reserva.pk}}</h1>
+			<p>Precio: {{reserva.res_precio}} €</p>
+			<p>Desde: {{reserva.res_f_inicio}}</p>
+			<p>Hasta : {{reserva.res_f_fin}}</p>
+			<div class="grid_products">
+					<!--Info de packs-->
+					{% for pack in reserva.pack.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{pack.pa_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Paquete</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{pack.pa_nombre}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+					<!--Info de hoteles-->
+					{% for hotel in reserva.hotel.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{hotel.ho_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Hotel</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{hotel}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+					<!--Info de vuelos-->
+					{% for vuelo in reserva.vuelo.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{vuelo.vu_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Vuelo</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{vuelo}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+					<!--Info de actividades-->
+					{% for actividad in reserva.actividad.all %}
+					<a href="#" class="product_card_link">
+						<div class="product_card">
+							<img src="{{actividad.act_imagen.url}}" class="product_card_img">
+							<p class="product_card_title">Actividad</p>
+							<div class="product_card_info">
+								<p class="product_card_price">{{actividad}}</p>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}
