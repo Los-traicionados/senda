@@ -41,7 +41,7 @@ body
 	justify-content: center;
 	height: 100px;
 	margin-bottom: 48px;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.07);
 }
 
 .container_header
@@ -896,4 +896,55 @@ input[type="submit"] {
 
 .footer_link a svg {
 	max-width: 32px;
+}
+
+.mail_op{
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 48px;
+	background-color: var(--clr_grey);
+	border-radius: 24px;
+	padding: 24px;
+	color: var(--clr_grey_text);
+}
+
+.mail_data{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 24px;
+}
+
+.mail_table {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 32px;
+}
+
+.mail_fechas{
+	padding: 16px 8px;
+	border-radius: 48px;
+	border: solid 1px #ccc;
+	margin-left: 8px;
+}
+
+.mail_table div{
+	text-align: center;
+	color: var(--clr_orange);
+	margin-bottom: 20px;
+}
+
+.mail_table_result{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	width: 100%;
+	height: 600px;
+	gap: 32px;
+}
+
+.mail_table_result div{
+	background-color: var(--clr_grey);
+	border-radius: 24px;
 }
