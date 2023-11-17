@@ -17,11 +17,7 @@
 <div class="main_productos">
 	<div class="zone_grid_products">
 		{% for reserva in reservas %}
-		<div class="bg-gris">
-			<h1>Reserva: {{reserva.pk}}</h1>
-			<p>Precio: {{reserva.res_precio}} €</p>
-			<p>Desde: {{reserva.res_f_inicio}}</p>
-			<p>Hasta : {{reserva.res_f_fin}}</p>
+		<div>
 			<div class="grid_products">
 					<!--Info de packs-->
 					{% for pack in reserva.pack.all %}
@@ -31,6 +27,12 @@
 							<p class="product_card_title">Paquete</p>
 							<div class="product_card_info">
 								<p class="product_card_price">{{pack.pa_nombre}}</p>
+							</div>
+							<div class="datos_reserva">
+								<p>Nº de Reserva: {{reserva.pk}}</p>
+								<p>Precio: {{reserva.res_precio}} €</p>
+								<p>Desde: {{reserva.res_f_inicio}}</p>
+								<p>Hasta : {{reserva.res_f_fin}}</p>
 							</div>
 						</div>
 					</a>
@@ -44,6 +46,12 @@
 							<div class="product_card_info">
 								<p class="product_card_price">{{hotel}}</p>
 							</div>
+							<div class="datos_reserva">
+								<p>Nº de Reserva: {{reserva.pk}}</p>
+								<p>Precio: {{reserva.res_precio}} €</p>
+								<p>Desde: {{reserva.res_f_inicio}}</p>
+								<p>Hasta : {{reserva.res_f_fin}}</p>
+							</div>
 						</div>
 					</a>
 					{% endfor %}
@@ -56,6 +64,12 @@
 							<div class="product_card_info">
 								<p class="product_card_price">{{vuelo}}</p>
 							</div>
+							<div class="datos_reserva">
+								<p>Nº de Reserva: {{reserva.pk}}</p>
+								<p>Precio: {{reserva.res_precio}} €</p>
+								<p>Desde: {{reserva.res_f_inicio}}</p>
+								<p>Hasta : {{reserva.res_f_fin}}</p>
+							</div>
 						</div>
 					</a>
 					{% endfor %}
@@ -67,6 +81,12 @@
 							<p class="product_card_title">Actividad</p>
 							<div class="product_card_info">
 								<p class="product_card_price">{{actividad}}</p>
+							</div>
+							<div class="datos_reserva">
+								<p>Nº de Reserva: {{reserva.pk}}</p>
+								<p>Precio: {{reserva.res_precio}} €</p>
+								<p>Desde: {{reserva.res_f_inicio}}</p>
+								<p>Hasta : {{reserva.res_f_fin}}</p>
 							</div>
 						</div>
 					</a>

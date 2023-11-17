@@ -3,35 +3,42 @@
 {% block title %} {{request.user.username }} {% endblock %}
 {% block content %}
 
-
-<h1>Hola {{request.user.username }}</h1>
-<h2>Emails enviados</h2>
-<form method="post" action="{% url 'send_email_to_all' %}">
-    {% csrf_token %}
-    <p>Fecha de registro:</p>
-    <label for="id_start_date">desde:</label>
-    <input type="date" name="start_date" id="id_start_date" required>
-
-    <label for="id_end_date">hasta:</label>
-    <input type="date" name="end_date" id="id_end_date" required>
-   
-    <button type="submit" class="button_secondary">Enviar Email</button>
-</form>
-
-<table id="table_id" class="table">
-    <thead>
-        <tr>
-            <th>Usuario</th>
-            <th>Email</th>
-            <th>Asunto</th>
-            <th>Fecha de envio</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-
-<a href="{% url 'logout' %}" class="button_secondary">Salir</a>
-<!-- a href="{% url 'mailing' %}" class="button_secondary">Enviar correo</a> -->
+<div class="seccion_mailing">
+    <h1 class="page_title">
+		<button id="btnBack" class="btn_back">
+			<svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+				</svg>
+		</button>
+		Campañas mailing
+	</h1>
+    <form method="post" action="{% url 'send_email_to_all' %}">
+        {% csrf_token %}
+        <p>Fecha de registro:</p>
+        <label for="id_start_date">desde:</label>
+        <input type="date" name="start_date" id="id_start_date" required>
+    
+        <label for="id_end_date">hasta:</label>
+        <input type="date" name="end_date" id="id_end_date" required>
+       
+        <button type="submit" class="button_secondary">Enviar Email</button>
+    </form>
+    
+    <table id="table_id" class="table">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Asunto</th>
+                <th>Fecha de envio</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    
+    
+</div>
 
 {% endblock %}

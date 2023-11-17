@@ -74,7 +74,7 @@ body
 	display: flex;
 	justify-content: center;
 	background-color: var(--clr_green_dark);
-	height: 80px;
+	/* height: 80px; */
 	padding: 40px 0;
 	margin-top: 80px;
 }
@@ -85,7 +85,7 @@ body
 	max-width: var(--container_width);
 	padding: 0 20px;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .logo_footer{
@@ -276,12 +276,51 @@ body
 .button_secondary_cart
 {
 	color: var(--clr_white);
-	font-size: 8px;
+	font-size: 16px;
+	font-weight: bold;
 	background-color: var(--clr_orange);
 	border: 0;
-	padding: 10px 10px;
+	padding: 12px 16px;
 	border-radius: 50% !important;
 	text-decoration: none;
+}
+
+.cart_titulo_elemento{
+    font-family: Work Sans;
+	color: var(--Grey-Text, #3C4440);
+    text-align: left;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+	margin: 0;
+}
+
+.cart_info_elemento {
+	font-family: Work Sans;
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+	padding: 16px 0 38px 0;
+}
+
+.cart_cantidad{
+	margin: 0 8px; background-color:#fff; padding: 16px; border-radius:16px
+}
+
+.cart_precio_elemento {
+	display: flex;
+	flex-direction: row;
+	flex:1;
+	justify-content: flex-end;
+	padding: 32px 16px;
+	align-items: center;
+	gap: 32px;
+}
+.mensaje_carrito{
+	font-size: 15px;
+	color: var(--clr_orange);
+	margin: 12px 0 32px 0;
 }
 
 .button_secondary_cart:hover
@@ -420,51 +459,52 @@ body
 
 /* -------------- ESTE ES MI CSS DE CARRITO DE COMPRAS ----------------------------- */
 
-.principal
+.main_cart
 {
-	display:flex;
+	display:grid;
+	grid-template-columns: 2fr 1fr;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: flex-end;
 	margin-bottom: 2em;
 	margin-top: 2em;
-
+	gap: 48px;
 }
 .detalle_carrito
 {	
 	display: inline-block;
 	flex-direction: column;
-	padding-right: 2.5em;
 }
 
 .detalle_carrito svg
 {
 	width: 24px;
 }
+
 .detalleProducto
 {
-	background-color: var(--clr_grey_dark);
-	padding-top: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	align-items: center;
-	width: 752px;
-	height: 653px;
-	border-radius: 20px;
+}
+
+.cart_messages {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	margin-bottom: 32px;
 }
 
 .pack1
 {
 	display: flex;
-	background-color:white;
-	justify-content: space-around;
+	background-color:var(--clr_grey);
 	align-items: center;
-	height:145px;
-	width: 700px;
-	border-radius: 10px;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-
+	width: 100%;
+	border-radius: 24px;
+	padding: 12px;
+	gap: 24px;
+	align-items: flex-end;
 }
 
 
@@ -472,7 +512,7 @@ body
 {
 	height: 8em;
 	width: 10em;
-	border-radius: 20px;
+	border-radius: 24px;
 	padding: 10px 10px 10px 10px;
 }
 
@@ -493,14 +533,12 @@ body
 .detalleTarjeta
 {
 	background-color: #145233;
-	width: 438px;
-	height: 900px;
-	border-radius: 20px;
 	display: flex;
+	border-radius: 20px;
 	flex-direction: column;
 	color: var(--clr_white);
 	padding: 1em;
-
+	box-sizing: border-box;
 }
 
 .detalleTarjeta h4
@@ -512,6 +550,7 @@ body
 	display: grid;
 	grid-template-columns: repeat(4,1fr);
 	grid-gap: 15px;
+	margin-bottom: 32px;
 }
 
 .form_tarjeta
@@ -554,8 +593,9 @@ body
 .CTA_PAGAR
 {
 	background-color: var(--clr_orange);
-	height: 40px;
-	border-radius: 10px;
+	/* height: 40px; */
+	border-radius: 42px;
+	padding: 16px 0;
 	border: none;
 	font-family: 'Work Sans', sans-serif;	
 	color: var(--clr_white);
@@ -831,4 +871,29 @@ input[type="submit"] {
 	margin: 20px 20px;
 }
 
+.datos_reserva
+{
+	color: var(--clr_grey_text);
+	border-top: solid 1px #ccc;
+	padding: 16px;
+}
 
+
+.footer_link {
+	width: 100%;
+	color: var(--clr_orange);
+}
+
+.footer_social_logo {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.footer_link a {
+	color: white;
+	text-decoration: none;
+}
+
+.footer_link a svg {
+	max-width: 32px;
+}
