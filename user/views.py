@@ -5,9 +5,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import  authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
-# email
+# Importaciones para modelos
 from .models import *
+from booking.models import *
+# email
 import smtplib
 from senda.settings import *
 from email.mime.text import MIMEText
@@ -42,6 +43,7 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
+@login_required
 def perfil(request):
     return render(request, 'paginas/perfil.html')
 
@@ -79,15 +81,20 @@ def registro(request):
             
     return render(request, 'paginas/registro.html')
 
+@login_required
 def tus_reservas(request):
-    return render(request, 'paginas/tus-reservas.html')
+    reservas = Reserva.objects.filter(client__user = request.user).order_by('-id')
+    return render(request, 'paginas/tus-reservas.html', {'reservas':reservas})
 
+@login_required
 def tus_favoritos(request):
     return render(request, 'paginas/tus-favoritos.html')
 
+@login_required
 def recomendaciones(request):
     return render(request, 'paginas/recomendaciones.html')
 
+@login_required
 def send_email_to_all(request):
     count_emails = None
 
@@ -180,6 +187,8 @@ def send_email(user_id, template_name, template_path):
     except Exception as e:
         print("An error occurred2:", e)
 
+
+@login_required
 def mailing_view(request):
     count_emails = CountEmails.objects.all()
     return render(request, 'paginas/mailing.html', {'count_emails': count_emails})

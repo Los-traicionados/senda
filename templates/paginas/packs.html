@@ -2,23 +2,43 @@
 {% load static %}
 {% block title %} Packs {% endblock %}
 {% block content %}
-  <div class="seccion_productos">
-    <a href="{% url 'packs'%}" class="link_seccion_product">
-        <div class="titulo_seccion">
-        Packs completos
-        </div>
-    </a>
+<div class="seccion_productos">
+    <h1 class="page_title">
+        <button id="btnBack" class="btn_back">
+            <svg class="page_title_icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+        </button>
+        Packs
+    </h1>
     <!--Formulario de packs-->
 	{% include 'paginas/formularios/form_packs.html' %}
-    <div class="grid_productos">
-        {% for pa in packs %}
-        <a href="{% url 'detail_pack' pa.pk%}" class="link_producto">
-                <div class="producto"> 
-                <img src="{% static 'images/hotelywarner.jpg' %}" class="img_product">
-                <h3 class="product_name">{{pa}}<h3> 
-            </div>
-        </a>
-        {% endfor %}
+
+    <div class="zone_grid_products">
+        <div class="grid_products">
+
+            {% for pa in packs_filtrado %}
+            <a href="{% url 'products_detail_packs' pa.id%}" class="product_card_link">
+                <div class="product_card"> 
+                    {%if pa.pa_imagen%}
+					<img src= "{{ pa.pa_imagen.url }}" class="product_card_img">
+					{%else%}
+					<img src="{% static 'images/hotelywarner.jpg' %}" class="product_card_img">
+					{%endif%}
+                    <p class="product_card_title">Pack {{pa}}</p>
+                    <div class="product_card_info">
+                        <p class="product_card_price">{{pa.pa_precio}} €</p>
+                        <div class="product_card_button">
+                            Más info
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_info_icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
