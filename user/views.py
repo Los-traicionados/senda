@@ -71,7 +71,8 @@ def registro(request):
             user.set_password(password2)
             user.is_activate = True
             user.save()
-            send_email(user.id)
+            Cliente.objects.create(user=user)
+            #send_email(user.id, template_name, template_path)
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
