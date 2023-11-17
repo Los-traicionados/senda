@@ -55,8 +55,9 @@ class WriteNewsletter(models.Model):
     introduction = QuillField()
     subtitle = models.CharField(max_length=100)
     content = QuillField()
-    """ def __str__(self):
-        return f"{self.subject} - {self.title} - {self.subtitle}" """
+    
+    def __str__(self):
+        return f"{self.subject}"
 
 class WriteOferta(models.Model):
     content = QuillField()
