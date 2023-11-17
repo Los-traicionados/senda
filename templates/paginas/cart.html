@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %} Carrito {% endblock %}
 {% block content %}
-<div class="principal">
+<div class="main_cart">
     <div class="detalle_carrito">
         <div>
             <h1 class="page_title">
@@ -13,8 +13,8 @@
                 </button>
                 Carrito de compras
             </h1>
-            <div>
-                Limpiar:
+            <div class="cart_messages">
+                <p>Eliminar:
                 {% if request.session.pack_carrito %}
                 <a href="{% url 'cle_pack' %}" class="button_secondary">Packs</a>
                 {% endif %}
@@ -29,9 +29,8 @@
                 {% endif %}
             </div>
         </div>
-        <hr>
         {% for message in messages %}
-        {{message}}
+        <p class="mensaje_carrito">{{message}}</p>
         {% endfor %}
         
         <div class="detalleProducto">
@@ -41,18 +40,15 @@
                 <div class="foto">
                     <img src="{{ value.imagen }}" alt="peru_foto">
                 </div>
-                <div class="informacion">
-                    <h4>{{value.nombre}}</h4>
-                    <ul>
-                        <li>Pack</li>
-                    </ul>
+                <div class="cart_info_elemento">
+                    <p class="cart_titulo_elemento">{{value.nombre}}</p>
+                    <div class="cantidad">
+                        <a href="{% url 'sub_pack' key %}" class="button_secondary_cart">-</a>
+                        <span class="cart_cantidad">{{value.cantidad}}</span>
+                        <a href="{% url 'add_pack' key %}" class="button_secondary_cart">+</a>
+                    </div>
                 </div>
-                <div class="cantidad">
-                    <a href="{% url 'add_pack' key %}" class="button_secondary_cart">+</a>
-                    <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_pack' key %}" class="button_secondary_cart">-</a>
-                </div>
-                <div class="precio">
+                <div class="cart_precio_elemento">
                     <span>{{value.acumulado}} EUR</span>
                     <a href="{% url 'del_pack' key %}">
                         <div class="svg">
@@ -72,18 +68,16 @@
                 <div class="foto">
                     <img src="{{value.imagen}}" alt="peru_foto">
                 </div>
-                <div class="informacion">
-                    <h4>{{value.nombre}}</h4>
-                    <ul>
-                        <li>Actividad</li>
-                    </ul>
+                <div class="cart_info_elemento">
+                    <p class="cart_titulo_elemento">{{value.nombre}}</p>
+                    <div class="cantidad">
+                        <a href="{% url 'sub_actividad' key %}" class="button_secondary_cart">-</a>
+                        <span class="cart_cantidad">{{value.cantidad}}</span>
+                        <a href="{% url 'add_actividad' key %}" class="button_secondary_cart">+</a>
+                    </div>
                 </div>
-                <div class="cantidad">
-                    <a href="{% url 'add_actividad' key %}" class="button_secondary_cart">+</a>
-                    <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_actividad' key %}" class="button_secondary_cart">-</a>
-                </div>
-                <div class="precio">
+
+                <div class="cart_precio_elemento">
                     <span>{{value.acumulado}} EUR</span>
                     <a href="{% url 'del_actividad' key %}">
                         <div class="svg">
@@ -103,18 +97,16 @@
                 <div class="foto">
                     <img src="{{value.imagen}}" alt="peru_foto">
                 </div>
-                <div class="informacion">
-                    <h4>{{value.nombre}}</h4>
-                    <ul>
-                        <li>Vuelo</li>
-                    </ul>
+                <div class="cart_info_elemento">
+                    <p class="cart_titulo_elemento">Vuelo {{value.nombre}}</p>
+                    <div class="cantidad">
+                        <a href="{% url 'sub_vuelo' key %}" class="button_secondary_cart">-</a>
+                        <span class="cart_cantidad">{{value.cantidad}}</span>
+                        <a href="{% url 'add_vuelo' key %}" class="button_secondary_cart">+</a>
+                    </div>
                 </div>
-                <div class="cantidad">
-                    <a href="{% url 'add_vuelo' key %}" class="button_secondary_cart">+</a>
-                    <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_vuelo' key %}" class="button_secondary_cart">-</a>
-                </div>
-                <div class="precio">
+               
+                <div class="cart_precio_elemento">
                     <span>{{value.acumulado}} EUR</span>
                     <a href="{% url 'del_vuelo' key %}">
                         <div class="svg">
@@ -134,18 +126,16 @@
                 <div class="foto">
                     <img src="{{value.imagen}}" alt="peru_foto">
                 </div>
-                <div class="informacion">
-                    <h4>{{value.nombre}}</h4>
-                    <ul>
-                        <li>Hotel</li>
-                    </ul>
+                <div class="cart_info_elemento">
+                    <p class="cart_titulo_elemento">Hotel {{value.nombre}}</p>
+                    <div class="cantidad">
+                        <a href="{% url 'sub_hotel' key %}" class="button_secondary_cart">-</a>
+                        <span class="cart_cantidad">{{value.cantidad}}</span>
+                        <a href="{% url 'add_hotel' key %}" class="button_secondary_cart">+</a>
+                    </div>
                 </div>
-                <div class="cantidad">
-                    <a href="{% url 'add_hotel' key %}" class="button_secondary_cart">+</a>
-                    <span>{{value.cantidad}}</span>
-                    <a href="{% url 'sub_hotel' key %}" class="button_secondary_cart">-</a>
-                </div>
-                <div class="precio">
+                               
+                <div class="cart_precio_elemento">
                     <span>{{value.acumulado}} EUR</span>
                     <a href="{% url 'del_hotel' key %}">
                         <div class="svg">
