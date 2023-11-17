@@ -85,7 +85,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'img')
-MEDIA_URL = '/img/'
+MEDIA_URL = 'img/'
 LOGIN_URL = 'login'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

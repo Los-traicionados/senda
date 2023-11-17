@@ -50,13 +50,14 @@ class CountEmails(models.Model):
 
 # (modles.Model) this class is a Django model and will be mapped to a database table.
 class WriteNewsletter(models.Model):
-    subject= models.CharField(max_length=100)
+    subject= models.CharField(max_length=100, verbose_name="Asunto", help_text="Aqui va el asunto")
     title = models.CharField(max_length=100)
     introduction = QuillField()
     subtitle = models.CharField(max_length=100)
     content = QuillField()
-    """ def __str__(self):
-        return f"{self.subject} - {self.title} - {self.subtitle}" """
+    
+    def __str__(self):
+        return f"{self.subject}"
 
 class WriteOferta(models.Model):
     content = QuillField()
