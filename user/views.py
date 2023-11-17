@@ -125,9 +125,10 @@ def send_email_to_all(request):
 
         # Retrieve and display count emails
         count_emails = CountEmails.objects.all()
-        return render(request, 'paginas/mailing.html', {'count_emails': count_emails, 'form': form})
+        messages.add_message(request, messages.SUCCESS, 'Mensajes envidados')
+        return redirect('mailing')
     else:
-        return render(request, 'paginas/error_page.html', {'error_message': 'An error occurred while sending emails.'}) 
+        return redirect('mailing')
     
 
 def send_email(user_id, template_name, template_path):
@@ -191,11 +192,14 @@ def send_email(user_id, template_name, template_path):
 @login_required
 def mailing_view(request):
     count_emails = CountEmails.objects.all()
+    print('Count: ', count_emails)
     return render(request, 'paginas/mailing.html', {'count_emails': count_emails})
     #return render(request, 'paginas/mailing.html')
 
 
 def customizeEmail_view(request):
+    count_emails = CountEmails.objects.all()
+    print('Count: ', count_emails)
     if request.method == 'POST':
         form = EmailForm(request.POST, request.FILES)
         if form.is_valid():
@@ -203,7 +207,10 @@ def customizeEmail_view(request):
             return redirect('success')  # Redirect to a success page
     else:
         form = EmailForm()
-    return render(request, 'paginas/mailing.html', {'form': form})
+    return render(request, 'paginas/mailing.html', {
+        'form': form,
+        'count_emails': count_emails,
+    })
 
 def success_view(request):
     return render(request, 'paginas/success.html')

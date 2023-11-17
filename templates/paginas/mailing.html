@@ -15,6 +15,8 @@
     <form method="post" action="{% url 'send_email_to_all' %}">
         {% csrf_token %}
         <div class="mail_op">
+            {{ form.template.label_tag }}
+            {{ form.template }}
             <div class="mail_data">
                 <p style="color:#EB5E37">Fecha de registro:</p>
                 <div>
@@ -30,6 +32,9 @@
         </div>
         
     </form>
+    {% for message in messages %}
+    {{messages}}
+    {% endfor %}
     <div class="mail_table">
         <div>Usuario</div>
         <div>Email</div>
@@ -37,11 +42,12 @@
         <div>Fecha de envio</div>
     </div>
     <div class="mail_table_result">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        {% for cmail in count_emails %}
+        <div>{{cmail.user}}</div>
+        <div>{{cmail.email}}</div>
+        <div>{{cmail.asunto}}</div>
+        <div>{{cmail.fecha}}</div>
+        {% endfor %}
     </div>
 </div>
-
 {% endblock %}
