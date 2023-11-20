@@ -1,7 +1,0 @@
-{% extends 'plantilla/base.html' %}
-{% load static %}
-{% block title %} {{request.user.username }} {% endblock %}
-{% block content %}
-<h1>Hola {{request.user.username }}</h1>
-<a href="{% url 'logout' %}" class="button_secondary">Salir</a>
-{% endblock %}
